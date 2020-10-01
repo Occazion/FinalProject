@@ -1,5 +1,5 @@
-<%@ include file="/jspf/page.jspf" %>
-<%@ include file="/jspf/taglib.jspf" %>
+<%@ include file="/jspf/directive/page.jspf" %>
+<%@ include file="/jspf/directive/taglib.jspf" %>
 
 <head>
 
@@ -10,7 +10,7 @@
     <%--===========================================================================
     Bind CSS document.
     ===========================================================================--%>
-    <link rel="stylesheet" type="text/css" media="screen" href="style/st4.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/style.css"/>
 
     <%--===========================================================================
     If you define http-equiv attribute, set the content type and the charset the same

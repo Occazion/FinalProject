@@ -5,8 +5,6 @@
 -.idea/artifacts/FinalProject_war_exploded.xml,1\d\1d7ae3e10538178733d55d01891d8115ae8bf2fd
 ]
 -.idea/libraries/Maven__log4j_log4j_1_2_17.xml,2\d\2dfa7669c20c41273cb505d16f04d17467fb3330
-I
-src/main/webapp/style.css,b\5\b5ddf58625eb7ca70f6133d70f13d616e61eadd7
 O
 src/main/webapp/WEB-INF/web.xml,2\e\2e22b6edd746fa3dc40ad7276c87c8d87d72a392
 J
@@ -29,5 +27,35 @@ R
 "src/main/java/resources.properties,7\9\7914533b00c57d4b165a64b1b9e673ccef24ebbe
 i
 9src/main/java/com/epam/project/db/dao/ConnectionPool.java,0\c\0ce1591695a5a02ef3de4fe23c21aaf3d7e92150
+j
+:src/main/java/com/epam/project/exception/AppException.java,a\e\ae9d841f242e97b094b4718132991ed69a211621
+g
+7src/main/java/com/epam/project/web/command/Command.java,3\1\31218d60b686cea293db37144d3198311f0fb185
+p
+@src/main/java/com/epam/project/web/command/CommandContainer.java,f\a\fad8a6127f9e56a9593986b2f8c9028109931ba6
+W
+'src/main/resources/META-INF/context.xml,b\a\ba231d17a135f9606c2f6b7f0c7ecfc84838a5dc
+b
+2src/main/java/com/epam/project/web/Controller.java,2\8\28eb00e911737c5c4c18aacf7c86d6f69a207efc
 d
-4src/main/java/com/epam/project/web/LoginServlet.java,7\d\7d70e7a05c4e5934e586112c0647d25fb9ed51af
+4src/main/java/com/epam/project/db/entity/Entity.java,f\9\f9ea7eca4c9b5d781cd880036f2184aa604a3c85
+R
+"src/main/webapp/jsp/error_page.jsp,3\d\3d53632b7229ab73f2b740eec86b85ffe6ddd5bf
+P
+ src/main/webapp/jspf/footer.jspf,f\5\f5b4084394d70f9a5d6707f20a2047d588c24224
+N
+src/main/webapp/jspf/head.jspf,0\4\04535e1d05cce7ad52068eb440a601ee9c2df208
+P
+ src/main/webapp/jspf/header.jspf,a\7\a7a52d6e33fb6445b655e7d80a1fb31ce1064d2b
+M
+src/main/webapp/jsp/login.jsp,a\f\af55eee015fec33e99bf54ec2d8713a26133aad7
+N
+src/main/webapp/jspf/page.jspf,b\0\b0850ff2941ff35fccf3b16b6438832255f595e9
+X
+(src/main/java/com/epam/project/Path.java,5\b\5ba2c10769e266871e22ecd9ab1d77ecd03adeb8
+[
++src/main/java/com/epam/project/db/Role.java,a\8\a812da57d4237aa221c3b61c20c457aed3038494
+U
+%src/main/webapp/stylesheets/style.css,e\0\e007f7a84e23c46dac4d685205d578db61275d3e
+P
+ src/main/webapp/jspf/taglib.jspf,5\7\5717f2cb61cc04f73948c0f3cc65b3e222feb3d3

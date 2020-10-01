@@ -1,19 +1,18 @@
 <%@ page isErrorPage="true" %>
 <%@ page import="java.io.PrintWriter" %>
-<%@ include file="/jspf/page.jspf" %>
-<%@ include file="/jspf/taglib.jspf" %>
+<%@ include file="/jspf/directive/page.jspf" %>
+<%@ include file="/jspf/directive/taglib.jspf" %>
 
 <html>
 
 <c:set var="title" value="Error" scope="page" />
-<%@ include file="/WEB-INF/jspf/head.jspf" %>
+<%@ include file="/jspf/head.jspf" %>
 
 <body>
 
 <table id="main-container">
 
-    <%-- HEADER --%>
-    <%@ include file="/WEB-INF/jspf/header.jspf"%>
+    <%@ include file="/jspf/header.jspf"%>
     <%-- HEADER --%>
 
     <tr >

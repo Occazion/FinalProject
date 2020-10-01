@@ -3,8 +3,8 @@ Header (top area).
 ===========================================================================--%>
 
 <%@ page import="ua.kharkov.knure.dkolesnikov.st4example.db.Role" %>
-<%@ include file="/jspf/page.jspf" %>
-<%@ include file="/jspf/taglib.jspf" %>
+<%@ include file="/jspf/directive/page.jspf" %>
+<%@ include file="/jspf/directive/taglib.jspf" %>
 
 <tr>
     <td id="header">

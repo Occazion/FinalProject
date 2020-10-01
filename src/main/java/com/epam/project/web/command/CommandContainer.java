@@ -14,8 +14,8 @@ public class CommandContainer {
 
     static {
         // common commands
-        //commands.put("login", new LoginCommand());
-        //commands.put("logout", new LogoutCommand());
+        commands.put("login", new LoginCommand());
+        commands.put("logout", new LogoutCommand());
         //commands.put("viewSettings", new ViewSettingsCommand());
         //commands.put("noCommand", new NoCommand());
 

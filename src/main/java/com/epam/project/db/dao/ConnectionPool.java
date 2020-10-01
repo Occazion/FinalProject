@@ -40,7 +40,7 @@ public class ConnectionPool {
         return con;
     }
 
-    public void close(Connection connection) {
+    public static void close(Connection connection) {
         try {
             connection.close();
         } catch (SQLException e) {
