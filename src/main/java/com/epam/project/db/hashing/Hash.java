@@ -23,7 +23,7 @@ public class Hash {
     }
 
     public static void main(String[] args) {
-        String str = "C775E7B757EDE630CD0AA1113BD102661AB38829CA52A6422AB782862F268646";
+        String str = "root";
         try {
             str = toHash(str,HashAlgorithm.SHA_256);
         } catch (NoSuchAlgorithmException e) {

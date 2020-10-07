@@ -7,7 +7,7 @@
     username="root"
     password="ro20mysqlpass20ot"
     driverClassName="com.mysql.jdbc.Driver"
-    url="jdbc:mysql://localhost:3306/finalproject?autoReconnect=true"
+    url="jdbc:mysql://localhost:3306/finalproject?autoReconnect=true&amp;serverTimezone=UTC"
     validationQuery="select 1"
     maxActive="100"
     maxIdle="30"

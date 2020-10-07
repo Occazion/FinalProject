@@ -48,20 +48,20 @@
     <!--============================================================
         Encoding support filter
     =============================================================-->
-    <filter>
-        <filter-name>EncodingFilter</filter-name>
-        <filter-class></filter-class>
-        <init-param>
-            <param-name>encoding</param-name>
-            <param-value>UTF-8</param-value>
-        </init-param>
-    </filter>
+<!--    <filter>-->
+<!--        <filter-name>EncodingFilter</filter-name>-->
+<!--        <filter-class></filter-class>-->
+<!--        <init-param>-->
+<!--            <param-name>encoding</param-name>-->
+<!--            <param-value>UTF-8</param-value>-->
+<!--        </init-param>-->
+<!--    </filter>-->
 
-    <filter-mapping>
-        <filter-name>EncodingFilter</filter-name>
-        <url-pattern>/WEB-INF/jsp/*</url-pattern>
-        <servlet-name>Controller</servlet-name>
-    </filter-mapping>
+<!--    <filter-mapping>-->
+<!--        <filter-name>EncodingFilter</filter-name>-->
+<!--        <url-pattern>/WEB-INF/jsp/*</url-pattern>-->
+<!--        <servlet-name>Controller</servlet-name>-->
+<!--    </filter-mapping>-->
 
 
     <!--============================================================
@@ -73,20 +73,24 @@
         Delimiter - space/tab
     =============================================================-->
 
-    <filter>
+    <!--<filter>
         <filter-name>CommandAccessFilter</filter-name>
-        <filter-class></filter-class>
+        <filter-class>com.epam.project.web.filter.AccessFilter</filter-class>
         <init-param>
             <param-name>admin</param-name>
-            <param-value>listOrders</param-value>
+            <param-value>tourMenu</param-value>
+        </init-param>
+        <init-param>
+            <param-name>manager</param-name>
+            <param-value>tourMenu</param-value>
         </init-param>
         <init-param>
             <param-name>client</param-name>
-            <param-value>listMenu</param-value>
+            <param-value>tourMenu</param-value>
         </init-param>
         <init-param>
             <param-name>common</param-name>
-            <param-value>logout noCommand viewSettings</param-value>
+            <param-value>logout noCommand tourMenu</param-value>
         </init-param>
         <init-param>
             <param-name>out-of-control</param-name>
@@ -97,13 +101,13 @@
     <filter-mapping>
         <filter-name>CommandAccessFilter</filter-name>
         <servlet-name>Controller</servlet-name>
-    </filter-mapping>
+    </filter-mapping>-->
 
     <!--============================================================
         Context listener
     =============================================================-->
     <listener>
-        <listener-class></listener-class>
+        <listener-class>com.epam.project.web.listener.ContextListener</listener-class>
     </listener>
 
     <!--============================================================
@@ -128,4 +132,6 @@
             <include-prelude>/jspf/head.jspf</include-prelude>
         </jsp-property-group>
     </jsp-config>
+
+
 </web-app>

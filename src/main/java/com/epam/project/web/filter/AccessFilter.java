@@ -15,9 +15,9 @@ public class AccessFilter implements Filter {
     private static final Logger log = Logger.getLogger(AccessFilter.class);
 
     // commands access
-    private static Map<Role, List<String>> accessMap = new HashMap<Role, List<String>>();
-    private static List<String> commons = new ArrayList<String>();
-    private static List<String> outOfControl = new ArrayList<String>();
+    private static Map<Role, List<String>> accessMap = new HashMap<>();
+    private static List<String> commons = new ArrayList<>();
+    private static List<String> outOfControl = new ArrayList<>();
 
     public void destroy() {
         log.debug("Filter destruction starts");
@@ -32,10 +32,10 @@ public class AccessFilter implements Filter {
             log.debug("Filter finished");
             chain.doFilter(request, response);
         } else {
-            String errorMessasge = "You do not have permission to access the requested resource";
+            String errorMessage = "You do not have permission to access the requested resource";
 
-            request.setAttribute("errorMessage", errorMessasge);
-            log.trace("Set the request attribute: errorMessage --> " + errorMessasge);
+            request.setAttribute("errorMessage", errorMessage);
+            log.trace("Set the request attribute: errorMessage --> " + errorMessage);
 
             request.getRequestDispatcher(Path.PAGE_ERROR_PAGE)
                     .forward(request, response);
@@ -69,6 +69,7 @@ public class AccessFilter implements Filter {
 
         // roles
         accessMap.put(Role.ADMIN, asList(fConfig.getInitParameter("admin")));
+        accessMap.put(Role.MANAGER, asList(fConfig.getInitParameter("manager")));
         accessMap.put(Role.CLIENT, asList(fConfig.getInitParameter("client")));
         log.trace("Access map --> " + accessMap);
 
@@ -91,7 +92,7 @@ public class AccessFilter implements Filter {
      * @return list of parameter values.
      */
     private List<String> asList(String str) {
-        List<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<>();
         StringTokenizer st = new StringTokenizer(str);
         while (st.hasMoreTokens()) list.add(st.nextToken());
         return list;

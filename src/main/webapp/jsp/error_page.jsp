@@ -49,7 +49,7 @@
         </td>
     </tr>
 
-    <%@ include file="/WEB-INF/jspf/footer.jspf"%>
+    <%@ include file="/jspf/footer.jspf"%>
 
 </table>
 </body>

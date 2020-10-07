@@ -2,6 +2,7 @@
 Footer (bottom area).
 ===========================================================================--%>
 
-<tr>
-    <td id="footer">&copy;Tour Agency (EPAM - KNURE Java Training), 2020</td>
-</tr>
+
+<div id="footer">
+    &copy;Tour Agency (EPAM - KNURE Java Training), 2020
+</div>
