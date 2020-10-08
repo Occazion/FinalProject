@@ -16,8 +16,12 @@ public class CommandContainer {
         // common commands
         commands.put("login", new LoginCommand());
         commands.put("logout", new LogoutCommand());
+        commands.put("signup", new SignupCommand());
         commands.put("makeOrder", new MakeOrderCommand());
         commands.put("noCommand", new NoCommand());
+        commands.put("cabinet", new CabinetCommand());
+        commands.put("users", new UsersCommand());
+        commands.put("manageUsers", new ManageUsersCommand());
 
         // client commands
         commands.put("tourMenu", new TourMenuCommand());

@@ -37,16 +37,16 @@
 
                 <input type="hidden" name="command" value="login"/>
 
-                <label><b>Username</b></label>
+                <label><b>Login</b></label>
                 <input type="text" placeholder="Enter Username" name="login"  required>
 
                 <label><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="password"  required>
 
                 <button type="submit">Login</button>
-                <label>
+                <%--<label>
                     <input type="checkbox" checked="checked" name="remember"> Remember me
-                </label>
+                </label>--%>
                 <input type="hidden" name="command" value="login"/>
 
                 <div class="signup">

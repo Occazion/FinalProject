@@ -39,7 +39,7 @@ public class UserService extends Service{
             try{
                 user = UserDAO.findUser(con,login);
             } catch (DBException e) {
-                throw new DBException();
+                throw new DBException(e.getMessage(), e);
             }
             finally {
                 close(con);

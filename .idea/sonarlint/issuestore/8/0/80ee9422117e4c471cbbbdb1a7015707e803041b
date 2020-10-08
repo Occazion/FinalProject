@@ -1,8 +1,8 @@
 
 v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ßçĞ²8°²şÏ.
+v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(¼ùÅî8°²şÏ.
 C
 java:S1068"'Remove this unused "log" private field.(ÜòÓS8°²şÏ.
+v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(‹ÓìÂ8°²şÏ.
 l
 java:S1128"JRemove this unused import 'com.epam.project.web.command.CommandContainer'.(Ø÷Ó¤şÿÿÿÿ8°²şÏ.
-v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(‹ÓìÂ8°²şÏ.
-v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(¼ùÅî8°²şÏ.

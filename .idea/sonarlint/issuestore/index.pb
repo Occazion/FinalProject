@@ -119,3 +119,13 @@ m
 =src/main/java/com/epam/project/db/service/AccountService.java,f\9\f9ab655bf942494617085c7682536548feade72f
 f
 6src/main/java/com/epam/project/db/service/Service.java,2\9\29875dd6dfb8bce35c6f92a708098b3eb2acf82b
+W
+'src/main/resources/META-INF/context.xml,b\a\ba231d17a135f9606c2f6b7f0c7ecfc84838a5dc
+a
+1.idea/libraries/Maven__javax_servlet_jstl_1_2.xml,3\0\30f104ae7e6f244bf77daa047bb269e96afe378c
+S
+#src/main/webapp/js/admin_sidenav.js,f\e\fe02e302cdea2e3284fc18fe52713d9ea378a5ce
+V
+&src/main/webapp/jsp/common/cabinet.jsp,2\b\2b5cf7b63eded8209758d0ac0eb69ccb2bf6a471
+n
+>src/main/java/com/epam/project/web/command/CabinetCommand.java,9\9\99e4aef0edaf1aef4b9ad07118e3780af7b6b97d

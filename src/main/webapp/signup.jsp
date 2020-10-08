@@ -20,8 +20,11 @@
 
 </head>
 <body>
-<form action="action_page.php">
+<form action="controller">
     <div class="container">
+
+        <input type="hidden" name="command" value="signup"/>
+
         <h1>Register</h1>
         <p>Please fill in this form to create an account.</p>
         <hr>
@@ -52,23 +55,25 @@
         <label>
             <b>Name</b>
         </label>
-        <input type="text" placeholder="Enter Name" name="name" required>
+        <input type="text" placeholder="Enter Name" name="name" pattern="[A-Z][a-z]+{1,10}" required>
 
         <label>
             <b>Surname</b>
         </label>
-        <input type="text" placeholder="Enter Surname" name="surname" required>
+        <input type="text" placeholder="Enter Surname" name="surname" pattern="[A-Z][a-z]+{1,20}" required>
 
         <label>
             <b>Gender</b>
         </label>
 
-            <p><select name="gender" required>
+            <p>
+                <select name="gender" required>
                 <option disabled>Select gender:</option>
                 <option>Male</option>
                 <option>Female</option>
                 <option selected>Other</option>
-            </select></p>
+                </select>
+            </p>
 
         <label>
             <b>Email</b>
@@ -80,7 +85,18 @@
         </label>
         <input type="text" placeholder="Enter City" name="city" required>
 
-        <%--<label>
+        <label>
+            <b>Locale</b>
+        </label>
+
+        <p><select name="locale" required>
+            <option disabled>Select locale:</option>
+            <option value="ru">Russian</option>
+            <option value="en" selected>English</option>
+        </select></p>
+
+
+    <%--<label>
             <b>Repeat Password</b>
         </label>
         <input type="password" placeholder="Repeat Password" name="psw-repeat" required>--%>

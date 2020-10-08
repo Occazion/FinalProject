@@ -7,14 +7,41 @@ Header (top area).
 <%@ include file="/jspf/directive/taglib.jspf" %>
 
     <div class="topnav">
-        <a class="active" href="#home">Home</a>
+
+        <c:if test="${not empty user}">
+            <c:choose>
+            <c:when test="${userRole.name == 'admin' }">
+            <a onclick="openNav()">Admin</a>
+            </c:when>
+            </c:choose>
+        </c:if>
+
+        <a href="/controller?command=tourMenu">Home</a>
         <a href="#news">News</a>
         <a href="#contact">Contact</a>
         <div class="topnav-right">
-            <a href="#search">Search</a>
-            <a href="#about">About</a>
+            <c:if test="${not empty user}">
+            <a href="/controller?command=cabinet">Cabinet</a>
+            <a href="/controller?command=logout">Logout</a>
+            </c:if>
+
+            <c:if test="${empty user}">
+                <a href="../signup.jsp">Sign up</a>
+                <a href="../login.jsp">Login</a>
+            </c:if>
         </div>
     </div>
+
+<script src="../js/admin_sidenav.js"></script>
+
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="#"></a>
+    <a href="#">Services</a>
+    <a href="#">Add Tour</a>
+    <a href="#">Delete Tour</a>
+    <a href="/controller?command=users">Manage Users</a>
+</div>
 
         <%--<c:if test="${not empty user}">
             &lt;%&ndash;===========================================================================

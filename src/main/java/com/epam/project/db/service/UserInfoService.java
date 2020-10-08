@@ -33,7 +33,7 @@ public class UserInfoService extends Service{
 
     }
 
-    public static UserInfo findUserInfo(int id) throws DBException {
+    public static UserInfo findUserInfo(Long id) throws DBException {
         UserInfo userInfo = new UserInfo();
         ConnectionPool conPool = ConnectionPool.getInstance();
         Connection con = conPool.getConnection();

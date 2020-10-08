@@ -51,6 +51,55 @@ tr{
     float: right;
 }
 
+/* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
 
 /* Set a style for all buttons */
 button {
@@ -70,3 +119,69 @@ tr:nth-child(even) {
 #footer{
     float: bottom;
 }
+
+
+/*
+!* The container *!
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+!* Hide the browser's default radio button *!
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+!* Create a custom radio button *!
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+!* On mouse-over, add a grey background color *!
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+!* When the radio button is checked, add a blue background *!
+.container input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+!* Create the indicator (the dot/circle - hidden when not checked) *!
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+!* Show the indicator (dot/circle) when checked *!
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+!* Style the indicator (dot/circle) *!
+.container .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}*/

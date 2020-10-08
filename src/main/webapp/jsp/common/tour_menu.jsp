@@ -25,13 +25,13 @@
                 <table id="tour_menu_table">
                     <thead>
                     <tr>
-                        <td>№</td>
-                        <td>Type</td>
-                        <td>Hotel</td>
-                        <td>Price</td>
-                        <td>Human Amount</td>
-                        <td>Status</td>
-                        <td>Discount</td>
+                        <th>№</th>
+                        <th>Type</th>
+                        <th>Hotel</th>
+                        <th>Price</th>
+                        <th>Human Amount</th>
+                        <th>Status</th>
+                        <th>Discount</th>
                     </tr>
                     </thead>
 
@@ -46,7 +46,9 @@
                             <td>${tour.human_amount}</td>
                             <td>${tour.statusId}</td>
                             <td>${tour.discount}</td>
+                            <c:if test="${not empty user}">
                             <td><input type="checkbox" name="tourId" value="${tour.id}"/></td>
+                            </c:if>
                         </tr>
                     </c:forEach>
                 </table>

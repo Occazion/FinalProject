@@ -43,21 +43,21 @@ public class UserInfoDAO extends DAO{
             stmt.executeUpdate();
 
         } catch (SQLException e) {
-            throw new DBException();
+            throw new DBException(e.getMessage(),e);
         }
         finally {
             close(stmt);
         }
     }
 
-    public static UserInfo findUserInfo(Connection con,int id) throws DBException {
+    public static UserInfo findUserInfo(Connection con,Long id) throws DBException {
         UserInfo userInfo = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
             UserInfoMapper mapper = new UserInfoMapper();
             stmt = con.prepareStatement(SQL__FIND_USER_INFO_BY_ID);
-            stmt.setInt(1, id);
+            stmt.setLong(1, id);
             rs = stmt.executeQuery();
             if (rs.next())
                 userInfo = mapper.mapRow(rs);

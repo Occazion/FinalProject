@@ -46,4 +46,16 @@ public class UserInfo extends Entity{
     public void setCity(String city) {
         this.city = city;
     }
+
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "id=" + getId() +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", gender='" + gender + '\'' +
+                ", email='" + email + '\'' +
+                ", city='" + city + '\'' +
+                '}';
+    }
 }

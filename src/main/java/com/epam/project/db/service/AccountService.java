@@ -21,15 +21,27 @@ public class AccountService extends Service {
 
     public static void insertAccount(User user, UserInfo userInfo) throws DBException, SQLException {
         ConnectionPool conPool = ConnectionPool.getInstance();
+        log.debug("Obtaining connection");
         Connection con = conPool.getConnection();
+
         try {
+            log.debug("Starting transaction");
             con.setAutoCommit(false);
+
+            log.debug("Inserting user");
             UserDAO.insertUser(con, user);
+
+            log.debug("Get user ID from db");
+            user = UserDAO.findUser(con, user.getLogin());
+            log.debug("User ->" + user);
+            userInfo.setId(user.getId());
+
+            log.debug("Inserting user info -> " + userInfo);
             UserInfoDAO.insertUserInfo(con, userInfo);
             con.commit();
         } catch (SQLException e) {
             con.rollback();
-            throw new DBException();
+            throw new DBException(e.getMessage(),e);
         }
         finally {
             close(con);

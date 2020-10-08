@@ -1,5 +1,11 @@
 
 OWeb:TableWithoutCaptionCheck" Add a description to this table.(º«Ã8ÿÉ¯ÔÏ.
-jWeb:DoctypePresenceCheck":Insert a <!DOCTYPE> declaration to before this <html> tag.(œ÷Ãûÿÿÿÿ8ó‰®ÔÏ.
-A	Web:S5256"%Add "<th>" headers to this "<table>".(º«Ã8ÿÉ¯ÔÏ.
+n Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(Æäª«8¾Á—Ğ.
 a	Web:S5254"@Add "lang" and/or "xml:lang" attributes to this "<html>" element(œ÷Ãûÿÿÿÿ8ó‰®ÔÏ.
+s Web:TableHeaderHasIdOrScopeCheck ";Add either an 'id' or a 'scope' attribute to this <th> tag.(Ã¯•»üÿÿÿÿ8Øù—Ğ.
+s Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(²ãøÿÿÿÿ8Øù—Ğ.
+jWeb:DoctypePresenceCheck":Insert a <!DOCTYPE> declaration to before this <html> tag.(œ÷Ãûÿÿÿÿ8ó‰®ÔÏ.
+n Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(à”÷8Øù—Ğ.
+s Web:TableHeaderHasIdOrScopeCheck"";Add either an 'id' or a 'scope' attribute to this <th> tag.(Æ¿Çøÿÿÿÿ8Øù—Ğ.
+n Web:TableHeaderHasIdOrScopeCheck!";Add either an 'id' or a 'scope' attribute to this <th> tag.(¶õÛ—8Øù—Ğ.
+s Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(èàÂéùÿÿÿÿ8Øù—Ğ.

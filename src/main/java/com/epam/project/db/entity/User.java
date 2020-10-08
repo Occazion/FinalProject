@@ -41,4 +41,14 @@ public class User extends Entity {
     public void setLocale(String locale) {
         this.locale = locale;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + getId() +
+                ", roleId=" + roleId +
+                ", login='" + login + '\'' +
+                ", locale='" + locale + '\'' +
+                '}';
+    }
 }

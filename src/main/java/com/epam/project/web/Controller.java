@@ -18,19 +18,20 @@ public class Controller extends HttpServlet {
 
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response) throws ServletException, IOException {
-        process(request, response);//TODO Rework get method
+        process(request, response,"doGet");//TODO Rework get method
     }
 
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
-        process(request, response);
+        process(request, response,"doPost");
     }
 
     /**
      * Main method of this controller.
      */
     private void process(HttpServletRequest request,
-                         HttpServletResponse response) throws IOException, ServletException {
+                         HttpServletResponse response,
+                         String method) throws IOException, ServletException {
 
         LOG.debug("Controller starts");
 
@@ -53,8 +54,15 @@ public class Controller extends HttpServlet {
 
         LOG.debug("Controller finished, now go to forward address --> " + forward);
 
-        // go to forward
+
         request.getRequestDispatcher(forward).forward(request, response);
+
+        // go to forward
+        /*if (method.equals("doGet")) {
+            response.sendRedirect(forward);
+        } else if (method.equals("doPost")) {
+            request.getRequestDispatcher(forward).forward(request, response);
+        }*/
     }
 
 }
