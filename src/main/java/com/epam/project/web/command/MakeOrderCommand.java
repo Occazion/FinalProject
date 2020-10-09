@@ -1,8 +1,12 @@
 package com.epam.project.web.command;
 
 import com.epam.project.Path;
+import com.epam.project.db.Status;
 import com.epam.project.db.entity.User;
+import com.epam.project.db.service.TourService;
 import com.epam.project.exception.AppException;
+import com.epam.project.exception.DBException;
+import com.epam.project.exception.Messages;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -28,6 +32,17 @@ public class MakeOrderCommand extends Command{
         for(String str : tourIds) {
             idList.add(Integer.parseInt(str));
             log.debug("Added tour id -->" + str + " to order list");
+        }
+
+        for(Integer integer : idList) {
+            try {
+                TourService.updateTourStatus(user.getId(),integer, Status.CONFIRMED);
+            } catch (DBException e) {
+                String errorMessage = Messages.ERR_CANNOT_UPDATE_TOUR;
+                request.setAttribute("errorMessage", errorMessage.concat(" : " + e.getMessage()));
+                log.error("errorMessage --> " + errorMessage);
+            }
+
         }
 
         log.debug("Command finished");

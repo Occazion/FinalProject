@@ -32,13 +32,27 @@ public class LoginCommand extends Command {
 
         HttpSession session = request.getSession();
 
+        // error handler
+        String errorMessage = null;
+        String forward = Path.PAGE_ERROR_PAGE;
+
         // obtain login and password from the request
         String login = request.getParameter("login");
         log.trace("Request parameter: login --> " + login);
 
-        // error handler
-        String errorMessage = null;
-        String forward = Path.PAGE_ERROR_PAGE;
+        try {
+            if (UserService.checkForBlock(login)) {
+                errorMessage = Messages.ERR_CANNOT_LOGIN_USER_IS_BLOCKED;
+                request.setAttribute("errorMessage", errorMessage);
+                log.error("errorMessage --> " + errorMessage);
+                return forward;
+            }
+        } catch (DBException e) {
+            errorMessage = Messages.ERR_CANNOT_CHECK_USER_FOR_BLOCK;
+            request.setAttribute("errorMessage", errorMessage);
+            log.error("errorMessage --> " + errorMessage.concat(" : " + e.getMessage()));
+            return forward;
+        }
 
         String password = null;
         try {

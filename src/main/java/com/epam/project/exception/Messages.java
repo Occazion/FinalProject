@@ -17,6 +17,10 @@ public class Messages {
 
     public static final String ERR_CANNOT_LOGIN_USER_IS_BLOCKED = "Cannot login: User is blocked. Contact administrator for details";
 
+    public static final String ERR_CANNOT_CHECK_USER_FOR_BLOCK = "Cannot check user in blacklist";
+
+    public static final String ERR_CANNOT_UPDATE_TOUR = "Cannot update tour";
+
     public static final String ERR_CANNOT_OBTAIN_ALL_TOURS = "Cannot obtain all tours";
 
     public static final String ERR_CANNOT_CLOSE_CONNECTION = "Cannot close a connection";

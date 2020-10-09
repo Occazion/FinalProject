@@ -25,7 +25,8 @@ public class UserService extends Service{
             try{
                 UserDAO.insertUser(con,user);
             } catch (DBException e) {
-                throw new DBException();
+                log.error(e.getMessage());
+                throw new DBException(e.getMessage(), e);
             }
             finally {
                 close(con);
@@ -39,6 +40,7 @@ public class UserService extends Service{
             try{
                 user = UserDAO.findUser(con,login);
             } catch (DBException e) {
+                log.error(e.getMessage());
                 throw new DBException(e.getMessage(), e);
             }
             finally {
@@ -54,7 +56,8 @@ public class UserService extends Service{
             try{
                 userList = UserDAO.findAllUsers(con);
             } catch (DBException e) {
-                throw new DBException();
+                log.error(e.getMessage());
+                throw new DBException(e.getMessage(), e);
             }
             finally {
                 close(con);
@@ -62,6 +65,54 @@ public class UserService extends Service{
             return userList;
         }
 
+    /**
+     * Checks if a user is blacklisted
+     * @param login users login
+     * @return <code>true</code> - user in blacklist
+     *         <p><code>false</code> - user not in blacklist</p>
+     *
+     * @throws DBException
+     */
+        public static boolean checkForBlock(String login) throws DBException {
+            boolean result;
+            ConnectionPool conPool = ConnectionPool.getInstance();
+            Connection con = conPool.getConnection();
+            try {
+                result = UserDAO.checkForBlock(con, login);
+            } catch (DBException e) {
+                log.error(e.getMessage());
+                throw new DBException(e.getMessage(), e);
+            } finally{
+                close(con);
+            }
+            return result;
+        }
+
+        public static void blockUser(String login) throws DBException {
+            ConnectionPool conPool = ConnectionPool.getInstance();
+            Connection con = conPool.getConnection();
+            try {
+               UserDAO.blockUser(con,login);
+            } catch (DBException e) {
+                log.error(e.getMessage());
+                throw new DBException(e.getMessage(), e);
+            } finally{
+                close(con);
+            }
+        }
+
+        public static void unblockUser(String login) throws DBException {
+            ConnectionPool conPool = ConnectionPool.getInstance();
+            Connection con = conPool.getConnection();
+            try {
+                UserDAO.unblockUser(con,login);
+            } catch (DBException e) {
+                log.error(e.getMessage());
+                throw new DBException(e.getMessage(), e);
+            } finally{
+                close(con);
+            }
+        }
 
     }
 

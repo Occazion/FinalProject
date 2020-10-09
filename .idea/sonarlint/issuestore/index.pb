@@ -7,8 +7,6 @@
 -.idea/libraries/Maven__log4j_log4j_1_2_17.xml,2\d\2dfa7669c20c41273cb505d16f04d17467fb3330
 O
 src/main/webapp/WEB-INF/web.xml,2\e\2e22b6edd746fa3dc40ad7276c87c8d87d72a392
-J
-src/main/webapp/login.html,0\b\0b2312482180eaf8cdf639b64798129ced9aa403
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 l
@@ -129,3 +127,13 @@ V
 &src/main/webapp/jsp/common/cabinet.jsp,2\b\2b5cf7b63eded8209758d0ac0eb69ccb2bf6a471
 n
 >src/main/java/com/epam/project/web/command/CabinetCommand.java,9\9\99e4aef0edaf1aef4b9ad07118e3780af7b6b97d
+g
+7src/main/java/com/epam/project/db/bean/AccountBean.java,4\b\4b1957d62d87c79645130e0ec9a21613cc2d50a7
+m
+=src/main/java/com/epam/project/web/filter/EncodingFilter.java,6\d\6d8959667485d533728fbff6561869cbb7c061ff
+T
+$src/main/webapp/jsp/common/users.jsp,4\1\41051654098ed97045d1263b0dfc4a4506dd215b
+l
+<src/main/java/com/epam/project/web/command/UsersCommand.java,4\c\4cdef19706ced0238421df3b99e095744670ddea
+r
+Bsrc/main/java/com/epam/project/web/command/ManageUsersCommand.java,a\1\a100673f3d74479551790af2f5988c04c38e8cc2

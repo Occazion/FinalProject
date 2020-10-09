@@ -1,6 +1,7 @@
 <%@ page pageEncoding="UTF-8"%>
 <%@ include file="/jspf/directive/page.jspf" %>
 <%@ include file="/jspf/directive/taglib.jspf" %>
+<%@ page import="com.epam.project.db.Role" %>
 <html>
 <c:set var="title" value="Users panel" scope="page" />
 <body>
@@ -40,20 +41,32 @@
                     <th>Login</th>
                     <th>Role</th>
                     <th>Locale</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                    <th>City</th>
+                    <th>Blocked?</th>
                 </tr>
                 </thead>
 
                 <c:set var="k" value="0"/>
-                <c:forEach var="user" items="${userList}">
+                <c:forEach var="account" items="${accountBeans}">
                     <c:set var="k" value="${k+1}"/>
                     <tr>
                         <td><c:out value="${k}"/></td>
-                        <td>${user.login}</td>
-                        <td>${user.roleId}</td>
-                        <td>${user.locale}</td>
+                        <td>${account.login}</td>
+                        <td>${Role.getRole(account.roleId)}</td>
+                        <td>${account.locale}</td>
+                        <td>${account.name}</td>
+                        <td>${account.surname}</td>
+                        <td>${account.gender}</td>
+                        <td>${account.email}</td>
+                        <td>${account.city}</td>
+                        <td>${account.isBlocked}</td>
 
                         <c:if test="${not empty user}">
-                            <td><input type="checkbox" name="login" value="${user.login}"/></td>
+                            <td><input type="checkbox" name="login" value="${account.login}"/></td>
                         </c:if>
                     </tr>
                 </c:forEach>

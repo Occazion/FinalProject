@@ -10,6 +10,10 @@ public enum Role {
         return Role.values()[roleId];
     }
 
+    public static Role getRole(int roleId) {
+        return Role.values()[roleId];
+    }
+
     public String getName() {
         return name().toLowerCase();
     }

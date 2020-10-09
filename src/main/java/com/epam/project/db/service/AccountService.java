@@ -1,5 +1,7 @@
 package com.epam.project.db.service;
 
+import com.epam.project.db.bean.AccountBean;
+import com.epam.project.db.dao.AccountDAO;
 import com.epam.project.db.dao.ConnectionPool;
 import com.epam.project.db.dao.UserDAO;
 import com.epam.project.db.dao.UserInfoDAO;
@@ -10,6 +12,8 @@ import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AccountService extends Service {
 
@@ -17,6 +21,28 @@ public class AccountService extends Service {
 
     AccountService() {
 
+    }
+
+    public static List<AccountBean> findAllAccounts() throws DBException {
+        List<AccountBean> result;
+        ConnectionPool conPool = ConnectionPool.getInstance();
+        log.debug("Obtaining connection");
+        Connection con = conPool.getConnection();
+        try {
+            result = AccountDAO.findAllAccounts(con);
+        } catch (DBException e) {
+            log.error(e.getMessage());
+            throw new DBException(e.getMessage(), e);
+        }
+        finally {
+            close(con);
+        }
+
+        for (AccountBean accBean : result) {
+            accBean.setIsBlocked(UserService.checkForBlock(accBean.getLogin()) ? "yes" : "no");
+        }
+
+        return result;
     }
 
     public static void insertAccount(User user, UserInfo userInfo) throws DBException, SQLException {

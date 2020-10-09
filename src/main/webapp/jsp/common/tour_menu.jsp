@@ -1,7 +1,7 @@
 <%@ page pageEncoding="UTF-8"%>
 <%@ include file="/jspf/directive/page.jspf" %>
 <%@ include file="/jspf/directive/taglib.jspf" %>
-
+<%@ page import="com.epam.project.db.Status" %>
 <html>
 
 <c:set var="title" value="Menu" scope="page" />
@@ -44,8 +44,8 @@
                             <td>${tour.hotel}</td>
                             <td>${tour.price}</td>
                             <td>${tour.human_amount}</td>
-                            <td>${tour.statusId}</td>
-                            <td>${tour.discount}</td>
+                            <td>${Status.getStatus(tour.statusId)}</td>
+                            <td>${tour.discount}%</td>
                             <c:if test="${not empty user}">
                             <td><input type="checkbox" name="tourId" value="${tour.id}"/></td>
                             </c:if>

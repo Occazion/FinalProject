@@ -40,7 +40,7 @@ Header (top area).
     <a href="#">Services</a>
     <a href="#">Add Tour</a>
     <a href="#">Delete Tour</a>
-    <a href="/controller?command=users">Manage Users</a>
+    <a href="/controller?command=users">Users</a>
 </div>
 
         <%--<c:if test="${not empty user}">

@@ -2,6 +2,7 @@ package com.epam.project.db.dao;
 
 import com.epam.project.db.EntityMapper;
 import com.epam.project.db.Fields;
+import com.epam.project.db.Status;
 import com.epam.project.db.entity.Tour;
 import com.epam.project.exception.DBException;
 import org.apache.log4j.Logger;
@@ -23,10 +24,14 @@ public class TourDAO extends  DAO{
 
     private static final String SQL__FIND_TOUR_BY_ID =
             "SELECT * FROM tours WHERE id = ?";
+    private static final String SQL__FIND_TOUR_BY_USER_ID =
+            "SELECT * FROM tours WHERE user_id = ?";
     private static final String SQL__FIND_ALL_TOURS =
             "SELECT * FROM tours";
     private static final String SQL__INSERT_TOUR =
             "INSERT INTO tours(type,hotel,price,human_amount,isFire,status,discount,user_id) VALUE (?,?,?,?,?,?,?,?)";
+    private static final String SQL__UPDATE_TOUR_STATUS =
+            "UPDATE tours SET status = ?,user_id = ? WHERE id = ?";
 
 
     public static void insertTour(Connection con, Tour tour) throws DBException {
@@ -66,6 +71,29 @@ public class TourDAO extends  DAO{
         return tour;
     }
 
+    public static List<Tour> findAllToursByUserId(Connection con,Long userId) throws DBException {
+        List<Tour> result = new ArrayList<>();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            TourMapper mapper = new TourMapper();
+            stmt = con.prepareStatement(SQL__FIND_TOUR_BY_USER_ID);
+            stmt.setLong(1,userId);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                result.add(mapper.mapRow(rs));
+            }
+
+        } catch (SQLException e) {
+            throw new DBException();
+        }
+        finally {
+            close(stmt, rs);
+        }
+        return result;
+    }
+
     public static List<Tour> findAllTours(Connection con) throws DBException {
         List<Tour> result = new ArrayList<>();
         PreparedStatement stmt = null;
@@ -86,6 +114,26 @@ public class TourDAO extends  DAO{
             close(stmt, rs);
         }
         return result;
+    }
+
+    public static void updateTourStatus(Connection con,Long userId, int tourId, Status status) throws DBException {
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement(SQL__UPDATE_TOUR_STATUS);
+
+            stmt.setInt(1,status.ordinal());
+            stmt.setLong(2,userId);
+            stmt.setInt(3,tourId);
+
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new DBException(e.getMessage(),e);
+        }
+        finally {
+            close(stmt);
+        }
     }
 
     private static class TourMapper implements EntityMapper<Tour> {

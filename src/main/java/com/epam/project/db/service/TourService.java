@@ -1,5 +1,6 @@
 package com.epam.project.db.service;
 
+import com.epam.project.db.Status;
 import com.epam.project.db.dao.ConnectionPool;
 import com.epam.project.db.dao.TourDAO;
 import com.epam.project.db.entity.Tour;
@@ -57,5 +58,40 @@ public class TourService extends Service {
             close(con);
         }
         return tours;
+    }
+
+    public static List<Tour> findAllToursByUserId(Long userId) throws DBException {
+        List<Tour> tours;
+        ConnectionPool conPool = ConnectionPool.getInstance();
+        Connection con = conPool.getConnection();
+        try{
+            tours = TourDAO.findAllToursByUserId(con,userId);
+        } catch (DBException e) {
+            throw new DBException(e.getMessage(),e);
+        }
+        finally {
+            close(con);
+        }
+        return tours;
+    }
+
+    /**
+     *
+     * @param userId - users id (who makes an order)
+     * @param tourID - tour id (which is ordered)
+     * @param status - status to set for tour
+     * @throws DBException
+     */
+    public static void updateTourStatus(Long userId,int tourID, Status status) throws DBException {
+        ConnectionPool conPool = ConnectionPool.getInstance();
+        Connection con = conPool.getConnection();
+        try{
+            TourDAO.updateTourStatus(con,userId,tourID,status);
+        } catch (DBException e) {
+            throw new DBException(e.getMessage(), e);
+        }
+        finally {
+            close(con);
+        }
     }
 }
