@@ -7,10 +7,7 @@ import com.epam.project.db.entity.Tour;
 import com.epam.project.exception.DBException;
 import org.apache.log4j.Logger;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,10 +25,19 @@ public class TourDAO extends  DAO{
             "SELECT * FROM tours WHERE user_id = ?";
     private static final String SQL__FIND_ALL_TOURS =
             "SELECT * FROM tours";
+    private static final String SQL__FIND_ALL_OPENED_TOURS =
+            "SELECT * FROM tours WHERE status = 0";
     private static final String SQL__INSERT_TOUR =
-            "INSERT INTO tours(type,hotel,price,human_amount,isFire,status,discount,user_id) VALUE (?,?,?,?,?,?,?,?)";
-    private static final String SQL__UPDATE_TOUR_STATUS =
+            "INSERT INTO tours values (default,?,?,?,?,?,?,?,?)";
+            //"INSERT INTO tours(id,type,hotel,price,human_amount,isFire,status,discount,user_id) VALUE (?,?,?,?,?,?,?,?)";
+    private static final String SQL__ORDER_TOUR =
             "UPDATE tours SET status = ?,user_id = ? WHERE id = ?";
+    private static final String SQL__UPDATE_TOUR_STATUS =
+            "UPDATE tours SET status = ? WHERE id = ?";
+    private static final String SQL__UPDATE_TOUR_DISCOUNT =
+            "UPDATE tours SET discount = ? WHERE id = ?";
+    private static final String SQL__UPDATE_TOUR_IS_FIRE =
+            "UPDATE tours SET isFire = ? WHERE id = ?";
 
 
     public static void insertTour(Connection con, Tour tour) throws DBException {
@@ -40,12 +46,19 @@ public class TourDAO extends  DAO{
         try {
             stmt = con.prepareStatement(SQL__INSERT_TOUR);
 
-            //TODO complete insert func
+            stmt.setString(1,tour.getType());//Type
+            stmt.setString(2,tour.getHotel());//Hotel
+            stmt.setInt(3,tour.getPrice());//Price
+            stmt.setInt(4,tour.getHuman_amount());//Human amount
+            stmt.setBoolean(5,tour.getFire());//isFire
+            stmt.setInt(6,tour.getStatusId());//status
+            stmt.setInt(7,tour.getDiscount());//discount
+            stmt.setNull(8,Types.INTEGER);//user_id
 
             stmt.executeUpdate();
 
         } catch (SQLException e) {
-            throw new DBException();
+            throw new DBException(e.getMessage(), e);
         }
         finally {
             close(stmt);
@@ -64,7 +77,7 @@ public class TourDAO extends  DAO{
             if (rs.next())
                 tour = mapper.mapRow(rs);
         } catch (SQLException ex) {
-            throw new DBException();
+            throw new DBException(ex.getMessage(), ex);
         } finally {
             close(stmt, rs);
         }
@@ -86,7 +99,7 @@ public class TourDAO extends  DAO{
             }
 
         } catch (SQLException e) {
-            throw new DBException();
+            throw new DBException(e.getMessage(), e);
         }
         finally {
             close(stmt, rs);
@@ -108,7 +121,7 @@ public class TourDAO extends  DAO{
             }
 
         } catch (SQLException e) {
-            throw new DBException();
+            throw new DBException(e.getMessage(), e);
         }
         finally {
             close(stmt, rs);
@@ -116,15 +129,94 @@ public class TourDAO extends  DAO{
         return result;
     }
 
-    public static void updateTourStatus(Connection con,Long userId, int tourId, Status status) throws DBException {
+    public static List<Tour> findAllOpenedTours(Connection con) throws DBException {
+        List<Tour> result = new ArrayList<>();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            TourMapper mapper = new TourMapper();
+            stmt = con.prepareStatement(SQL__FIND_ALL_OPENED_TOURS);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                result.add(mapper.mapRow(rs));
+            }
+
+        } catch (SQLException e) {
+            throw new DBException(e.getMessage(), e);
+        }
+        finally {
+            close(stmt, rs);
+        }
+        return result;
+    }
+
+    public static void orderTour(Connection con, Long userId, int tourId, Status status) throws DBException {
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement(SQL__ORDER_TOUR);
+
+            stmt.setInt(1,status.ordinal());
+            stmt.setLong(2,userId);
+            stmt.setInt(3,tourId);
+
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new DBException(e.getMessage(),e);
+        }
+        finally {
+            close(stmt);
+        }
+    }
+
+    public static void updateTourStatus(Connection con, int tourId, Status status) throws DBException {
         PreparedStatement stmt = null;
 
         try {
             stmt = con.prepareStatement(SQL__UPDATE_TOUR_STATUS);
 
             stmt.setInt(1,status.ordinal());
-            stmt.setLong(2,userId);
-            stmt.setInt(3,tourId);
+            stmt.setInt(2,tourId);
+
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new DBException(e.getMessage(),e);
+        }
+        finally {
+            close(stmt);
+        }
+    }
+
+    public static void updateTourDiscount(Connection con, int tourId, int discount) throws DBException {
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement(SQL__UPDATE_TOUR_DISCOUNT);
+
+            stmt.setInt(1,discount);
+            stmt.setInt(2,tourId);
+
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new DBException(e.getMessage(),e);
+        }
+        finally {
+            close(stmt);
+        }
+    }
+
+    public static void updateTourFireStatus(Connection con, int tourId, boolean isFire) throws DBException {
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement(SQL__UPDATE_TOUR_IS_FIRE);
+
+            stmt.setBoolean(1,isFire);
+            stmt.setInt(2,tourId);
 
             stmt.executeUpdate();
 

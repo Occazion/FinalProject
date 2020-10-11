@@ -7,3 +7,7 @@ JSTL core tag library.
 JSTL functions tag library.
 ===========================================================================--%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%--===========================================================================
+JSTL i18n tag library.
+===========================================================================--%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>

@@ -33,7 +33,7 @@ public class CabinetCommand extends Command {
         log.trace("Found in DB: tour list --> " + tourList);
 
         // sort menu by category
-        tourList.sort((o1, o2) -> Boolean.compare(o1.isFire(), o2.isFire()));
+        tourList.sort((o1, o2) -> Boolean.compare(o1.getFire(), o2.getFire()));
 
         // put menu items list to the request
         request.setAttribute("tourList", tourList);

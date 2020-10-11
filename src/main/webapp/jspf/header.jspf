@@ -10,15 +10,16 @@ Header (top area).
 
         <c:if test="${not empty user}">
             <c:choose>
-            <c:when test="${userRole.name == 'admin' }">
+            <c:when test="${userRole.name == 'admin' || userRole.name == 'manager' }">
             <a onclick="openNav()">Admin</a>
             </c:when>
             </c:choose>
         </c:if>
 
         <a href="/controller?command=tourMenu">Home</a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
+
+        <%--<a href="#news">News</a>
+        <a href="#contact">Contact</a>--%>
         <div class="topnav-right">
             <c:if test="${not empty user}">
             <a href="/controller?command=cabinet">Cabinet</a>
@@ -37,82 +38,12 @@ Header (top area).
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a href="#"></a>
-    <a href="#">Services</a>
-    <a href="#">Add Tour</a>
-    <a href="#">Delete Tour</a>
-    <a href="/controller?command=users">Users</a>
+    <a href="/controller?command=tours">Tours</a>
+    <c:choose>
+        <c:when test="${userRole.name == 'admin' }">
+            <a href="/controller?command=users">Users</a>
+        </c:when>
+    </c:choose>
 </div>
 
-        <%--<c:if test="${not empty user}">
-            &lt;%&ndash;===========================================================================
-            This is the user menu.
-            ===========================================================================&ndash;%&gt;
-
-            <div id="leftHeader">
-
-                <c:choose>
-
-                    &lt;%&ndash;===========================================================================
-                    This way we define the ADMIN MENU.
-                    ===========================================================================&ndash;%&gt;
-                    <c:when test="${userRole.name == 'admin' }">
-                        <a href="controller?command=listOrders">
-                            Admin panel
-                        </a> &nbsp;
-                    </c:when>
-
-
-                    &lt;%&ndash;===========================================================================
-                    This way we define the USER MENU.
-                    ===========================================================================&ndash;%&gt;
-                    <c:when test="${userRole.name == 'client'}">
-                        <a href="controller?command=listMenu">
-                            Menu
-                        </a> &nbsp;
-                    </c:when>
-                </c:choose>
-
-                    &lt;%&ndash;===========================================================================
-                    This way we define the settings anchor.
-                    ===========================================================================&ndash;%&gt;
-                <a href="controller?command=viewSettings">
-                   Settings
-                </a> &nbsp;
-
-            </div>
-
-            &lt;%&ndash;===========================================================================
-            This way we define the menu located at the right of header.
-            ===========================================================================&ndash;%&gt;
-            <div id="rightHeader" >
-
-                    &lt;%&ndash;===========================================================================
-                    Type user name if the user object is presented in the current session.
-                    ===========================================================================&ndash;%&gt;
-&lt;%&ndash;                <c:out value="${user.firstName} ${user.lastName}"/>&ndash;%&gt;
-
-                    &lt;%&ndash;===========================================================================
-                    Type user role name if the user object is presented in the current session.
-                    ===========================================================================&ndash;%&gt;
-                <c:if test="${not empty userRole}">
-                    <c:out value="(${userRole.name})"/>
-                </c:if>
-
-                    &lt;%&ndash;===========================================================================
-                    Type link to logout
-                    ===========================================================================&ndash;%&gt;
-                <a href="controller?command=logout">
-                    Logout
-                </a>
-
-            </div>
-        </c:if>
-
-        <c:if test="${empty user and title ne 'Login'}">
-            <div id="rightHeader">
-                <a href="../login.jsp">
-                   Логин
-                </a>
-            </div>
-        </c:if>--%>
 

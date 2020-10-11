@@ -8,7 +8,7 @@ import com.epam.project.exception.DBException;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;
-import java.util.ArrayList;
+import java.sql.SQLException;
 import java.util.List;
 
 public class TourService extends Service {
@@ -17,13 +17,16 @@ public class TourService extends Service {
 
     private static final Logger log = Logger.getLogger(TourService.class);
 
-    public static void insertTour(Tour tour) throws DBException {
+    public static void insertTour(Tour tour) throws DBException, SQLException {
         ConnectionPool conPool = ConnectionPool.getInstance();
         Connection con = conPool.getConnection();
         try {
+            con.setAutoCommit(false);
             TourDAO.insertTour(con, tour);
-        } catch (DBException e) {
-            throw new DBException();
+            con.commit();
+        } catch (DBException | SQLException e) {
+            con.rollback();
+            throw new DBException(e.getMessage(), e);
         }
         finally {
             close(con);
@@ -60,6 +63,21 @@ public class TourService extends Service {
         return tours;
     }
 
+    public static List<Tour> findAllOpenedTours() throws DBException {
+        List<Tour> tours;
+        ConnectionPool conPool = ConnectionPool.getInstance();
+        Connection con = conPool.getConnection();
+        try{
+            tours = TourDAO.findAllOpenedTours(con);
+        } catch (DBException e) {
+            throw new DBException();
+        }
+        finally {
+            close(con);
+        }
+        return tours;
+    }
+
     public static List<Tour> findAllToursByUserId(Long userId) throws DBException {
         List<Tour> tours;
         ConnectionPool conPool = ConnectionPool.getInstance();
@@ -82,11 +100,50 @@ public class TourService extends Service {
      * @param status - status to set for tour
      * @throws DBException
      */
-    public static void updateTourStatus(Long userId,int tourID, Status status) throws DBException {
+    public static void orderTour(Long userId, int tourID, Status status) throws DBException {
         ConnectionPool conPool = ConnectionPool.getInstance();
         Connection con = conPool.getConnection();
         try{
-            TourDAO.updateTourStatus(con,userId,tourID,status);
+            TourDAO.orderTour(con,userId,tourID,status);
+        } catch (DBException e) {
+            throw new DBException(e.getMessage(), e);
+        }
+        finally {
+            close(con);
+        }
+    }
+
+    public static void updateTourStatus(int tourID, Status status) throws DBException {
+        ConnectionPool conPool = ConnectionPool.getInstance();
+        Connection con = conPool.getConnection();
+        try{
+            TourDAO.updateTourStatus(con,tourID,status);
+        } catch (DBException e) {
+            throw new DBException(e.getMessage(), e);
+        }
+        finally {
+            close(con);
+        }
+    }
+
+    public static void updateTourDiscount(int tourID, int discount) throws DBException {
+        ConnectionPool conPool = ConnectionPool.getInstance();
+        Connection con = conPool.getConnection();
+        try{
+            TourDAO.updateTourDiscount(con,tourID,discount);
+        } catch (DBException e) {
+            throw new DBException(e.getMessage(), e);
+        }
+        finally {
+            close(con);
+        }
+    }
+
+    public static void updateTourFireStatus(int tourID, boolean isFire) throws DBException {
+        ConnectionPool conPool = ConnectionPool.getInstance();
+        Connection con = conPool.getConnection();
+        try{
+            TourDAO.updateTourFireStatus(con,tourID,isFire);
         } catch (DBException e) {
             throw new DBException(e.getMessage(), e);
         }

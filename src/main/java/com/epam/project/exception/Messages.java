@@ -23,6 +23,10 @@ public class Messages {
 
     public static final String ERR_CANNOT_OBTAIN_ALL_TOURS = "Cannot obtain all tours";
 
+    public static final String ERR_CANNOT_OBTAIN_ALL_OPENED_TOURS = "Cannot obtain all opened tours";
+
+    public static final String ERR_TOUR_NOT_SELECTED = "Tour not selected";
+
     public static final String ERR_CANNOT_CLOSE_CONNECTION = "Cannot close a connection";
 
     public static final String ERR_CANNOT_CLOSE_RESULTSET = "Cannot close a result set";

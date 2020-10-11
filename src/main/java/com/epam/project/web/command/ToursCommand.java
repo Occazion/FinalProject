@@ -14,9 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-public class TourMenuCommand extends Command {
-
-    private static final Logger log = Logger.getLogger(TourMenuCommand.class);
+public class ToursCommand extends Command {
+    private static final Logger log = Logger.getLogger(ToursCommand.class);
 
     @Override
     public String execute(HttpServletRequest request,
@@ -27,20 +26,17 @@ public class TourMenuCommand extends Command {
         // get menu items list
         List<Tour> tourList = null;
         try {
-            tourList = TourService.findAllOpenedTours();
+            tourList = TourService.findAllTours();
         } catch (DBException e) {
-            log.error(Messages.ERR_CANNOT_OBTAIN_ALL_TOURS);
+            log.error(Messages.ERR_CANNOT_OBTAIN_ALL_OPENED_TOURS);
         }
         log.trace("Found in DB: tour list --> " + tourList);
-
-        // sort menu by category
-        tourList.sort((o1, o2) -> Boolean.compare(o1.getFire(), o2.getFire()));
 
         // put menu items list to the request
         request.setAttribute("tourList", tourList);
         log.trace("Set the request attribute: tourList --> " + tourList);
 
         log.debug("Command finished");
-        return Path.PAGE_TOUR_MENU;
+        return Path.PAGE_TOURS;
     }
 }

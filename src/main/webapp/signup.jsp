@@ -20,7 +20,7 @@
 
 </head>
 <body>
-<form action="controller">
+<form action="controller" method="post">
     <div class="container">
 
         <input type="hidden" name="command" value="signup"/>

@@ -13,7 +13,7 @@
     <td class="content">
         <%-- CONTENT --%>
 
-        <form id="users" action="controller">
+        <form id="users" action="controller" method="post">
             <input type="hidden" name="command" value="manageUsers"/>
 
             <c:if test="${not empty user}">
@@ -21,8 +21,8 @@
 
                 <p>
                     <label class="container">Block
-                    <input type="radio" checked="checked" name="actionType" value="block">
-                    <span class="checkmark"></span>
+                        <input type="radio" checked="checked" name="actionType" value="block">
+                        <span class="checkmark"></span>
                     </label>
                 </p>
                 <p>

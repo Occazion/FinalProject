@@ -2,15 +2,15 @@
 <Context>
     <!-- Specify a JDBC datasource -->
     <Resource name="jdbc/pool"
-    auth="Container"
-    type="javax.sql.DataSource"
-    username="root"
-    password="ro20mysqlpass20ot"
-    driverClassName="com.mysql.jdbc.Driver"
-    url="jdbc:mysql://localhost:3306/finalproject?autoReconnect=true&amp;serverTimezone=UTC"
-    validationQuery="select 1"
-    maxActive="100"
-    maxIdle="30"
-    maxWait="10000"/>
+              auth="Container"
+              type="javax.sql.DataSource"
+              username="root"
+              password="ro20mysqlpass20ot"
+              driverClassName="com.mysql.cj.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/finalproject?autoReconnect=true&amp;serverTimezone=UTC"
+              validationQuery="select 1"
+              maxTotal="100"
+              maxIdle="30"
+              maxWaitMillis="10000"/>
 
 </Context>

@@ -5,7 +5,7 @@ public class Tour extends Entity {
     private String hotel;
     private int price;
     private int human_amount;
-    private boolean isFire;
+    private boolean fire;
     private int statusId;
     private int discount;
     private int user_id;
@@ -42,12 +42,12 @@ public class Tour extends Entity {
         this.human_amount = human_amount;
     }
 
-    public boolean isFire() {
-        return isFire;
+    public boolean getFire() {
+        return fire;
     }
 
     public void setFire(boolean fire) {
-        isFire = fire;
+        this.fire = fire;
     }
 
     public int getStatusId() {
@@ -72,5 +72,13 @@ public class Tour extends Entity {
 
     public void setUser_id(int user_id) {
         this.user_id = user_id;
+    }
+
+    @Override
+    public String toString() {
+        return "Tour{" +
+                "id='" + getId() + '\'' +
+                ", user_id=" + user_id +
+                '}';
     }
 }

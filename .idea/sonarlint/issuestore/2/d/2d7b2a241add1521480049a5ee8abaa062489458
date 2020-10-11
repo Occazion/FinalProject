@@ -1,10 +1,13 @@
 
 D
-java:S1068"'Remove this unused "log" private field.(şÑÑ¼8ÏáÎÒÎ.
+java:S1068"'Remove this unused "log" private field.(şÑÑ¼8Š‚››Ñ.
 {	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Š¬óöúÿÿÿÿ8Éÿ¶ÑÎ.
-M
-java:S1172 "+Remove this unused method parameter "tour".(µşÿÿÿÿ8ª’¹ÒÎ.
-{	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(å¸â¥şÿÿÿÿ8Éÿ¶ÑÎ.
-{	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ø½ûØøÿÿÿÿ8Éÿ¶ÑÎ.
-O
-java:S1135&"2Complete the task associated to this TODO comment.(‚ºæ»8›ÂÀÒÎ.
+v	java:S115!"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Á°ıª8î¯ÚêĞ.
+{	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(å¸â¥şÿÿÿÿ8Éÿ¶ÑÎ.
+{	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ø½ûØøÿÿÿÿ8Éÿ¶ÑÎ.
+{	java:S115%"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(àˆğòÿÿÿÿÿ8è‡„˜Ñ.
+X	java:S125 "<This block of commented-out lines of code should be removed.(Š×ç²8Š‚››Ñ.
+{	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(¾ı¬®ûÿÿÿÿ8Öı®ëĞ.
+v	java:S115'"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(‘„¶¹8Š‚››Ñ.
+{	java:S115#"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ş›·îşÿÿÿÿ8Ë“ã—Ñ.
+v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(æ ÿó8ÇÜğ‘Ñ.

@@ -5,6 +5,12 @@
 <html>
 
 <c:set var="title" value="Menu" scope="page" />
+
+
+    <fmt:setLocale value="en" scope="session" />
+
+<fmt:setBundle basename="resources"/>
+
 <body>
 
 <%@ include file="/jspf/header.jspf" %>
@@ -15,23 +21,26 @@
         <td class="content">
             <%-- CONTENT --%>
 
-            <form id="make_order" action="controller">
+            <form id="make_order" action="controller" method="post">
                 <input type="hidden" name="command" value="makeOrder"/>
 
                 <c:if test="${not empty user}">
                     <button type="submit">Make an order</button>
                 </c:if>
+                <fmt:message key="test"/>
 
-                <table id="tour_menu_table">
+                <script src="../../js/table.js"></script>
+
+                <table id="main_table">
                     <thead>
                     <tr>
                         <th>№</th>
-                        <th>Type</th>
-                        <th>Hotel</th>
-                        <th>Price</th>
-                        <th>Human Amount</th>
+                        <th onclick="sortTableWithChars(2)">Type</th>
+                        <th onclick="sortTableWithChars(3)">Hotel</th>
+                        <th onclick="sortTableWithDigits(4)">Price</th>
+                        <th onclick="sortTableWithDigits(5)">Human Amount</th>
                         <th>Status</th>
-                        <th>Discount</th>
+                        <th onclick="sortTableWithDigits(7)">Discount</th>
                     </tr>
                     </thead>
 

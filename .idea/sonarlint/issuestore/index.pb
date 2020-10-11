@@ -117,8 +117,6 @@ m
 =src/main/java/com/epam/project/db/service/AccountService.java,f\9\f9ab655bf942494617085c7682536548feade72f
 f
 6src/main/java/com/epam/project/db/service/Service.java,2\9\29875dd6dfb8bce35c6f92a708098b3eb2acf82b
-W
-'src/main/resources/META-INF/context.xml,b\a\ba231d17a135f9606c2f6b7f0c7ecfc84838a5dc
 a
 1.idea/libraries/Maven__javax_servlet_jstl_1_2.xml,3\0\30f104ae7e6f244bf77daa047bb269e96afe378c
 S
@@ -137,3 +135,13 @@ l
 <src/main/java/com/epam/project/web/command/UsersCommand.java,4\c\4cdef19706ced0238421df3b99e095744670ddea
 r
 Bsrc/main/java/com/epam/project/web/command/ManageUsersCommand.java,a\1\a100673f3d74479551790af2f5988c04c38e8cc2
+e
+5src/main/java/com/epam/project/db/dao/AccountDAO.java,f\d\fd155f5dad48e4a470e638a677c60277bb522ac3
+l
+<src/main/java/com/epam/project/web/command/ToursCommand.java,0\1\011adba246227c6e00ff160d7e065e25a11efbf3
+T
+$src/main/webapp/jsp/common/tours.jsp,d\5\d5b0253494388c53ff68f91a11f232e10a2e8f40
+r
+Bsrc/main/java/com/epam/project/web/command/ManageToursCommand.java,d\9\d96859dec181af9d56df7e0ded4081d3b23137dd
+K
+src/main/webapp/js/table.js,e\7\e7d7c6d1bbe0fdffa11ccadc1bfbe8407ebd62f5

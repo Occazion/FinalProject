@@ -23,21 +23,16 @@
 </head>
 
 <body>
-        <%--<form class="login" action="controller" method="POST">
-            <h1>Login</h1>
-            <input type="hidden" name="command" value="login"/>
-            <input type="text" name="login" placeholder="Login" autocomplete="off" maxlength="10">
-            <input type="password" name="password" placeholder="Password" maxlength="20">
-            <input type="submit" name="" value="Login">
-        </form>--%>
 
-        <form action="controller">
+        <form action="controller" method="post">
 
             <div class="container">
 
                 <input type="hidden" name="command" value="login"/>
 
-                <label><b>Login</b></label>
+                <label><b>
+                    Login
+                </b></label>
                 <input type="text" placeholder="Enter Username" name="login"  required>
 
                 <label><b>Password</b></label>

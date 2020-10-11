@@ -36,7 +36,7 @@ public class MakeOrderCommand extends Command{
 
         for(Integer integer : idList) {
             try {
-                TourService.updateTourStatus(user.getId(),integer, Status.CONFIRMED);
+                TourService.orderTour(user.getId(),integer, Status.CONFIRMED);
             } catch (DBException e) {
                 String errorMessage = Messages.ERR_CANNOT_UPDATE_TOUR;
                 request.setAttribute("errorMessage", errorMessage.concat(" : " + e.getMessage()));

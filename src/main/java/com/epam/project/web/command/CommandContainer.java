@@ -21,7 +21,9 @@ public class CommandContainer {
         commands.put("noCommand", new NoCommand());
         commands.put("cabinet", new CabinetCommand());
         commands.put("users", new UsersCommand());
+        commands.put("tours", new ToursCommand());
         commands.put("manageUsers", new ManageUsersCommand());
+        commands.put("manageTours", new ManageToursCommand());
 
         // client commands
         commands.put("tourMenu", new TourMenuCommand());
