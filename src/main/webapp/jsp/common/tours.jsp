@@ -5,7 +5,6 @@
 
 <%@ taglib prefix = "cust" uri = "/WEB-INF/toStatusTag" %>
 
-<c:set var="title" value="Tours" scope="page" />
 <body>
 
 <%@ include file="/jspf/header.jspf" %>

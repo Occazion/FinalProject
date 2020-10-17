@@ -17,6 +17,8 @@ public class ViewSettingsCommand extends Command {
             throws IOException, ServletException {
         log.debug("Command starts");
 
+        request.setAttribute("pageTitle","Settings");
+
         log.debug("Command finished");
         return Path.PAGE_SETTINGS;
     }

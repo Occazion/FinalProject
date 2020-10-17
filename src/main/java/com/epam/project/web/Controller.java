@@ -11,37 +11,49 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Controller extends HttpServlet {
 
-    private static final Logger LOG = Logger.getLogger(Controller.class);
+    private static final Logger log = Logger.getLogger(Controller.class);
 
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response) throws ServletException, IOException {
-        process(request, response,"doGet");//TODO Rework get method
+        process(request, response);
     }
 
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
-        process(request, response,"doPost");
+        process(request, response);
+    }
+
+    private static List<String> redirect = new ArrayList<>();
+
+    @Override
+    public void init() throws ServletException {
+
+        redirect.add("signup");
+        redirect.add("logout");
+
+        super.init();
     }
 
     /**
      * Main method of this controller.
      */
     private void process(HttpServletRequest request,
-                         HttpServletResponse response,
-                         String method) throws IOException, ServletException {
+                         HttpServletResponse response) throws IOException, ServletException {
 
-        LOG.debug("Controller starts");
+        log.debug("Controller starts");
 
         // extract command name from the request
         String commandName = request.getParameter("command");
-        LOG.trace("Request parameter: command --> " + commandName);
+        log.trace("Request parameter: command --> " + commandName);
 
         // obtain command object by its name
         Command command = CommandContainer.get(commandName);
-        LOG.trace("Obtained command --> " + command);
+        log.trace("Obtained command --> " + command);
 
         // execute command and get forward address
         String forward = Path.PAGE_ERROR_PAGE;
@@ -50,22 +62,17 @@ public class Controller extends HttpServlet {
         } catch (AppException ex) {
             request.setAttribute("errorMessage", ex.getMessage());
         }
-        LOG.trace("Forward address --> " + forward);
 
-        LOG.debug("Controller finished, now go to forward address --> " + forward);
-        if (commandName.equals("signup")) {
+        log.debug("Controller finished, now go to address --> " + forward);
+        if (redirect.contains(commandName)) {
+            log.trace("Redirect address --> " + forward);
             response.sendRedirect(forward);
         }
         else {
-        request.getRequestDispatcher(forward).forward(request, response);
+            log.trace("Forward address --> " + forward);
+            request.getRequestDispatcher(forward).forward(request, response);
         }
 
-        // go to forward
-        /*if (method.equals("doGet")) {
-            response.sendRedirect(forward);
-        } else if (method.equals("doPost")) {
-            request.getRequestDispatcher(forward).forward(request, response);
-        }*/
     }
 
 }

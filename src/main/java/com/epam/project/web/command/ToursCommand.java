@@ -36,6 +36,8 @@ public class ToursCommand extends Command {
         request.setAttribute("tourList", tourList);
         log.trace("Set the request attribute: tourList --> " + tourList);
 
+        request.setAttribute("pageTitle","Tour manager");
+
         log.debug("Command finished");
         return Path.PAGE_TOURS;
     }

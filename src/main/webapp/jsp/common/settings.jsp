@@ -3,8 +3,6 @@
 <%@ include file="/jspf/directive/taglib.jspf" %>
 <html>
 
-<c:set var="title" value="Settings" scope="page" />
-
 <body>
 
     <%@ include file="/jspf/header.jspf" %>

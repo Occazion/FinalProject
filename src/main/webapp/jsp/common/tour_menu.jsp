@@ -4,8 +4,6 @@
 
 <%@ taglib prefix = "cust" uri = "/WEB-INF/toStatusTag" %>
 
-<c:set var="title" value="Menu" scope="page"/>
-
 <html>
 
 
@@ -28,7 +26,7 @@
                 <table id="main_table">
                     <thead>
                     <tr>
-                        <th>№</th>
+                        <th onclick="sortTableWithDigits(0)">№</th>
                         <th onclick="sortTableWithChars(1)"><fmt:message key="tour.type"/></th>
                         <th onclick="sortTableWithChars(2)"><fmt:message key="tour.hotel"/></th>
                         <th onclick="sortTableWithDigits(3)"><fmt:message key="tour.price"/></th>

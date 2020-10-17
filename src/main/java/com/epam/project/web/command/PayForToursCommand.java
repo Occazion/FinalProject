@@ -1,6 +1,7 @@
 package com.epam.project.web.command;
 
 import com.epam.project.Path;
+import com.epam.project.db.Status;
 import com.epam.project.db.entity.Tour;
 import com.epam.project.db.entity.User;
 import com.epam.project.db.service.TourService;
@@ -14,9 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-public class CabinetCommand extends Command {
+public class PayForToursCommand extends Command {
 
-    private static final Logger log = Logger.getLogger(CabinetCommand.class);
+    private static final Logger log = Logger.getLogger(PayForToursCommand.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws AppException {
@@ -36,17 +37,17 @@ public class CabinetCommand extends Command {
         }
         log.trace("Found in DB: tour list --> " + tourList);
 
-        // sort menu by category
-        log.debug("Sorting tour list by fire attribute");
-        tourList.sort((o1, o2) -> Boolean.compare(o1.getFire(), o2.getFire()));
-
-        // put menu items list to the request
-        request.setAttribute("tourList", tourList);
-        log.trace("Set the request attribute: tourList --> " + tourList);
-
-        request.setAttribute("pageTitle","Cabinet");
+        for (Tour tour : tourList) {
+            try {
+                TourService.updateTourStatus(tour.getId(), Status.PAID);
+            } catch (DBException e) {
+                log.error(Messages.ERR_CANNOT_UPDATE_TOUR + ":" + e);
+                throw new AppException(Messages.ERR_CANNOT_UPDATE_TOUR + ":" + e,e);
+            }
+        }
 
         log.debug("Command finished");
-        return Path.PAGE_CABINET;
+        return Path.COMMAND_CABINET;
     }
+
 }

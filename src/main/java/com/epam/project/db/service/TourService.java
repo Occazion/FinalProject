@@ -119,7 +119,7 @@ public class TourService extends Service {
         }
     }
 
-    public static void updateTourStatus(int tourID, Status status) throws DBException {
+    public static void updateTourStatus(long tourID, Status status) throws DBException {
         ConnectionPool conPool = ConnectionPool.getInstance();
         log.debug("Obtaining connection");
         Connection con = conPool.getConnection();

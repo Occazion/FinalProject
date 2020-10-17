@@ -90,7 +90,7 @@
         </init-param>
         <init-param>
             <param-name>common</param-name>
-            <param-value>logout noCommand tourMenu cabinet viewSettings updateSettings</param-value>
+            <param-value>logout noCommand tourMenu cabinet viewSettings updateSettings payForTours</param-value>
         </init-param>
         <init-param>
             <param-name>out-of-control</param-name>

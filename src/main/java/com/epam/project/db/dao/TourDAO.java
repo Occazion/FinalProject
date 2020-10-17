@@ -180,14 +180,14 @@ public class TourDAO extends  DAO{
         }
     }
 
-    public static void updateTourStatus(Connection con, int tourId, Status status) throws DBException {
+    public static void updateTourStatus(Connection con, long tourId, Status status) throws DBException {
         PreparedStatement stmt = null;
 
         try {
             stmt = con.prepareStatement(SQL__UPDATE_TOUR_STATUS);
 
             stmt.setInt(1,status.ordinal());
-            stmt.setInt(2,tourId);
+            stmt.setLong(2,tourId);
 
             stmt.executeUpdate();
 

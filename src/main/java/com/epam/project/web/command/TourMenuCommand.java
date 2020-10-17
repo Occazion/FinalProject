@@ -40,6 +40,8 @@ public class TourMenuCommand extends Command {
         request.setAttribute("tourList", tourList);
         log.trace("Set the request attribute: tourList --> " + tourList);
 
+        request.setAttribute("pageTitle","Tour menu");
+
         log.debug("Command finished");
         return Path.PAGE_TOUR_MENU;
     }

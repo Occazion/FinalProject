@@ -34,6 +34,8 @@ public class UsersCommand extends Command {
         request.setAttribute("accountBeans", accountBeans);
         log.trace("Set the request attribute: accountBeans --> " + accountBeans);
 
+        request.setAttribute("pageTitle","User manager");
+
         log.debug("Command finished");
         return Path.PAGE_USERS;
     }

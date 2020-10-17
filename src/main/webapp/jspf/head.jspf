@@ -3,6 +3,8 @@
 
 <head>
 
+    <c:set var="title" value="${pageTitle}" scope="request" />
+
     <title>
         ${title}
     </title>
