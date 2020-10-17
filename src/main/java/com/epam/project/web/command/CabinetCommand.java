@@ -40,9 +40,11 @@ public class CabinetCommand extends Command {
         log.debug("Sorting tour list by fire attribute");
         tourList.sort((o1, o2) -> Boolean.compare(o1.getFire(), o2.getFire()));
 
-        // put menu items list to the request
-        request.setAttribute("tourList", tourList);
-        log.trace("Set the request attribute: tourList --> " + tourList);
+        // put items list to the request
+        if(!tourList.isEmpty()) {
+            request.setAttribute("tourList", tourList);
+            log.trace("Set the request attribute: tourList --> " + tourList);
+        }
 
         request.setAttribute("pageTitle","Cabinet");
 

@@ -76,45 +76,45 @@
                 <td>${info.city}</td>
             </tr>
         </table>
+        <c:if test="${not empty tourList}">
+                <table id="tour_menu_table">
+                        <thead>
+                        <tr>
+                            <th>№</th>
+                            <th><fmt:message key="tour.type"/></th>
+                            <th><fmt:message key="tour.hotel"/></th>
+                            <th><fmt:message key="tour.price"/></th>
+                            <th><fmt:message key="tour.human"/></th>
+                            <th><fmt:message key="tour.status"/></th>
+                            <th><fmt:message key="tour.discount"/></th>
+                        </tr>
+                        </thead>
 
-        <table id="tour_menu_table">
-                <thead>
-                <tr>
-                    <th>№</th>
-                    <th><fmt:message key="tour.type"/></th>
-                    <th><fmt:message key="tour.hotel"/></th>
-                    <th><fmt:message key="tour.price"/></th>
-                    <th><fmt:message key="tour.human"/></th>
-                    <th><fmt:message key="tour.status"/></th>
-                    <th><fmt:message key="tour.discount"/></th>
-                </tr>
-                </thead>
-
-                <c:set var="k" value="0"/>
-                <c:forEach var="tour" items="${tourList}">
-                    <c:set var="k" value="${k+1}"/>
-                    <tr>
-                        <td><c:out value="${k}"/></td>
-                        <td>${tour.type}</td>
-                        <td>${tour.hotel}</td>
-                        <td>${tour.price}</td>
-                        <td>${tour.human_amount}</td>
-                        <td>${Status.getStatus(tour.statusId)}</td>
-                        <td>${tour.discount}%</td>
-                        <%--<c:if test="${not empty user}">
-                            <td><input type="checkbox" name="tourId" value="${tour.id}"/></td>
-                        </c:if>--%>
-                    </tr>
-                </c:forEach>
-        </table>
-    </div>
-        <!-- Button to open the modal login form -->
-        <button class="button" onclick="document.getElementById('id01').style.display='block'">
-            <span>
-                <fmt:message key="pay.button"/>
-            </span>
-        </button>
-
+                        <c:set var="k" value="0"/>
+                        <c:forEach var="tour" items="${tourList}">
+                            <c:set var="k" value="${k+1}"/>
+                            <tr>
+                                <td><c:out value="${k}"/></td>
+                                <td>${tour.type}</td>
+                                <td>${tour.hotel}</td>
+                                <td>${tour.price}</td>
+                                <td>${tour.human_amount}</td>
+                                <td>${Status.getStatus(tour.statusId)}</td>
+                                <td>${tour.discount}%</td>
+                                <%--<c:if test="${not empty user}">
+                                    <td><input type="checkbox" name="tourId" value="${tour.id}"/></td>
+                                </c:if>--%>
+                            </tr>
+                        </c:forEach>
+                </table>
+            </div>
+                <!-- Button to open the modal login form -->
+                <button class="button" onclick="document.getElementById('id01').style.display='block'">
+                    <span>
+                        <fmt:message key="pay.button"/>
+                    </span>
+                </button>
+        </c:if>
         <!-- The Modal -->
         <div id="id01" class="modal">
             <span onclick="document.getElementById('id01').style.display='none'"
