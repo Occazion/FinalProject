@@ -9,7 +9,11 @@ public class Messages {
 
     public static final String ERR_CANNOT_OBTAIN_USER_BY_ID = "Cannot obtain a user by its id";
 
+    public static final String ERR_CANNOT_OBTAIN_USER_INFO_BY_ID = "Cannot obtain a user info by its id";
+
     public static final String ERR_CANNOT_OBTAIN_USER_BY_LOGIN = "Cannot obtain a user by its login";
+
+    public static final String ERR_CANNOT_UPDATE_USER_INFO = "Cannot update a user info";
 
     public static final String ERR_CANNOT_UPDATE_USER = "Cannot update a user";
 

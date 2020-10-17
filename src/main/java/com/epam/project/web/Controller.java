@@ -53,8 +53,12 @@ public class Controller extends HttpServlet {
         LOG.trace("Forward address --> " + forward);
 
         LOG.debug("Controller finished, now go to forward address --> " + forward);
-
+        if (commandName.equals("signup")) {
+            response.sendRedirect(forward);
+        }
+        else {
         request.getRequestDispatcher(forward).forward(request, response);
+        }
 
         // go to forward
         /*if (method.equals("doGet")) {

@@ -24,6 +24,8 @@ public class CommandContainer {
         commands.put("tours", new ToursCommand());
         commands.put("manageUsers", new ManageUsersCommand());
         commands.put("manageTours", new ManageToursCommand());
+        commands.put("viewSettings", new ViewSettingsCommand());
+        commands.put("updateSettings", new UpdateSettingsCommand());
 
         // client commands
         commands.put("tourMenu", new TourMenuCommand());

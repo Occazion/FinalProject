@@ -25,24 +25,25 @@
 
         <input type="hidden" name="command" value="signup"/>
 
-        <h1>Register</h1>
-        <p>Please fill in this form to create an account.</p>
+        <h1><fmt:message key="signup_jsp.register"/></h1>
+        <p><fmt:message key="signup_jsp.info"/></p>
         <hr>
 
         <label>
-            <b>Login</b>
+            <b><fmt:message key="user.login"/></b>
         </label>
         <input type="text" placeholder="Enter Login" name="login" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{3,10}$" required>
 
         <label>
-            <b>Password</b>
+            <b><fmt:message key="user.password"/></b>
         </label>
         <input type="password" id="password" placeholder="Enter Password" name="password"
                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
                required>
 
-        <p><input type="checkbox" onclick="showPsw()">Show Password</p>
+        <p><input type="checkbox" onclick="showPsw()">
+            <fmt:message key="signup_jsp.show_password"/></p>
 
         <div id="message">
             <h3>Password must contain the following:</h3>
@@ -53,46 +54,46 @@
         </div>
 
         <label>
-            <b>Name</b>
+            <b><fmt:message key="user.name"/></b>
         </label>
         <input type="text" placeholder="Enter Name" name="name" pattern="[A-Z][a-z]+{1,10}" required>
 
         <label>
-            <b>Surname</b>
+            <b><fmt:message key="user.surname"/></b>
         </label>
         <input type="text" placeholder="Enter Surname" name="surname" pattern="[A-Z][a-z]+{1,20}" required>
 
         <label>
-            <b>Gender</b>
+            <b><fmt:message key="user.gender"/></b>
         </label>
 
             <p>
                 <select name="gender" required>
-                <option disabled>Select gender:</option>
-                <option>Male</option>
-                <option>Female</option>
-                <option selected>Other</option>
+                <option disabled><fmt:message key="user.select_gender"/>:</option>
+                <option value="male"><fmt:message key="user.gender.male"/></option>
+                <option value="female"><fmt:message key="user.gender.female"/></option>
+                <option value="other" selected><fmt:message key="user.gender.other"/></option>
                 </select>
             </p>
 
         <label>
-            <b>Email</b>
+            <b><fmt:message key="user.email"/></b>
         </label>
         <input type="text" placeholder="Enter Email" name="email" required>
 
         <label>
-            <b>City</b>
+            <b><fmt:message key="user.city"/></b>
         </label>
         <input type="text" placeholder="Enter City" name="city" required>
 
         <label>
-            <b>Locale</b>
+            <b><fmt:message key="user.locale"/></b>
         </label>
 
         <p><select name="locale" required>
-            <option disabled>Select locale:</option>
-            <option value="ru">Russian</option>
-            <option value="en" selected>English</option>
+            <option disabled><fmt:message key="user.select_locale"/>:</option>
+            <option value="ru"><fmt:message key="user.locale.russian"/></option>
+            <option value="en" selected><fmt:message key="user.locale.english"/></option>
         </select></p>
 
 
@@ -102,12 +103,14 @@
         <input type="password" placeholder="Repeat Password" name="psw-repeat" required>--%>
         <hr>
 
-        <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-        <button type="submit" class="registerbtn">Register</button>
+       <%-- <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>--%>
+        <button type="submit" class="registerbtn">
+            <fmt:message key="signup_jsp.register"/></button>
     </div>
 
     <div class="container signin">
-        <p>Already have an account? <a href="login.jsp">Sign in</a>.</p>
+        <p><fmt:message key="signup_jsp.question"/><a href="login.jsp">
+            <fmt:message key="signup_jsp.signin"/></a>.</p>
     </div>
 </form>
 </body>

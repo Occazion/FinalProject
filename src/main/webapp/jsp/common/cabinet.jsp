@@ -10,43 +10,58 @@
 <%@ include file="/jspf/header.jspf" %>
 
 <body>
-    <h1>Cabinet</h1>
-    <p>A short information about user</p>
-
+    <table>
+        <tr>
+        <th><h1><fmt:message key="cabinet_jsp.label"/></h1></th>
+        </tr>
+        <tr>
+        <th><fmt:message key="cabinet_jsp.info"/></th>
+        </tr>
+    </table>
     <div class="info">
-        <label>
-            <b>Name:</b>
-        </label>
-
-        <p>${info.name}</p>
-        <label>
-            <b>Surname:</b>
-        </label>
-        <p>${info.surname}</p>
-        <label>
-            <b>Gender:</b>
-        </label>
-        <p>${info.gender}</p>
-        <label>
-            <b>Email:</b>
-        </label>
-        <p>${info.email}</p>
-        <label>
-            <b>City:</b>
-        </label>
-        <p>${info.city}</p>
-
+        <table>
+            <tr>
+                <th>
+                    <fmt:message key="user.name"/>:
+                </th>
+                <td>${info.name}</td>
+            </tr>
+            <tr>
+                <th>
+                    <b><fmt:message key="user.surname"/>:</b>
+                </th>
+                <td>${info.surname}</td>
+            </tr>
+            <tr>
+                <th>
+                    <b><fmt:message key="user.gender"/>:</b>
+                </th>
+                <td>${info.gender}</td>
+            </tr>
+            <tr>
+                <th>
+                    <b><fmt:message key="user.email"/>:</b>
+                </th>
+                <td>${info.email}</td>
+            </tr>
+            <tr>
+                <th>
+                    <b><fmt:message key="user.city"/>:</b>
+                </th>
+                <td>${info.city}</td>
+            </tr>
+        </table>
 
         <table id="tour_menu_table">
             <thead>
             <tr>
                 <th>№</th>
-                <th>Type</th>
-                <th>Hotel</th>
-                <th>Price</th>
-                <th>Human Amount</th>
-                <th>Status</th>
-                <th>Discount</th>
+                <th><fmt:message key="tour.type"/></th>
+                <th><fmt:message key="tour.hotel"/></th>
+                <th><fmt:message key="tour.price"/></th>
+                <th><fmt:message key="tour.human"/></th>
+                <th><fmt:message key="tour.status"/></th>
+                <th><fmt:message key="tour.discount"/></th>
             </tr>
             </thead>
 

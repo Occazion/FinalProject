@@ -5,16 +5,22 @@ body{
 }
 
 table {
-    border-collapse:collapse;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    text-align: left;
+    border-collapse: separate;
+    border-spacing: 5px;
+    background: #ECE9E0;
+    color: #656665;
+    border: 16px solid #ECE9E0;
+    border-radius: 20px;
 }
-
+th {
+    font-size: 18px;
+    padding: 10px;
+}
 td {
-    border:1px solid black;
-    padding: 2px;
-}
-tr{
-    border:1px solid black;
-        padding: 2px;
+    background: #F5D7BF;
+    padding: 10px;
 }
 
 
@@ -102,25 +108,46 @@ tr{
 }
 
 /* Set a style for all buttons */
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
+
+.button {
+    border-radius: 20px;
+    background-color: #F5D7BF;
     border: none;
-    cursor: pointer;
+    color: #656665;
+    text-align: center;
+    font-size: 18px;
+    margin: 8px 0;
+    padding: 14px 20px;
     width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+
 }
 
-tr:nth-child(even) {
-    background-color: #f2f2f2
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
 }
 
-#footer{
-    float: bottom;
+.button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
 }
 
+.button:hover span {
+    padding-right: 25px;
+}
 
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
 /*
 !* The container *!
 .container {

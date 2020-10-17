@@ -1,8 +1,9 @@
 <%@ page pageEncoding="UTF-8"%>
 <%@ include file="/jspf/directive/page.jspf" %>
 <%@ include file="/jspf/directive/taglib.jspf" %>
-<%@ page import="com.epam.project.db.Status" %>
 <html>
+
+<%@ taglib prefix = "cust" uri = "/WEB-INF/toStatusTag" %>
 
 <c:set var="title" value="Tours" scope="page" />
 <body>
@@ -11,95 +12,121 @@
 
 <div id="main">
 
-
-    <td class="content">
-        <%-- CONTENT --%>
-
         <form id="manageTours" action="controller" method="post">
             <input type="hidden" name="command" value="manageTours"/>
 
+            <table class="command">
+
             <c:if test="${not empty user}">
-                <button type="submit">Execute</button>
+                <c:choose>
+                    <c:when test="${userRole.name == 'admin' || userRole.name == 'manager' }">
 
-                <p>
-                    <label class="container">Set Fire
-                        <input type="radio" checked="checked" name="actionType" value="fire">
-                        <span class="checkmark"></span>
-                    </label>
-                    <select name="isFire" required>
-                        <option disabled>Select option:</option>
-                        <option value="true">yes</option>
-                        <option value="false" selected>no</option>
+                        <button type="submit" class="button"><span>
+                            <fmt:message key="tours.execute"/></span></button>
 
-                    </select>
-                </p>
-                <p>
-                    <label class="container">Change Status
-                        <input type="radio" name="actionType" value="status">
-                        <span class="checkmark"></span>
-                    </label>
+                        <tr>
+                            <td><label class="container"><fmt:message key="tours.set_fire"/></label></td>
+                            <td><input type="radio" checked="checked" name="actionType" value="fire"><span class="checkmark"></span></td>
+                            <td><select name="isFire" required>
+                                <option disabled><fmt:message key="tours.set_fire.select"/>:</option>
+                                <option value="true"><fmt:message key="tours.set_fire.select.yes"/></option>
+                                <option value="false" selected><fmt:message key="tours.set_fire.select.no"/></option>
+                            </select></td>
+                        </tr>
+                        <tr>
+                            <td><label class="container"><fmt:message key="tours.change_status"/><span class="checkmark"></span></label></td>
+                            <td><input type="radio" name="actionType" value="status"></td>
 
-                    <select name="statusToChange" required>
-                        <option disabled>Select status:</option>
-                        <option value="0">Opened</option>
-                        <option value="1">Confirmed</option>
-                        <option value="2">Paid</option>
-                        <option value="3" selected>Closed</option>
-                    </select>
-                </p>
-                <p>
-                    <label class="container">Change Discount
-                        <input type="radio" name="actionType" value="discount">
-                        <span class="checkmark"></span>
-                    </label>
-                    <input type="number" name="discountToSet" max="100">
-                </p>
-                <p>
-                    <label class="container">Add tour
-                        <input type="radio" name="actionType" value="add">
-                        <span class="checkmark"></span>
-                    </label>
-                    <b>Type:</b>
-                    <select name="tourType" required>
-                        <option disabled>Select type:</option>
-                        <option value="excursion" selected>Excursion</option>
-                        <option value="relaxation">Relaxation</option>
-                        <option value="shopping">Shopping</option>
-                    </select>
-                    <b>Hotel:</b>
-                    <input type="text" name="tourHotel">
-                    <b>Price:</b>
-                    <input type="number" name="tourPrice">
-                    <b>Human amount:</b>
-                    <input type="number" name="tourAmount">
+                            <td><select name="statusToChange" required>
+                                <option disabled><fmt:message key="tours.change_status.select"/>:</option>
+                                <option value="0"><fmt:message key="tours.change_status.select.opened"/></option>
+                                <option value="1"><fmt:message key="tours.change_status.select.confirmed"/></option>
+                                <option value="2"><fmt:message key="tours.change_status.select.paid"/></option>
+                                <option value="3" selected><fmt:message key="tours.change_status.select.closed"/></option>
+                            </select></td>
+                        </tr>
+                        <tr>
+                            <td><label class="container"><fmt:message key="tours.change_discount"/><span class="checkmark"></span></label></td>
+                            <td><input type="radio" name="actionType" value="discount"></td>
+                            <td><input type="number" name="discountToSet" max="100"></td>
+                        </tr>
+                            <c:choose>
+                            <c:when test="${userRole.name == 'admin' }">
+                                <tr>
+                                    <td><label class="container"><fmt:message key="tours.add_tour"/><span class="checkmark"></span></label></td>
+                                    <td><input type="radio" name="actionType" value="add"></td>
 
-                </p>
-                <p>
-                    <label class="container">Delete tour
-                        <input type="radio" name="actionType" value="delete">
-                        <span class="checkmark"></span>
-                    </label>
-                </p>
-                <p>
-                    <label class="container">Change tour details
-                        <input type="radio" name="actionType" value="change">
-                        <span class="checkmark"></span>
-                    </label>
-                </p>
+                                    <td><b><fmt:message key="tour.type"/>:</b>
+                                    <select name="tourType">
+                                        <option disabled><fmt:message key="tours.select_type"/>:</option>
+                                        <option value="excursion" selected><fmt:message key="tours.select_type.excursion"/></option>
+                                        <option value="relaxation"><fmt:message key="tours.select_type.relaxation"/></option>
+                                        <option value="shopping"><fmt:message key="tours.select_type.shopping"/></option>
+                                    </select>
+                                    <b><fmt:message key="tour.hotel"/>:</b>
+                                    <input type="text" name="tourHotel">
+                                    <p><b><fmt:message key="tour.price"/>:</b>
+                                    <input type="number" name="tourPrice">
+                                    <b><fmt:message key="tour.human"/>:</b>
+                                        <input type="number" name="tourAmount"></td></p>
+
+                                </tr>
+                                <tr>
+                                    <td><label class="container"><fmt:message key="tours.delete_tour"/><span class="checkmark"></span></label></td>
+                                    <td><input type="radio" name="actionType" value="delete"></td>
+
+                                </tr>
+                                <tr>
+                                    <td><label class="container"><fmt:message key="tours.change_details"/><span class="checkmark"></span></label></td>
+                                    <td><input type="radio" name="actionType" value="change"></td>
+                                    <td><b><fmt:message key="tour.type"/>:</b>
+                                    <select name="tourTypeUpd">
+                                        <option disabled><fmt:message key="tours.select_type"/>:</option>
+                                        <option value="excursion" selected><fmt:message key="tours.select_type.excursion"/></option>
+                                        <option value="relaxation"><fmt:message key="tours.select_type.relaxation"/></option>
+                                        <option value="shopping"><fmt:message key="tours.select_type.shopping"/></option>
+                                    </select>
+                                    <b><fmt:message key="tour.hotel"/>:</b>
+                                    <input type="text" name="tourHotelUpd">
+                                        <p>
+                                            <b><fmt:message key="tour.price"/>:</b>
+                                            <input type="number" name="tourPriceUpd">
+                                            <b><fmt:message key="tour.human"/>:</b>
+                                            <input type="number" name="tourAmountUpd">
+                                        </p>
+                                    <b><fmt:message key="tour.fire"/>?:</b>
+                                    <select name="tourIsFireUpd">
+                                        <option disabled><fmt:message key="tour.fire"/>?:</option>
+                                        <option value="false" selected><fmt:message key="tours.set_fire.select.no"/></option>
+                                        <option value="true"><fmt:message key="tours.set_fire.select.yes"/></option>
+                                    </select>
+                                    <b><fmt:message key="tour.discount"/>:</b>
+                                    <input type="number" name="tourDiscountUpd">
+                                        <p>
+                                            <b><fmt:message key="tour.user_id"/>:</b>
+                                        <input type="number" name="tourUserIdUpd"></td>
+                                    </p>
+                                </tr>
+                            </c:when>
+                            </c:choose>
+                    </c:when>
+
+                </c:choose>
+
             </c:if>
-
+                        </table>
             <table id="tour_menu_table">
                 <thead>
                 <tr>
                     <th>№</th>
-                    <th>Type</th>
-                    <th>Hotel</th>
-                    <th>Price</th>
-                    <th>Human Amount</th>
-                    <th>Status</th>
-                    <th>Discount</th>
-                    <th>Fiery?</th>
-                    <th>User id</th>
+                    <th><fmt:message key="tour.type"/></th>
+                    <th><fmt:message key="tour.hotel"/></th>
+                    <th><fmt:message key="tour.price"/></th>
+                    <th><fmt:message key="tour.human"/></th>
+                    <th><fmt:message key="tour.status"/></th>
+                    <th><fmt:message key="tour.discount"/></th>
+                    <th><fmt:message key="tour.fire"/></th>
+                    <th><fmt:message key="tour.user_id"/></th>
                 </tr>
                 </thead>
 
@@ -112,7 +139,7 @@
                         <td>${tour.hotel}</td>
                         <td>${tour.price}</td>
                         <td>${tour.human_amount}</td>
-                        <td>${Status.getStatus(tour.statusId)}</td>
+                        <td><cust:toStatus>${tour.statusId}</cust:toStatus></td>
                         <td>${tour.discount}%</td>
                         <td>${tour.fire}</td>
                         <td>${tour.user_id}</td>
@@ -124,8 +151,6 @@
             </table>
 
         </form>
-        <%-- CONTENT --%>
-    </td>
 
 </div>
 <%@ include file="/jspf/footer.jspf" %>

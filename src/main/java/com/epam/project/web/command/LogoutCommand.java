@@ -8,18 +8,19 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class LogoutCommand extends Command{
-        private static final Logger LOG = Logger.getLogger(LogoutCommand.class);
+        private static final Logger log = Logger.getLogger(LogoutCommand.class);
 
         @Override
         public String execute(HttpServletRequest request, HttpServletResponse response) {
-            LOG.debug("Command starts");
+            log.debug("Command starts");
 
             HttpSession session = request.getSession(false);
             if (session != null) {
+                log.debug("Invalidating session");
                 session.invalidate();
             }
 
-            LOG.debug("Command finished");
+            log.debug("Command finished");
             return Path.PAGE_LOGIN;
         }
 }

@@ -1,33 +1,27 @@
 <%@ page pageEncoding="UTF-8"%>
 <%@ include file="/jspf/directive/page.jspf" %>
 <%@ include file="/jspf/directive/taglib.jspf" %>
-<%@ page import="com.epam.project.db.Status" %>
+
+<%@ taglib prefix = "cust" uri = "/WEB-INF/toStatusTag" %>
+
+<c:set var="title" value="Menu" scope="page"/>
+
 <html>
 
-<c:set var="title" value="Menu" scope="page" />
 
-
-    <fmt:setLocale value="en" scope="session" />
-
-<fmt:setBundle basename="resources"/>
 
 <body>
 
 <%@ include file="/jspf/header.jspf" %>
 
 <div id="main">
-
-
-        <td class="content">
-            <%-- CONTENT --%>
-
             <form id="make_order" action="controller" method="post">
                 <input type="hidden" name="command" value="makeOrder"/>
 
                 <c:if test="${not empty user}">
-                    <button type="submit">Make an order</button>
+                    <button type="submit" class="button"><span>
+                        <fmt:message key="tour_table.make_an_order"/></span></button>
                 </c:if>
-                <fmt:message key="test"/>
 
                 <script src="../../js/table.js"></script>
 
@@ -35,12 +29,12 @@
                     <thead>
                     <tr>
                         <th>№</th>
-                        <th onclick="sortTableWithChars(2)">Type</th>
-                        <th onclick="sortTableWithChars(3)">Hotel</th>
-                        <th onclick="sortTableWithDigits(4)">Price</th>
-                        <th onclick="sortTableWithDigits(5)">Human Amount</th>
-                        <th>Status</th>
-                        <th onclick="sortTableWithDigits(7)">Discount</th>
+                        <th onclick="sortTableWithChars(1)"><fmt:message key="tour.type"/></th>
+                        <th onclick="sortTableWithChars(2)"><fmt:message key="tour.hotel"/></th>
+                        <th onclick="sortTableWithDigits(3)"><fmt:message key="tour.price"/></th>
+                        <th onclick="sortTableWithDigits(4)"><fmt:message key="tour.human"/></th>
+                        <th><fmt:message key="tour.status"/></th>
+                        <th><fmt:message key="tour.discount"/></th>
                     </tr>
                     </thead>
 
@@ -53,7 +47,7 @@
                             <td>${tour.hotel}</td>
                             <td>${tour.price}</td>
                             <td>${tour.human_amount}</td>
-                            <td>${Status.getStatus(tour.statusId)}</td>
+                            <td><cust:toStatus>${tour.statusId}</cust:toStatus></td>
                             <td>${tour.discount}%</td>
                             <c:if test="${not empty user}">
                             <td><input type="checkbox" name="tourId" value="${tour.id}"/></td>
@@ -63,8 +57,6 @@
                 </table>
 
             </form>
-            <%-- CONTENT --%>
-        </td>
 
 </div>
 <%@ include file="/jspf/footer.jspf" %>

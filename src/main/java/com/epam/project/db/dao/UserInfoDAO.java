@@ -2,7 +2,6 @@ package com.epam.project.db.dao;
 
 import com.epam.project.db.EntityMapper;
 import com.epam.project.db.Fields;
-import com.epam.project.db.entity.User;
 import com.epam.project.db.entity.UserInfo;
 import com.epam.project.exception.DBException;
 import org.apache.log4j.Logger;
@@ -27,6 +26,12 @@ public class UserInfoDAO extends DAO{
             "SELECT * FROM users";
     private static final String SQL__INSERT_USER_INFO =
             "INSERT INTO users_info(id,name,surname,gender,email,city) VALUE (?,?,?,?,?,?)";
+    private static final String SQL__UPDATE_USER_INFO =
+            "UPDATE users_info SET name = ? ," +
+                    "surname = ? ," +
+                    "gender = ? ," +
+                    "email = ? ," +
+                    "city = ? WHERE id = ?";
 
     public static void insertUserInfo(Connection con, UserInfo userInfo) throws DBException {
         PreparedStatement stmt = null;
@@ -89,6 +94,29 @@ public class UserInfoDAO extends DAO{
             close(stmt, rs);
         }
         return result;
+    }
+
+    public static void updateUserInfo(Connection con, UserInfo userInfo) throws DBException {
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement(SQL__UPDATE_USER_INFO);
+
+            stmt.setString(1,userInfo.getName());
+            stmt.setString(2,userInfo.getSurname());
+            stmt.setString(3,userInfo.getGender());
+            stmt.setString(4,userInfo.getEmail());
+            stmt.setString(5,userInfo.getCity());
+            stmt.setLong(6,userInfo.getId());
+
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new DBException(e.getMessage(),e);
+        }
+        finally {
+            close(stmt);
+        }
     }
 
     private static class UserInfoMapper implements EntityMapper<UserInfo> {

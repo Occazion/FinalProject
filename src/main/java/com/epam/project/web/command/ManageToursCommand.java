@@ -18,7 +18,7 @@ public class ManageToursCommand extends Command{
     private static final Logger log = Logger.getLogger(ManageToursCommand.class);
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) {
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws AppException {
         log.debug("Command starts");
 
         String action = request.getParameter("actionType");
@@ -30,63 +30,118 @@ public class ManageToursCommand extends Command{
 
         try {
 
-            if (action.equals("fire")) {
-                tourId = checkId(tourIdParam);
-                boolean isFire = Boolean.parseBoolean(request.getParameter("isFire"));
-                log.trace("New isFire  --> " + isFire);
-                TourService.updateTourFireStatus(tourId,isFire);
-            } else if (action.equals("status")) {
-                tourId = checkId(tourIdParam);
-                int statusToChange = Integer.parseInt(request.getParameter("statusToChange"));
-                log.trace("New status id  --> " + statusToChange);
-                TourService.updateTourStatus(tourId, Status.getStatus(statusToChange));
-            } else if (action.equals("discount")) {
-                tourId = checkId(tourIdParam);
-                int discountToSet = Integer.parseInt(request.getParameter("discountToSet"));
-                log.trace("New tour discount  --> " + discountToSet);
-                TourService.updateTourDiscount(tourId,discountToSet);
-            } else if (action.equals("add")) {
-                Tour tour = new Tour();
-                String tourType = request.getParameter("tourType");
-                log.trace("New tour type  --> " + tourType);
-                tour.setType(tourType);
-                String tourHotel = request.getParameter("tourHotel");
-                log.trace("New tour hotel  --> " + tourHotel);
-                tour.setHotel(tourHotel);
-                int tourPrice = Integer.parseInt(request.getParameter("tourPrice"));
-                log.trace("New tour price  --> " + tourPrice);
-                tour.setPrice(tourPrice);
-                int tourAmount = Integer.parseInt(request.getParameter("tourAmount"));
-                log.trace("New tour human amount  --> " + tourAmount);
-                tour.setHuman_amount(tourAmount);
+            switch (action) {
+                case "fire":
+                    tourId = checkId(tourIdParam);
+                    boolean isFire = Boolean.parseBoolean(request.getParameter("isFire"));
+                    log.trace("New isFire  --> " + isFire);
+                    TourService.updateTourFireStatus(tourId, isFire);
+                    break;
+                case "status":
+                    tourId = checkId(tourIdParam);
+                    int statusToChange = Integer.parseInt(request.getParameter("statusToChange"));
+                    log.trace("New status id  --> " + statusToChange);
+                    TourService.updateTourStatus(tourId, Status.getStatus(statusToChange));
+                    break;
+                case "discount":
+                    tourId = checkId(tourIdParam);
+                    int discountToSet = Integer.parseInt(request.getParameter("discountToSet"));
+                    log.trace("New tour discount  --> " + discountToSet);
+                    TourService.updateTourDiscount(tourId, discountToSet);
+                    break;
+                case "add": {
+                    Tour tour = new Tour();
+                    String tourType = request.getParameter("tourType");
+                    log.trace("New tour type  --> " + tourType);
+                    tour.setType(tourType);
+                    String tourHotel = request.getParameter("tourHotel");
+                    log.trace("New tour hotel  --> " + tourHotel);
+                    tour.setHotel(tourHotel);
+                    int tourPrice = Integer.parseInt(request.getParameter("tourPrice"));
+                    log.trace("New tour price  --> " + tourPrice);
+                    tour.setPrice(tourPrice);
+                    int tourAmount = Integer.parseInt(request.getParameter("tourAmount"));
+                    log.trace("New tour human amount  --> " + tourAmount);
+                    tour.setHuman_amount(tourAmount);
 
-                tour.setFire(false);
+                    tour.setFire(false);
 
-                tour.setStatusId(0);
+                    tour.setStatusId(0);
 
-                tour.setUser_id(0);
+                    tour.setUser_id(0);
 
-                TourService.insertTour(tour);
+                    TourService.insertTour(tour);
 
-            } else if (action.equals("delete")) {
-            } else if (action.equals("change")) {
+                    break;
+                }
+                case "delete":
+                    tourId = checkId(tourIdParam);
+                    log.trace("Deleting tour with id  --> " + tourId);
+                    TourService.deleteTour(tourId);
+                    break;
+                case "change": {
+                    tourId = checkId(tourIdParam);
+                    Tour tour = TourService.findTour(tourId);
 
-            } else {
-                String errorMessage = "Unknown action type.";
-                request.setAttribute("errorMessage", errorMessage);
-                log.error("errorMessage --> " + errorMessage);
-                return Path.PAGE_ERROR_PAGE;
+                    String tourType = request.getParameter("tourTypeUpd");
+                    if (!tourType.equals("")) {
+                        log.trace("New tour type  --> " + tourType);
+                        tour.setType(tourType);
+                    }
+                    String tourHotel = request.getParameter("tourHotelUpd");
+                    if (!tourHotel.equals("")) {
+                        log.trace("New tour hotel  --> " + tourHotel);
+                        tour.setHotel(tourHotel);
+                    }
+                    String str = request.getParameter("tourPriceUpd");
+                    if (!str.equals("")) {
+                        int tourPrice = Integer.parseInt(str);
+                        log.trace("New tour price  --> " + tourPrice);
+                        tour.setPrice(tourPrice);
+                    }
+                    str = request.getParameter("tourAmountUpd");
+                    if (!str.equals("")) {
+                        int tourAmount = Integer.parseInt(str);
+                        log.trace("New tour human amount  --> " + tourAmount);
+                        tour.setHuman_amount(tourAmount);
+                    }
+                    str = request.getParameter("tourIsFireUpd");
+                    if (!str.equals("")) {
+                        boolean tourIsFire = Boolean.parseBoolean(str);
+                        log.trace("New tour fire status  --> " + tourIsFire);
+                        tour.setFire(tourIsFire);
+                    }
+                    str = request.getParameter("tourDiscountUpd");
+                    if (!str.equals("")) {
+                        int tourDiscount = Integer.parseInt(str);
+                        log.trace("New tour human amount  --> " + tourDiscount);
+                        tour.setDiscount(tourDiscount);
+                    }
+                    str = request.getParameter("tourUserIdUpd");
+                    if (!str.equals("")) {
+                        int tourUserId = Integer.parseInt(str);
+                        log.trace("New tour user id  --> " + tourUserId);
+                        tour.setUser_id(tourUserId);
+                    }
+
+                    TourService.updateTour(tour);
+
+
+                    break;
+                }
+                default:
+                    String errorMessage = "Unknown action type.";
+                    log.error("errorMessage --> " + errorMessage);
+                    throw new AppException(errorMessage);
             }
         } catch (DBException | SQLException e) {
             String errorMessage = "DBException : " + e.getMessage();
-            request.setAttribute("errorMessage", errorMessage);
             log.error("errorMessage --> " + errorMessage);
-            return Path.PAGE_ERROR_PAGE;
+            throw new AppException(errorMessage, e);
         } catch (AppException e) {
             String errorMessage = Messages.ERR_TOUR_NOT_SELECTED;
-            request.setAttribute("errorMessage", errorMessage);
             log.error("errorMessage --> " + errorMessage);
-            return Path.PAGE_ERROR_PAGE;
+            throw new AppException(errorMessage, e);
         }
 
         log.debug("Command finished");

@@ -14,7 +14,7 @@ public class ManageUsersCommand extends Command{
     private static final Logger log = Logger.getLogger(ManageUsersCommand.class);
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) {
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws AppException {
         log.debug("Command starts");
         String action = request.getParameter("actionType");
         log.trace("Action --> " + action);
@@ -24,24 +24,28 @@ public class ManageUsersCommand extends Command{
         try {
 
             if (action.equals("block")) {
+                log.debug("Blocking users");
                 for (String login : logins) {
                     UserService.blockUser(login);
                 }
             } else if (action.equals("unblock")) {
+                log.debug("Unblocking users");
                 for (String login : logins) {
                     UserService.unblockUser(login);
                 }
             } else {
                 String errorMessage = "Unknown action type.";
-                request.setAttribute("errorMessage", errorMessage);
                 log.error("errorMessage --> " + errorMessage);
-                return Path.PAGE_ERROR_PAGE;
+                throw new AppException(errorMessage);
             }
         } catch (DBException e) {
             String errorMessage = "DBException : " + e.getMessage();
-            request.setAttribute("errorMessage", errorMessage);
             log.error("errorMessage --> " + errorMessage);
-            return Path.PAGE_ERROR_PAGE;
+            throw new AppException(errorMessage, e);
+        } catch (AppException e) {
+            String errorMessage = "AppException : " + e.getMessage();
+            log.error("errorMessage --> " + errorMessage);
+            throw new AppException(errorMessage, e);
         }
         log.debug("Command finished");
         return Path.COMMAND_USERS;

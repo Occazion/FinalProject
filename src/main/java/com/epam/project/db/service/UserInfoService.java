@@ -1,7 +1,6 @@
 package com.epam.project.db.service;
 
 import com.epam.project.db.dao.ConnectionPool;
-import com.epam.project.db.dao.TourDAO;
 import com.epam.project.db.dao.UserInfoDAO;
 import com.epam.project.db.entity.UserInfo;
 import com.epam.project.exception.DBException;
@@ -20,12 +19,14 @@ public class UserInfoService extends Service{
 
     public static void insertUserInfo(UserInfo userInfo) throws DBException {
         ConnectionPool conPool = ConnectionPool.getInstance();
+        log.debug("Obtaining connection");
         Connection con = conPool.getConnection();
         UserInfoDAO.insertUserInfo(con,userInfo);
         try{
+            log.debug("Inserting user info");
             UserInfoDAO.insertUserInfo(con,userInfo);
         } catch (DBException e) {
-            throw new DBException();
+            throw new DBException(e.getMessage(), e);
         }
         finally {
             close(con);
@@ -34,13 +35,15 @@ public class UserInfoService extends Service{
     }
 
     public static UserInfo findUserInfo(Long id) throws DBException {
-        UserInfo userInfo = new UserInfo();
+        UserInfo userInfo;
         ConnectionPool conPool = ConnectionPool.getInstance();
+        log.debug("Obtaining connection");
         Connection con = conPool.getConnection();
         try{
+            log.debug("Finding user info");
             userInfo = UserInfoDAO.findUserInfo(con,id);
         } catch (DBException e) {
-            throw new DBException();
+            throw new DBException(e.getMessage(), e);
         }
         finally {
             close(con);
@@ -52,15 +55,33 @@ public class UserInfoService extends Service{
     public static List<UserInfo> findAllUsersInfo() throws DBException {
         List<UserInfo> userInfoList;
         ConnectionPool conPool = ConnectionPool.getInstance();
+        log.debug("Obtaining connection");
         Connection con = conPool.getConnection();
         try{
+            log.debug("Finding all users info");
             userInfoList = UserInfoDAO.findAllUsersInfo(con);
         } catch (DBException e) {
-            throw new DBException();
+            throw new DBException(e.getMessage(), e);
         }
         finally {
             close(con);
         }
         return userInfoList;
+    }
+
+    public static void updateUserInfo(UserInfo userInfo) throws DBException {
+        ConnectionPool conPool = ConnectionPool.getInstance();
+        log.debug("Obtaining connection");
+        Connection con = conPool.getConnection();
+        try{
+            log.debug("Updating user info");
+            UserInfoDAO.updateUserInfo(con,userInfo);
+        } catch (DBException e) {
+            throw new DBException(e.getMessage(), e);
+        }
+        finally {
+            close(con);
+        }
+
     }
 }

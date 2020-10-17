@@ -2,8 +2,17 @@
 <%@ include file="/jspf/directive/page.jspf" %>
 <%@ include file="/jspf/directive/taglib.jspf" %>
 <%@ page import="com.epam.project.db.Role" %>
+
+<%@ taglib tagdir="/WEB-INF/tags" prefix="tf" %>
+
 <html>
-<c:set var="title" value="Users panel" scope="page" />
+
+<tf:tagfile>
+    <jsp:attribute name="attr">
+        <c:set var="title" value="${title}" scope="page" />
+    </jsp:attribute>
+</tf:tagfile>
+
 <body>
 
 <%@ include file="/jspf/header.jspf" %>
@@ -17,20 +26,24 @@
             <input type="hidden" name="command" value="manageUsers"/>
 
             <c:if test="${not empty user}">
-                <button type="submit">Execute</button>
+                <button type="submit" class="button"><span>
+                    <fmt:message key="users.execute"/></span></button>
+                <table>
+                <tr>
+                    <td><label class="container"><fmt:message key="users.block"/>
+                        <span class="checkmark"></span></label>
+                    </td>
+                        <td><input type="radio" checked="checked" name="actionType" value="block"></td>
 
-                <p>
-                    <label class="container">Block
-                        <input type="radio" checked="checked" name="actionType" value="block">
-                        <span class="checkmark"></span>
-                    </label>
-                </p>
-                <p>
-                    <label class="container">Unblock
-                        <input type="radio" name="actionType" value="unblock">
-                        <span class="checkmark"></span>
-                    </label>
-                </p>
+                </tr>
+                <tr>
+                    <td><label class="container"><fmt:message key="users.unblock"/>
+                        <span class="checkmark"></span></label>
+                    </td>
+                    <td><input type="radio" name="actionType" value="unblock"></td>
+
+                </tr>
+                </table>
 
             </c:if>
 
@@ -38,15 +51,15 @@
                 <thead>
                 <tr>
                     <th>№</th>
-                    <th>Login</th>
-                    <th>Role</th>
-                    <th>Locale</th>
-                    <th>Name</th>
-                    <th>Surname</th>
-                    <th>Gender</th>
-                    <th>Email</th>
-                    <th>City</th>
-                    <th>Blocked?</th>
+                    <th><fmt:message key="user.login"/></th>
+                    <th><fmt:message key="user.role"/></th>
+                    <th><fmt:message key="user.locale"/></th>
+                    <th><fmt:message key="user.name"/></th>
+                    <th><fmt:message key="user.surname"/></th>
+                    <th><fmt:message key="user.gender"/></th>
+                    <th><fmt:message key="user.email"/></th>
+                    <th><fmt:message key="user.city"/></th>
+                    <th><fmt:message key="user.blocked"/></th>
                 </tr>
                 </thead>
 
@@ -57,6 +70,7 @@
                         <td><c:out value="${k}"/></td>
                         <td>${account.login}</td>
                         <td>${Role.getRole(account.roleId)}</td>
+                        <%--<td><tf:tagfile>${account}</tf:tagfile></td>--%>
                         <td>${account.locale}</td>
                         <td>${account.name}</td>
                         <td>${account.surname}</td>

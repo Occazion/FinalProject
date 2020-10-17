@@ -23,7 +23,7 @@ public class Hash {
     }
 
     public static void main(String[] args) {
-        String str = "root";
+        String str = "manager";
         try {
             str = toHash(str,HashAlgorithm.SHA_256);
         } catch (NoSuchAlgorithmException e) {

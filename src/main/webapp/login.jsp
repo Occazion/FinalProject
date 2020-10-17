@@ -1,14 +1,14 @@
 <%@ include file="/jspf/directive/page.jspf" %>
 <%@ include file="/jspf/directive/taglib.jspf" %>
-
+<%@ taglib tagdir="/WEB-INF/tags" prefix="tf" %>
 <html>
 
 <head>
-    <c:set var="title" value="Sign Up" />
-    <title>
-        ${title}
-    </title>
-
+    <tf:tagfile>
+    <jsp:attribute name="attr">
+        <title>${title}</title>
+    </jsp:attribute>
+    </tf:tagfile>
     <%--===========================================================================
     Bind CSS document.
     ===========================================================================--%>
@@ -31,21 +31,26 @@
                 <input type="hidden" name="command" value="login"/>
 
                 <label><b>
-                    Login
+                    <fmt:message key="user.login"/>
                 </b></label>
                 <input type="text" placeholder="Enter Username" name="login"  required>
 
-                <label><b>Password</b></label>
+                <label><b>
+                    <fmt:message key="user.password"/>
+                </b></label>
                 <input type="password" placeholder="Enter Password" name="password"  required>
 
-                <button type="submit">Login</button>
+                <button type="submit">
+                    <fmt:message key="user.login"/>
+                </button>
                 <%--<label>
                     <input type="checkbox" checked="checked" name="remember"> Remember me
                 </label>--%>
                 <input type="hidden" name="command" value="login"/>
 
                 <div class="signup">
-                    <p>Dont have an account? <a href="signup.jsp">Sign up</a>.</p>
+                    <p><fmt:message key="login_jsp.form.question"/>
+                        <a href="signup.jsp"><fmt:message key="login_jsp.form.signup"/></a></p>
                 </div>
 
             </div>

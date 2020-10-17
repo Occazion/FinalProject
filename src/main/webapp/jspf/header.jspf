@@ -11,24 +11,25 @@ Header (top area).
         <c:if test="${not empty user}">
             <c:choose>
             <c:when test="${userRole.name == 'admin' || userRole.name == 'manager' }">
-            <a onclick="openNav()">Admin</a>
+            <a onclick="openNav()"><fmt:message key="header.admin"/></a>
             </c:when>
             </c:choose>
         </c:if>
 
-        <a href="/controller?command=tourMenu">Home</a>
+        <a href="/controller?command=tourMenu"><fmt:message key="header.home"/></a>
 
         <%--<a href="#news">News</a>
         <a href="#contact">Contact</a>--%>
         <div class="topnav-right">
             <c:if test="${not empty user}">
-            <a href="/controller?command=cabinet">Cabinet</a>
-            <a href="/controller?command=logout">Logout</a>
+            <a href="/controller?command=cabinet"><fmt:message key="cabinet_jsp.label"/></a>
+            <a href="/controller?command=viewSettings"><fmt:message key="header.settings"/></a>
+            <a href="/controller?command=logout"><fmt:message key="header.logout"/></a>
             </c:if>
 
             <c:if test="${empty user}">
-                <a href="../signup.jsp">Sign up</a>
-                <a href="../login.jsp">Login</a>
+                <a href="../signup.jsp"><fmt:message key="header.signup"/></a>
+                <a href="../login.jsp"><fmt:message key="header.login"/></a>
             </c:if>
         </div>
     </div>
@@ -38,10 +39,10 @@ Header (top area).
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a href="#"></a>
-    <a href="/controller?command=tours">Tours</a>
+    <a href="/controller?command=tours"><fmt:message key="sidenav.tours"/></a>
     <c:choose>
         <c:when test="${userRole.name == 'admin' }">
-            <a href="/controller?command=users">Users</a>
+            <a href="/controller?command=users"><fmt:message key="sidenav.users"/></a>
         </c:when>
     </c:choose>
 </div>

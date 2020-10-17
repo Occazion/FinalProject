@@ -10,6 +10,8 @@ public final class Path {
     public static final String PAGE_CABINET = "/jsp/common/cabinet.jsp";
     public static final String PAGE_USERS = "/jsp/common/users.jsp";
     public static final String PAGE_TOURS = "/jsp/common/tours.jsp";
+    public static final String PAGE_SETTINGS = "/jsp/common/settings.jsp";
+
 
 
 

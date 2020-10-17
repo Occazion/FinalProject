@@ -14,6 +14,7 @@ import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
@@ -21,7 +22,7 @@ public class SignupCommand extends Command{
     private static final Logger log = Logger.getLogger(SignupCommand.class);
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws AppException {
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws AppException, IOException {
         log.debug("Command starts");
 
         User user = new User();
@@ -36,9 +37,8 @@ public class SignupCommand extends Command{
         try {
             if (UserService.findUser(str) != null) {
                 errorMessage = Messages.ERR_CANNOT_CREATE_USER +": User with that login already exists";
-                request.setAttribute("errorMessage", errorMessage);
                 log.error("errorMessage --> " + errorMessage);
-                return forward;
+                throw new AppException(errorMessage);
             }
         } catch (DBException e) {
             throw new AppException(e.getMessage(), e);
@@ -50,9 +50,8 @@ public class SignupCommand extends Command{
             user.setPassword(Hash.toHash(str, HashAlgorithm.SHA_256));
         } catch (NoSuchAlgorithmException e) {
             errorMessage = Messages.ERR_CANNOT_OBTAIN_HASHING_ALGORITHM;
-            request.setAttribute("errorMessage", errorMessage);
             log.error("errorMessage --> " + errorMessage);
-            return forward;
+            throw new AppException(errorMessage);
         }
 
         str = request.getParameter("locale");
@@ -86,15 +85,11 @@ public class SignupCommand extends Command{
             AccountService.insertAccount(user,userInfo);
         } catch (DBException | SQLException e) {
             errorMessage = Messages.ERR_CANNOT_INSERT_ACCOUNT_INFO +":"+ e.getMessage();
-            request.setAttribute("errorMessage", errorMessage);
             log.error("errorMessage --> " + errorMessage);
-            return forward;
+            throw new AppException(errorMessage);
         }
 
-        //response.sendRedirect();
-
         forward = Path.PAGE_LOGIN;
-
         log.debug("Command finished");
         return forward;
     }

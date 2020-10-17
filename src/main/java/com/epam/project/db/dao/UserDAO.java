@@ -2,6 +2,7 @@ package com.epam.project.db.dao;
 
 import com.epam.project.db.EntityMapper;
 import com.epam.project.db.Fields;
+import com.epam.project.db.entity.Tour;
 import com.epam.project.db.entity.User;
 import com.epam.project.exception.DBException;
 import com.epam.project.web.command.CommandContainer;
@@ -34,6 +35,7 @@ public class UserDAO extends DAO{
             "INSERT INTO blacklist(login) value(?)";
     private static final String SQL__DELETE_USER_FROM_BLACKLIST =
             "DELETE FROM blacklist WHERE login = ?";
+
 
     public static void insertUser(Connection con, User user) throws DBException {
         PreparedStatement stmt = null;
@@ -150,6 +152,8 @@ public class UserDAO extends DAO{
             close(stmt);
         }
     }
+
+
 
     private static class UserMapper implements EntityMapper<User> {
 

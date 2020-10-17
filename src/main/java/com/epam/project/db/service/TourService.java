@@ -19,6 +19,7 @@ public class TourService extends Service {
 
     public static void insertTour(Tour tour) throws DBException, SQLException {
         ConnectionPool conPool = ConnectionPool.getInstance();
+        log.debug("Obtaining connection");
         Connection con = conPool.getConnection();
         try {
             con.setAutoCommit(false);
@@ -34,13 +35,14 @@ public class TourService extends Service {
     }
 
     public static Tour findTour(int id) throws DBException {
-        Tour tour = new Tour();
+        Tour tour;
         ConnectionPool conPool = ConnectionPool.getInstance();
+        log.debug("Obtaining connection");
         Connection con = conPool.getConnection();
         try{
         tour = TourDAO.findTour(con,id);
         } catch (DBException e) {
-            throw new DBException();
+            throw new DBException(e.getMessage(), e);
         }
         finally {
             close(con);
@@ -51,11 +53,12 @@ public class TourService extends Service {
     public static List<Tour> findAllTours() throws DBException {
         List<Tour> tours;
         ConnectionPool conPool = ConnectionPool.getInstance();
+        log.debug("Obtaining connection");
         Connection con = conPool.getConnection();
         try{
             tours = TourDAO.findAllTours(con);
         } catch (DBException e) {
-            throw new DBException();
+            throw new DBException(e.getMessage(), e);
         }
         finally {
             close(con);
@@ -66,11 +69,12 @@ public class TourService extends Service {
     public static List<Tour> findAllOpenedTours() throws DBException {
         List<Tour> tours;
         ConnectionPool conPool = ConnectionPool.getInstance();
+        log.debug("Obtaining connection");
         Connection con = conPool.getConnection();
         try{
             tours = TourDAO.findAllOpenedTours(con);
         } catch (DBException e) {
-            throw new DBException();
+            throw new DBException(e.getMessage(), e);
         }
         finally {
             close(con);
@@ -81,6 +85,7 @@ public class TourService extends Service {
     public static List<Tour> findAllToursByUserId(Long userId) throws DBException {
         List<Tour> tours;
         ConnectionPool conPool = ConnectionPool.getInstance();
+        log.debug("Obtaining connection");
         Connection con = conPool.getConnection();
         try{
             tours = TourDAO.findAllToursByUserId(con,userId);
@@ -102,6 +107,7 @@ public class TourService extends Service {
      */
     public static void orderTour(Long userId, int tourID, Status status) throws DBException {
         ConnectionPool conPool = ConnectionPool.getInstance();
+        log.debug("Obtaining connection");
         Connection con = conPool.getConnection();
         try{
             TourDAO.orderTour(con,userId,tourID,status);
@@ -115,6 +121,7 @@ public class TourService extends Service {
 
     public static void updateTourStatus(int tourID, Status status) throws DBException {
         ConnectionPool conPool = ConnectionPool.getInstance();
+        log.debug("Obtaining connection");
         Connection con = conPool.getConnection();
         try{
             TourDAO.updateTourStatus(con,tourID,status);
@@ -128,6 +135,7 @@ public class TourService extends Service {
 
     public static void updateTourDiscount(int tourID, int discount) throws DBException {
         ConnectionPool conPool = ConnectionPool.getInstance();
+        log.debug("Obtaining connection");
         Connection con = conPool.getConnection();
         try{
             TourDAO.updateTourDiscount(con,tourID,discount);
@@ -141,6 +149,7 @@ public class TourService extends Service {
 
     public static void updateTourFireStatus(int tourID, boolean isFire) throws DBException {
         ConnectionPool conPool = ConnectionPool.getInstance();
+        log.debug("Obtaining connection");
         Connection con = conPool.getConnection();
         try{
             TourDAO.updateTourFireStatus(con,tourID,isFire);
@@ -151,4 +160,33 @@ public class TourService extends Service {
             close(con);
         }
     }
+
+    public static void updateTour(Tour tour) throws DBException {
+        ConnectionPool conPool = ConnectionPool.getInstance();
+        log.debug("Obtaining connection");
+        Connection con = conPool.getConnection();
+        try{
+            TourDAO.updateTour(con,tour);
+        } catch (DBException e) {
+            throw new DBException(e.getMessage(), e);
+        }
+        finally {
+            close(con);
+        }
+    }
+
+    public static void deleteTour(int tourId) throws DBException {
+        ConnectionPool conPool = ConnectionPool.getInstance();
+        log.debug("Obtaining connection");
+        Connection con = conPool.getConnection();
+        try{
+            TourDAO.deleteTour(con,tourId);
+        } catch (DBException e) {
+            throw new DBException(e.getMessage(), e);
+        }
+        finally {
+            close(con);
+        }
+    }
+
 }

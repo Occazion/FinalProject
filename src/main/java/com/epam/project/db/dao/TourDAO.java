@@ -32,13 +32,22 @@ public class TourDAO extends  DAO{
             //"INSERT INTO tours(id,type,hotel,price,human_amount,isFire,status,discount,user_id) VALUE (?,?,?,?,?,?,?,?)";
     private static final String SQL__ORDER_TOUR =
             "UPDATE tours SET status = ?,user_id = ? WHERE id = ?";
+    private static final String SQL__UPDATE_TOUR =
+            "UPDATE tours SET type = ? ," +
+                    "hotel = ? ," +
+                    "price = ? ," +
+                    "human_amount = ? ," +
+                    "isFire = ? ," +
+                    "status = ?," +
+                    "discount = ? ," +
+                    "user_id = ?  WHERE id = ?";
     private static final String SQL__UPDATE_TOUR_STATUS =
             "UPDATE tours SET status = ? WHERE id = ?";
     private static final String SQL__UPDATE_TOUR_DISCOUNT =
             "UPDATE tours SET discount = ? WHERE id = ?";
     private static final String SQL__UPDATE_TOUR_IS_FIRE =
             "UPDATE tours SET isFire = ? WHERE id = ?";
-
+    private static final String SQL__DELETE_TOUR ="DELETE FROM tours WHERE id = ?";
 
     public static void insertTour(Connection con, Tour tour) throws DBException {
         PreparedStatement stmt = null;
@@ -217,6 +226,50 @@ public class TourDAO extends  DAO{
 
             stmt.setBoolean(1,isFire);
             stmt.setInt(2,tourId);
+
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new DBException(e.getMessage(),e);
+        }
+        finally {
+            close(stmt);
+        }
+    }
+
+    public static void updateTour(Connection con, Tour tour) throws DBException {
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement(SQL__UPDATE_TOUR);
+
+            stmt.setString(1,tour.getType());
+            stmt.setString(2,tour.getHotel());
+            stmt.setInt(3,tour.getPrice());
+            stmt.setInt(4,tour.getHuman_amount());
+            stmt.setBoolean(5,tour.getFire());
+            stmt.setInt(6,tour.getStatusId());
+            stmt.setInt(7,tour.getDiscount());
+            stmt.setInt(8,tour.getUser_id());
+            stmt.setLong(9,tour.getId());
+
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new DBException(e.getMessage(),e);
+        }
+        finally {
+            close(stmt);
+        }
+    }
+
+    public static void deleteTour(Connection con, int tourId) throws DBException {
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement(SQL__DELETE_TOUR);
+
+            stmt.setInt(1,tourId);
 
             stmt.executeUpdate();
 

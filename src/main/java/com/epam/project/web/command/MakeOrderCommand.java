@@ -34,13 +34,14 @@ public class MakeOrderCommand extends Command{
             log.debug("Added tour id -->" + str + " to order list");
         }
 
+        log.debug("Ordering tours");
         for(Integer integer : idList) {
             try {
                 TourService.orderTour(user.getId(),integer, Status.CONFIRMED);
             } catch (DBException e) {
                 String errorMessage = Messages.ERR_CANNOT_UPDATE_TOUR;
-                request.setAttribute("errorMessage", errorMessage.concat(" : " + e.getMessage()));
                 log.error("errorMessage --> " + errorMessage);
+                throw new AppException(errorMessage + ":" + e.getMessage(),e);
             }
 
         }
