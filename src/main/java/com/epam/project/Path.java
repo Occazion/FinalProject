@@ -15,7 +15,7 @@ public final class Path {
 
 
 
-    public static final String COMMAND_TOUR_MENU = "/controller?command=tourMenu";
+    public static final String COMMAND_TOUR_MENU = "/controller?command=tourMenu&p=0";
     public static final String COMMAND_USERS = "/controller?command=users";
     public static final String COMMAND_TOURS = "/controller?command=tours";
     public static final String COMMAND_CABINET = "/controller?command=cabinet";

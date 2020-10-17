@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+/**
+ * User panel
+ */
 public class UsersCommand extends Command {
     private static final Logger log = Logger.getLogger(UsersCommand.class);
 

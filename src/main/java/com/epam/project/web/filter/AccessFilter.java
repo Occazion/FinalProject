@@ -46,6 +46,9 @@ public class AccessFilter implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
 
         String commandName = request.getParameter("command");
+
+        log.debug("Command name --> " + commandName);
+
         if (commandName == null || commandName.isEmpty())
             return false;
 

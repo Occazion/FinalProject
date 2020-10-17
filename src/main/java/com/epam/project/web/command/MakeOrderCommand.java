@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MakeOrderCommand extends Command{
 
@@ -24,6 +25,11 @@ public class MakeOrderCommand extends Command{
     public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, AppException {
         log.debug("Command starts");
         String[] tourIds = request.getParameterValues("tourId");
+        log.debug("Tour IDs --> " + Arrays.toString(tourIds));
+
+        if (tourIds == null) {
+            throw new AppException("Tour not selected");
+        }
 
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");

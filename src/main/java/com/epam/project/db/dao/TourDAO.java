@@ -48,6 +48,7 @@ public class TourDAO extends  DAO{
     private static final String SQL__UPDATE_TOUR_IS_FIRE =
             "UPDATE tours SET isFire = ? WHERE id = ?";
     private static final String SQL__DELETE_TOUR ="DELETE FROM tours WHERE id = ?";
+    private static final String SQL__PAGINATION ="SELECT * FROM tours WHERE status = 0 LIMIT ? OFFSET ?";
 
     public static void insertTour(Connection con, Tour tour) throws DBException {
         PreparedStatement stmt = null;
@@ -123,6 +124,33 @@ public class TourDAO extends  DAO{
         try {
             TourMapper mapper = new TourMapper();
             stmt = con.prepareStatement(SQL__FIND_ALL_TOURS);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                result.add(mapper.mapRow(rs));
+            }
+
+        } catch (SQLException e) {
+            throw new DBException(e.getMessage(), e);
+        }
+        finally {
+            close(stmt, rs);
+        }
+        return result;
+    }
+
+    public static List<Tour> findAllToursForPage(Connection con,int limit,int pageNum) throws DBException {
+        List<Tour> result = new ArrayList<>();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        int offset = (limit * pageNum) - limit;
+
+        try {
+            TourMapper mapper = new TourMapper();
+            stmt = con.prepareStatement(SQL__PAGINATION);
+            stmt.setInt(1,limit);
+            stmt.setInt(2,offset);
             rs = stmt.executeQuery();
 
             while (rs.next()) {

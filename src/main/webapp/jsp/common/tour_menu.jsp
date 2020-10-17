@@ -32,7 +32,7 @@
                         <th onclick="sortTableWithDigits(3)"><fmt:message key="tour.price"/></th>
                         <th onclick="sortTableWithDigits(4)"><fmt:message key="tour.human"/></th>
                         <th><fmt:message key="tour.status"/></th>
-                        <th><fmt:message key="tour.discount"/></th>
+                        <th onclick="sortTableWithDigits(6)"><fmt:message key="tour.discount"/> %</th>
                     </tr>
                     </thead>
 
@@ -46,7 +46,7 @@
                             <td>${tour.price}</td>
                             <td>${tour.human_amount}</td>
                             <td><cust:toStatus>${tour.statusId}</cust:toStatus></td>
-                            <td>${tour.discount}%</td>
+                            <td>${tour.discount}</td>
                             <c:if test="${not empty user}">
                             <td><input type="checkbox" name="tourId" value="${tour.id}"/></td>
                             </c:if>
@@ -55,6 +55,12 @@
                 </table>
 
             </form>
+
+    <div class="pagination">
+        <a href="/controller?command=tourMenu&p=${p - 1}"><b>&laquo;</b></a>
+        <a class="active"><b>${p}</b></a>
+        <a href="/controller?command=tourMenu&p=${p + 1}"><b>&raquo;</b></a>
+    </div>
 
 </div>
 <%@ include file="/jspf/footer.jspf" %>

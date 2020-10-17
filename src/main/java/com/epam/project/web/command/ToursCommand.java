@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Tour panel
+ */
 public class ToursCommand extends Command {
     private static final Logger log = Logger.getLogger(ToursCommand.class);
 

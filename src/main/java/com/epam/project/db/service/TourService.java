@@ -66,6 +66,22 @@ public class TourService extends Service {
         return tours;
     }
 
+    public static List<Tour> findAllToursForPage(int limit,int pageNum) throws DBException {
+        List<Tour> tours;
+        ConnectionPool conPool = ConnectionPool.getInstance();
+        log.debug("Obtaining connection");
+        Connection con = conPool.getConnection();
+        try{
+            tours = TourDAO.findAllToursForPage(con,limit,pageNum);
+        } catch (DBException e) {
+            throw new DBException(e.getMessage(), e);
+        }
+        finally {
+            close(con);
+        }
+        return tours;
+    }
+
     public static List<Tour> findAllOpenedTours() throws DBException {
         List<Tour> tours;
         ConnectionPool conPool = ConnectionPool.getInstance();
