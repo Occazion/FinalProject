@@ -17,6 +17,13 @@ public class TourService extends Service {
 
     private static final Logger log = Logger.getLogger(TourService.class);
 
+    /**
+     * Insert a tour to db
+     * @param tour tour to insert
+     * @throws DBException
+     * @throws SQLException
+     * @see Tour
+     */
     public static void insertTour(Tour tour) throws DBException, SQLException {
         ConnectionPool conPool = ConnectionPool.getInstance();
         log.debug("Obtaining connection");
@@ -34,6 +41,13 @@ public class TourService extends Service {
         }
     }
 
+    /**
+     * Find tour by id
+     * @param id tour id
+     * @return Tour
+     * @throws DBException
+     * @see Tour
+     */
     public static Tour findTour(int id) throws DBException {
         Tour tour;
         ConnectionPool conPool = ConnectionPool.getInstance();
@@ -50,6 +64,12 @@ public class TourService extends Service {
         return tour;
     }
 
+    /**
+     * Find all tours in db
+     * @return List of tours
+     * @throws DBException
+     * @see Tour
+     */
     public static List<Tour> findAllTours() throws DBException {
         List<Tour> tours;
         ConnectionPool conPool = ConnectionPool.getInstance();
@@ -66,6 +86,14 @@ public class TourService extends Service {
         return tours;
     }
 
+    /**
+     * Find tours with LIMIT and OFFSET
+     * @param limit limit by page
+     * @param pageNum number of page
+     * @return List of tours
+     * @throws DBException
+     * @see Tour
+     */
     public static List<Tour> findAllToursForPage(int limit,int pageNum) throws DBException {
         List<Tour> tours;
         ConnectionPool conPool = ConnectionPool.getInstance();
@@ -82,6 +110,12 @@ public class TourService extends Service {
         return tours;
     }
 
+    /**
+     * Find all tours where status -> OPENED
+     * @return List of tours
+     * @throws DBException
+     * @see Tour
+     */
     public static List<Tour> findAllOpenedTours() throws DBException {
         List<Tour> tours;
         ConnectionPool conPool = ConnectionPool.getInstance();
@@ -98,6 +132,13 @@ public class TourService extends Service {
         return tours;
     }
 
+    /**
+     * Find tours by user id
+     * @param userId user id
+     * @return List of tours
+     * @throws DBException
+     * @see Tour
+     */
     public static List<Tour> findAllToursByUserId(Long userId) throws DBException {
         List<Tour> tours;
         ConnectionPool conPool = ConnectionPool.getInstance();
@@ -120,6 +161,7 @@ public class TourService extends Service {
      * @param tourID - tour id (which is ordered)
      * @param status - status to set for tour
      * @throws DBException
+     * @see Status
      */
     public static void orderTour(Long userId, int tourID, Status status) throws DBException {
         ConnectionPool conPool = ConnectionPool.getInstance();
@@ -135,6 +177,13 @@ public class TourService extends Service {
         }
     }
 
+    /**
+     * Update tour status to <code>status</code> with <code>tourID</code>
+     * @param tourID tour id
+     * @param status status to update
+     * @throws DBException
+     * @see Status
+     */
     public static void updateTourStatus(long tourID, Status status) throws DBException {
         ConnectionPool conPool = ConnectionPool.getInstance();
         log.debug("Obtaining connection");
@@ -149,6 +198,12 @@ public class TourService extends Service {
         }
     }
 
+    /**
+     * Update tour discount to <code>discount</code> with <code>tourID</code>
+     * @param tourID tour id
+     * @param discount discount to update
+     * @throws DBException
+     */
     public static void updateTourDiscount(int tourID, int discount) throws DBException {
         ConnectionPool conPool = ConnectionPool.getInstance();
         log.debug("Obtaining connection");
@@ -162,7 +217,12 @@ public class TourService extends Service {
             close(con);
         }
     }
-
+    /**
+     * Update tour fire status to <code>isFire</code> with <code>tourID</code>
+     * @param tourID tour id
+     * @param isFire fire status to update
+     * @throws DBException
+     */
     public static void updateTourFireStatus(int tourID, boolean isFire) throws DBException {
         ConnectionPool conPool = ConnectionPool.getInstance();
         log.debug("Obtaining connection");
@@ -177,6 +237,12 @@ public class TourService extends Service {
         }
     }
 
+    /**
+     * Update tour
+     * @param tour tour to update
+     * @throws DBException
+     * @see Tour
+     */
     public static void updateTour(Tour tour) throws DBException {
         ConnectionPool conPool = ConnectionPool.getInstance();
         log.debug("Obtaining connection");
@@ -191,6 +257,11 @@ public class TourService extends Service {
         }
     }
 
+    /**
+     * Deletes a tour
+     * @param tourId tour id to delete
+     * @throws DBException
+     */
     public static void deleteTour(int tourId) throws DBException {
         ConnectionPool conPool = ConnectionPool.getInstance();
         log.debug("Obtaining connection");

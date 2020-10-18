@@ -115,8 +115,6 @@ a
 1.idea/libraries/Maven__javax_servlet_jstl_1_2.xml,3\0\30f104ae7e6f244bf77daa047bb269e96afe378c
 S
 #src/main/webapp/js/admin_sidenav.js,f\e\fe02e302cdea2e3284fc18fe52713d9ea378a5ce
-V
-&src/main/webapp/jsp/common/cabinet.jsp,2\b\2b5cf7b63eded8209758d0ac0eb69ccb2bf6a471
 n
 >src/main/java/com/epam/project/web/command/CabinetCommand.java,9\9\99e4aef0edaf1aef4b9ad07118e3780af7b6b97d
 g
@@ -155,3 +153,19 @@ W
 'src/main/webapp/jsp/common/settings.jsp,c\a\ca717b53b2f9b73d6bb490e03d64ae8c737e129a
 X
 (src/main/webapp/WEB-INF/tags/tagfile.tag,d\c\dc22ec8db6dd24881dbcba3b21258257eda57f0d
+U
+%src/main/webapp/stylesheets/modal.css,b\1\b1e4ee52dc1b66ccb1634d2d713a7a29e605564c
+r
+Bsrc/main/java/com/epam/project/web/command/PayForToursCommand.java,9\e\9ee245552392f6598aa65b365a1ac4876772cc8a
+W
+'src/main/resources/resources.properties,8\e\8e08a09b69df893cdc0f98783b3b6b063b3deefc
+Z
+*src/main/resources/resources_en.properties,5\d\5d29831975e82fd03400e84753eff5ad65339351
+Z
+*src/main/resources/resources_ru.properties,d\1\d10eecca333cbec196e78314519148f9a8ded008
+O
+src/main/webapp/jsp/cabinet.jsp,e\0\e0126a28afaf1cb9e52df76e7614faff93184407
+>
+sql/script.sql,b\2\b29fd5cc26cb3d19b66b14385853cdc21d5850e4
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d

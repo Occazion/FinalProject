@@ -19,6 +19,12 @@ public class UserService extends Service{
 
         private static final Logger log = Logger.getLogger(UserService.class);
 
+    /**
+     * Inserts user to DB
+     * @param user user to insert
+     * @throws DBException
+     * @see User
+     */
         public static void insertUser(User user) throws DBException {
             ConnectionPool conPool = ConnectionPool.getInstance();
             log.debug("Obtaining connection");
@@ -35,6 +41,13 @@ public class UserService extends Service{
             }
         }
 
+    /**
+     * Find user by its login
+     * @param login user login
+     * @return <code>User</code>
+     * @throws DBException
+     * @see User
+     */
         public static User findUser(String login) throws DBException {
             User user;
             ConnectionPool conPool = ConnectionPool.getInstance();
@@ -53,6 +66,12 @@ public class UserService extends Service{
             return user;
         }
 
+    /**
+     * Find all users in DB
+     * @return List of users
+     * @throws DBException
+     * @see User
+     */
         public static List<User> findAllUsers() throws DBException {
             List<User> userList;
             ConnectionPool conPool = ConnectionPool.getInstance();
@@ -96,6 +115,11 @@ public class UserService extends Service{
             return result;
         }
 
+    /**
+     * Blocks user with login <code>login</code> i.e. adds his login to blacklist
+     * @param login user login
+     * @throws DBException
+     */
         public static void blockUser(String login) throws DBException {
             ConnectionPool conPool = ConnectionPool.getInstance();
             log.debug("Obtaining connection");
@@ -110,7 +134,11 @@ public class UserService extends Service{
                 close(con);
             }
         }
-
+    /**
+     * Unblocks user with login <code>login</code> i.e. remove his login from blacklist
+     * @param login user login
+     * @throws DBException
+     */
         public static void unblockUser(String login) throws DBException {
             ConnectionPool conPool = ConnectionPool.getInstance();
             log.debug("Obtaining connection");

@@ -17,6 +17,12 @@ public class UserInfoService extends Service{
 
     private static final Logger log = Logger.getLogger(UserInfoService.class);
 
+    /**
+     * Inserts <code>UserInfo</code> to db
+     * @param userInfo
+     * @throws DBException
+     * @see UserInfo
+     */
     public static void insertUserInfo(UserInfo userInfo) throws DBException {
         ConnectionPool conPool = ConnectionPool.getInstance();
         log.debug("Obtaining connection");
@@ -34,6 +40,13 @@ public class UserInfoService extends Service{
 
     }
 
+    /**
+     * Find UserInfo in DB by id
+     * @param id UserInfo id
+     * @return
+     * @throws DBException
+     * @see UserInfo
+     */
     public static UserInfo findUserInfo(Long id) throws DBException {
         UserInfo userInfo;
         ConnectionPool conPool = ConnectionPool.getInstance();
@@ -52,6 +65,12 @@ public class UserInfoService extends Service{
 
     }
 
+    /**
+     * Find all UserInfo's in DB
+     * @return List of UserInfo's
+     * @throws DBException
+     * @see UserInfo
+     */
     public static List<UserInfo> findAllUsersInfo() throws DBException {
         List<UserInfo> userInfoList;
         ConnectionPool conPool = ConnectionPool.getInstance();
@@ -69,6 +88,12 @@ public class UserInfoService extends Service{
         return userInfoList;
     }
 
+    /**
+     * Update a UserInfo
+     * @param userInfo UserInfo to update
+     * @throws
+     * @see UserInfo
+     */
     public static void updateUserInfo(UserInfo userInfo) throws DBException {
         ConnectionPool conPool = ConnectionPool.getInstance();
         log.debug("Obtaining connection");

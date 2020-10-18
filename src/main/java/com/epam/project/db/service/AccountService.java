@@ -23,6 +23,12 @@ public class AccountService extends Service {
 
     }
 
+    /**
+     *
+     * @return List of beans with complete information about users
+     * @throws DBException
+     * @see AccountBean
+     */
     public static List<AccountBean> findAllAccounts() throws DBException {
         List<AccountBean> result;
         ConnectionPool conPool = ConnectionPool.getInstance();
@@ -45,6 +51,15 @@ public class AccountService extends Service {
         return result;
     }
 
+    /**
+     * Insert user and user info to db with same ids
+     * @param user user to insert
+     * @param userInfo user's info to insert
+     * @throws DBException
+     * @throws SQLException
+     * @see User
+     * @see UserInfo
+     */
     public static void insertAccount(User user, UserInfo userInfo) throws DBException, SQLException {
         ConnectionPool conPool = ConnectionPool.getInstance();
         log.debug("Obtaining connection");
