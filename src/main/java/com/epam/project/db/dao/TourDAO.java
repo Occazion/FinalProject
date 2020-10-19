@@ -21,6 +21,8 @@ public class TourDAO extends  DAO{
 
     private static final String SQL_FIND_TOUR_BY_ID =
             "SELECT * FROM tours WHERE id = ?";
+    private static final String SQL_FIND_TOUR_BY_HOTEL =
+            "SELECT * FROM tours WHERE hotel = ?";
     private static final String SQL_FIND_TOUR_BY_USER_ID =
             "SELECT * FROM tours WHERE user_id = ?";
     private static final String SQL_FIND_ALL_TOURS =
@@ -74,14 +76,33 @@ public class TourDAO extends  DAO{
         }
     }
 
-    public static Tour findTour(Connection con, int id) throws DBException {
+    public static Tour findTour(Connection con, Long id) throws DBException {
         Tour tour = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
             TourMapper mapper = new TourMapper();
             stmt = con.prepareStatement(SQL_FIND_TOUR_BY_ID);
-            stmt.setInt(1, id);
+            stmt.setLong(1, id);
+            rs = stmt.executeQuery();
+            if (rs.next())
+                tour = mapper.mapRow(rs);
+        } catch (SQLException ex) {
+            throw new DBException(ex.getMessage(), ex);
+        } finally {
+            close(stmt, rs);
+        }
+        return tour;
+    }
+
+    public static Tour findTour(Connection con, String hotel) throws DBException {
+        Tour tour = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            TourMapper mapper = new TourMapper();
+            stmt = con.prepareStatement(SQL_FIND_TOUR_BY_HOTEL);
+            stmt.setString(1, hotel);
             rs = stmt.executeQuery();
             if (rs.next())
                 tour = mapper.mapRow(rs);
@@ -187,7 +208,7 @@ public class TourDAO extends  DAO{
         return result;
     }
 
-    public static void orderTour(Connection con, Long userId, int tourId, Status status) throws DBException {
+    public static void orderTour(Connection con, Long userId, Long tourId, Status status) throws DBException {
         PreparedStatement stmt = null;
 
         try {
@@ -195,7 +216,7 @@ public class TourDAO extends  DAO{
 
             stmt.setInt(1,status.ordinal());
             stmt.setLong(2,userId);
-            stmt.setInt(3,tourId);
+            stmt.setLong(3,tourId);
 
             stmt.executeUpdate();
 
@@ -207,7 +228,7 @@ public class TourDAO extends  DAO{
         }
     }
 
-    public static void updateTourStatus(Connection con, long tourId, Status status) throws DBException {
+    public static void updateTourStatus(Connection con, Long tourId, Status status) throws DBException {
         PreparedStatement stmt = null;
 
         try {
@@ -226,14 +247,14 @@ public class TourDAO extends  DAO{
         }
     }
 
-    public static void updateTourDiscount(Connection con, int tourId, int discount) throws DBException {
+    public static void updateTourDiscount(Connection con, Long tourId, int discount) throws DBException {
         PreparedStatement stmt = null;
 
         try {
             stmt = con.prepareStatement(SQL_UPDATE_TOUR_DISCOUNT);
 
             stmt.setInt(1,discount);
-            stmt.setInt(2,tourId);
+            stmt.setLong(2,tourId);
 
             stmt.executeUpdate();
 
@@ -245,14 +266,14 @@ public class TourDAO extends  DAO{
         }
     }
 
-    public static void updateTourFireStatus(Connection con, int tourId, boolean isFire) throws DBException {
+    public static void updateTourFireStatus(Connection con, Long tourId, boolean isFire) throws DBException {
         PreparedStatement stmt = null;
 
         try {
             stmt = con.prepareStatement(SQL_UPDATE_TOUR_IS_FIRE);
 
             stmt.setBoolean(1,isFire);
-            stmt.setInt(2,tourId);
+            stmt.setLong(2,tourId);
 
             stmt.executeUpdate();
 
@@ -277,7 +298,7 @@ public class TourDAO extends  DAO{
             stmt.setBoolean(5,tour.getFire());
             stmt.setInt(6,tour.getStatusId());
             stmt.setInt(7,tour.getDiscount());
-            stmt.setInt(8,tour.getUserId());
+            stmt.setLong(8,tour.getUserId());
             stmt.setLong(9,tour.getId());
 
             stmt.executeUpdate();
@@ -290,13 +311,13 @@ public class TourDAO extends  DAO{
         }
     }
 
-    public static void deleteTour(Connection con, int tourId) throws DBException {
+    public static void deleteTour(Connection con, Long tourId) throws DBException {
         PreparedStatement stmt = null;
 
         try {
             stmt = con.prepareStatement(SQL_DELETE_TOUR);
 
-            stmt.setInt(1,tourId);
+            stmt.setLong(1,tourId);
 
             stmt.executeUpdate();
 

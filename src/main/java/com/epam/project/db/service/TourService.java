@@ -48,7 +48,7 @@ public class TourService extends Service {
      * @throws DBException
      * @see Tour
      */
-    public static Tour findTour(int id) throws DBException {
+    public static Tour findTour(Long id) throws DBException {
         Tour tour;
         ConnectionPool conPool = ConnectionPool.getInstance();
         log.debug("Obtaining connection");
@@ -163,7 +163,7 @@ public class TourService extends Service {
      * @throws DBException
      * @see Status
      */
-    public static void orderTour(Long userId, int tourID, Status status) throws DBException {
+    public static void orderTour(Long userId, Long tourID, Status status) throws DBException {
         ConnectionPool conPool = ConnectionPool.getInstance();
         log.debug("Obtaining connection");
         Connection con = conPool.getConnection();
@@ -204,7 +204,7 @@ public class TourService extends Service {
      * @param discount discount to update
      * @throws DBException
      */
-    public static void updateTourDiscount(int tourID, int discount) throws DBException {
+    public static void updateTourDiscount(Long tourID, int discount) throws DBException {
         ConnectionPool conPool = ConnectionPool.getInstance();
         log.debug("Obtaining connection");
         Connection con = conPool.getConnection();
@@ -223,7 +223,7 @@ public class TourService extends Service {
      * @param isFire fire status to update
      * @throws DBException
      */
-    public static void updateTourFireStatus(int tourID, boolean isFire) throws DBException {
+    public static void updateTourFireStatus(Long tourID, boolean isFire) throws DBException {
         ConnectionPool conPool = ConnectionPool.getInstance();
         log.debug("Obtaining connection");
         Connection con = conPool.getConnection();
@@ -262,7 +262,7 @@ public class TourService extends Service {
      * @param tourId tour id to delete
      * @throws DBException
      */
-    public static void deleteTour(int tourId) throws DBException {
+    public static void deleteTour(Long tourId) throws DBException {
         ConnectionPool conPool = ConnectionPool.getInstance();
         log.debug("Obtaining connection");
         Connection con = conPool.getConnection();

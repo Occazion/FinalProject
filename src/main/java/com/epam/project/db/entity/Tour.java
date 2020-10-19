@@ -8,7 +8,7 @@ public class Tour extends Entity {
     private boolean fire;
     private int statusId;
     private int discount;
-    private int userId;
+    private long userId;
 
     public String getType() {
         return type;
@@ -66,11 +66,11 @@ public class Tour extends Entity {
         this.discount = discount;
     }
 
-    public int getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 

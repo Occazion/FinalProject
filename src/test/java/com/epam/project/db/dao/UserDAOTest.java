@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserDAOTest {
 
     @AfterEach
-    void setup() throws DBException {
+    void clean() throws DBException {
         TestConnectionPool conPool = TestConnectionPool.getInstance();
         Connection con = conPool.getConnection();
         PreparedStatement stmt = null;
@@ -49,13 +49,10 @@ class UserDAOTest {
         user2.setRoleId(0);
         user2.setLocale("test");
 
-        try {
-            UserDAO.insertUser(con,user2);
+        UserDAO.insertUser(con,user2);
 
-            user1  = UserDAO.findUser(con, user2.getLogin());
-        } catch (DBException e) {
-            System.out.println(e.getMessage() + e);
-        }
+        user1  = UserDAO.findUser(con, user2.getLogin());
+
         assertEquals(user1.getPassword(),user2.getPassword());
         assertEquals(user1.getLocale(),user2.getLocale());
 

@@ -22,8 +22,10 @@ public class UserInfoDAO extends DAO{
 
     private static final String SQL_FIND_USER_INFO_BY_ID =
             "SELECT * FROM users_info WHERE id = ?";
-    private static final String SQL_FIND_ALL_USERS =
-            "SELECT * FROM users";
+    private static final String SQL_FIND_USER_INFO_BY_NAME =
+            "SELECT * FROM users_info WHERE name = ?";
+    private static final String SQL_FIND_ALL_USERS_INFO =
+            "SELECT * FROM users_info";
     private static final String SQL_INSERT_USER_INFO =
             "INSERT INTO users_info(id,name,surname,gender,email,city) VALUE (?,?,?,?,?,?)";
     private static final String SQL_UPDATE_USER_INFO =
@@ -74,13 +76,32 @@ public class UserInfoDAO extends DAO{
         return userInfo;
     }
 
+    public static UserInfo findUserInfo(Connection con,String name) throws DBException {
+        UserInfo userInfo = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            UserInfoMapper mapper = new UserInfoMapper();
+            stmt = con.prepareStatement(SQL_FIND_USER_INFO_BY_NAME);
+            stmt.setString(1, name);
+            rs = stmt.executeQuery();
+            if (rs.next())
+                userInfo = mapper.mapRow(rs);
+        } catch (SQLException ex) {
+            throw new DBException();
+        } finally {
+            close(stmt, rs);
+        }
+        return userInfo;
+    }
+
     public static List<UserInfo> findAllUsersInfo(Connection con) throws DBException {
         List<UserInfo> result = new ArrayList<>();
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
             UserInfoMapper mapper = new UserInfoMapper();
-            stmt = con.prepareStatement(SQL_FIND_ALL_USERS);
+            stmt = con.prepareStatement(SQL_FIND_ALL_USERS_INFO);
             rs = stmt.executeQuery();
 
             while (rs.next()) {

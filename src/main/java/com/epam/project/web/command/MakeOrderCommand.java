@@ -34,16 +34,16 @@ public class MakeOrderCommand extends Command{
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         log.info("User id --> " + user.getId());
-        ArrayList<Integer> idList = new ArrayList<>();
+        ArrayList<Long> idList = new ArrayList<>();
         for(String str : tourIds) {
-            idList.add(Integer.parseInt(str));
+            idList.add(Long.parseLong(str));
             log.debug("Added tour id -->" + str + " to order list");
         }
 
         log.debug("Ordering tours");
-        for(Integer integer : idList) {
+        for(Long aLong : idList) {
             try {
-                TourService.orderTour(user.getId(),integer, Status.CONFIRMED);
+                TourService.orderTour(user.getId(),aLong, Status.CONFIRMED);
             } catch (DBException e) {
                 String errorMessage = Messages.ERR_CANNOT_UPDATE_TOUR;
                 log.error("errorMessage --> " + errorMessage);

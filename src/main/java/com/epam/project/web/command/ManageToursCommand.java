@@ -24,7 +24,7 @@ public class ManageToursCommand extends Command{
         log.trace("Action --> " + action);
         String tourIdParam = request.getParameter("tourId");
         log.trace("Tour id  --> " + tourIdParam);
-        int tourId;
+        Long tourId;
 
 
         try {
@@ -147,9 +147,9 @@ public class ManageToursCommand extends Command{
         return Path.COMMAND_TOURS;
     }
 
-    private int checkId(String tourId) throws AppException {
+    private Long checkId(String tourId) throws AppException {
         try {
-            return Integer.parseInt(tourId);
+            return Long.parseLong(tourId);
         } catch (NumberFormatException e) {
             throw new AppException(Messages.ERR_TOUR_NOT_SELECTED,e);
         }
