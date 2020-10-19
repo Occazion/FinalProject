@@ -18,11 +18,13 @@ public class Controller extends HttpServlet {
 
     private static final Logger log = Logger.getLogger(Controller.class);
 
+    @Override
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response) throws ServletException, IOException {
         process(request, response);
     }
 
+    @Override
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
         process(request, response);

@@ -14,12 +14,14 @@ public class ContextListener implements ServletContextListener {
 
     private static final Logger log = Logger.getLogger(ContextListener.class);
 
+    @Override
     public void contextDestroyed(ServletContextEvent event) {
         log("Servlet context destruction starts");
         // do nothing
         log("Servlet context destruction finished");
     }
 
+    @Override
     public void contextInitialized(ServletContextEvent event) {
         log("Servlet context initialization starts");
 

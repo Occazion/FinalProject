@@ -27,12 +27,7 @@ public class CommandContainer {
         commands.put("viewSettings", new ViewSettingsCommand());
         commands.put("updateSettings", new UpdateSettingsCommand());
         commands.put("payForTours", new PayForToursCommand());
-
-        // client commands
         commands.put("tourMenu", new TourMenuCommand());
-
-        // admin commands
-        //commands.put("listOrders", new ListOrdersCommand());
 
         log.debug("Command container was successfully initialized");
         log.trace("Number of commands --> " + commands.size());

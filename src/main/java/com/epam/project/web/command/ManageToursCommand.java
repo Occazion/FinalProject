@@ -8,7 +8,6 @@ import com.epam.project.exception.AppException;
 import com.epam.project.exception.DBException;
 import com.epam.project.exception.Messages;
 import org.apache.log4j.Logger;
-import sun.plugin.dom.core.Element;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -62,13 +61,13 @@ public class ManageToursCommand extends Command{
                     tour.setPrice(tourPrice);
                     int tourAmount = Integer.parseInt(request.getParameter("tourAmount"));
                     log.trace("New tour human amount  --> " + tourAmount);
-                    tour.setHuman_amount(tourAmount);
+                    tour.setHumanAmount(tourAmount);
 
                     tour.setFire(false);
 
                     tour.setStatusId(0);
 
-                    tour.setUser_id(0);
+                    tour.setUserId(0);
 
                     TourService.insertTour(tour);
 
@@ -103,7 +102,7 @@ public class ManageToursCommand extends Command{
                     if (!str.equals("")) {
                         int tourAmount = Integer.parseInt(str);
                         log.trace("New tour human amount  --> " + tourAmount);
-                        tour.setHuman_amount(tourAmount);
+                        tour.setHumanAmount(tourAmount);
                     }
                     str = request.getParameter("tourIsFireUpd");
                     if (!str.equals("")) {
@@ -121,7 +120,7 @@ public class ManageToursCommand extends Command{
                     if (!str.equals("")) {
                         int tourUserId = Integer.parseInt(str);
                         log.trace("New tour user id  --> " + tourUserId);
-                        tour.setUser_id(tourUserId);
+                        tour.setUserId(tourUserId);
                     }
 
                     TourService.updateTour(tour);

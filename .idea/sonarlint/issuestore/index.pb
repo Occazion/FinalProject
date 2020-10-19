@@ -169,3 +169,7 @@ O
 sql/script.sql,b\2\b29fd5cc26cb3d19b66b14385853cdc21d5850e4
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+m
+=src/test/java/com/epam/project/db/dao/TestConnectionPool.java,3\1\31d3b9aecffaf9402f8ddd4a308af37e3c23be09
+f
+6src/test/java/com/epam/project/db/dao/UserDAOTest.java,e\2\e205672fed9b22fc3d178fa0fb08fa68064815aa

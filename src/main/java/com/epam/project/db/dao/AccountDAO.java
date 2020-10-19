@@ -19,7 +19,7 @@ public class AccountDAO extends DAO{
 
     }
 
-    private static final String SQL__FIND_ALL_INFO_ABOUT_USERS = "SELECT u.login,u.role_id,u.locale,ui.name,ui.surname,ui.gender,ui.email,ui.city\n" +
+    private static final String SQL_FIND_ALL_INFO_ABOUT_USERS = "SELECT u.login,u.role_id,u.locale,ui.name,ui.surname,ui.gender,ui.email,ui.city\n" +
             "FROM users u\n" +
             "JOIN users_info ui on u.id = ui.id";
 
@@ -29,7 +29,7 @@ public class AccountDAO extends DAO{
         ResultSet rs = null;
         try {
             AccountMapper mapper = new AccountMapper();
-            stmt = con.prepareStatement(SQL__FIND_ALL_INFO_ABOUT_USERS);
+            stmt = con.prepareStatement(SQL_FIND_ALL_INFO_ABOUT_USERS);
             rs = stmt.executeQuery();
 
             while (rs.next()) {

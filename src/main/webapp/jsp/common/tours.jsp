@@ -55,18 +55,18 @@
                                     <td><label class="container"><fmt:message key="tours.add_tour"/><span class="checkmark"></span></label></td>
                                     <td><input type="radio" name="actionType" value="add"></td>
 
-                                    <td><b><fmt:message key="tour.type"/>:</b>
+                                    <td><strong><fmt:message key="tour.type"/>:</strong>
                                     <select name="tourType">
                                         <option disabled><fmt:message key="tours.select_type"/>:</option>
                                         <option value="excursion" selected><fmt:message key="tours.select_type.excursion"/></option>
                                         <option value="relaxation"><fmt:message key="tours.select_type.relaxation"/></option>
                                         <option value="shopping"><fmt:message key="tours.select_type.shopping"/></option>
                                     </select>
-                                    <b><fmt:message key="tour.hotel"/>:</b>
+                                    <strong><fmt:message key="tour.hotel"/>:</strong>
                                     <input type="text" name="tourHotel">
-                                    <p><b><fmt:message key="tour.price"/>:</b>
+                                    <p><strong><fmt:message key="tour.price"/>:</strong>
                                     <input type="number" name="tourPrice">
-                                    <b><fmt:message key="tour.human"/>:</b>
+                                    <strong><fmt:message key="tour.human"/>:</strong>
                                         <input type="number" name="tourAmount"></td></p>
 
                                 </tr>
@@ -78,31 +78,31 @@
                                 <tr>
                                     <td><label class="container"><fmt:message key="tours.change_details"/><span class="checkmark"></span></label></td>
                                     <td><input type="radio" name="actionType" value="change"></td>
-                                    <td><b><fmt:message key="tour.type"/>:</b>
+                                    <td><strong><fmt:message key="tour.type"/>:</strong>
                                     <select name="tourTypeUpd">
                                         <option disabled><fmt:message key="tours.select_type"/>:</option>
                                         <option value="excursion" selected><fmt:message key="tours.select_type.excursion"/></option>
                                         <option value="relaxation"><fmt:message key="tours.select_type.relaxation"/></option>
                                         <option value="shopping"><fmt:message key="tours.select_type.shopping"/></option>
                                     </select>
-                                    <b><fmt:message key="tour.hotel"/>:</b>
+                                    <strong><fmt:message key="tour.hotel"/>:</strong>
                                     <input type="text" name="tourHotelUpd">
                                         <p>
-                                            <b><fmt:message key="tour.price"/>:</b>
+                                            <strong><fmt:message key="tour.price"/>:</strong>
                                             <input type="number" name="tourPriceUpd">
-                                            <b><fmt:message key="tour.human"/>:</b>
+                                            <strong><fmt:message key="tour.human"/>:</strong>
                                             <input type="number" name="tourAmountUpd">
                                         </p>
-                                    <b><fmt:message key="tour.fire"/>?:</b>
+                                    <strong><fmt:message key="tour.fire"/>?:</strong>
                                     <select name="tourIsFireUpd">
                                         <option disabled><fmt:message key="tour.fire"/>?:</option>
                                         <option value="false" selected><fmt:message key="tours.set_fire.select.no"/></option>
                                         <option value="true"><fmt:message key="tours.set_fire.select.yes"/></option>
                                     </select>
-                                    <b><fmt:message key="tour.discount"/>:</b>
+                                    <strong><fmt:message key="tour.discount"/>:</strong>
                                     <input type="number" name="tourDiscountUpd">
                                         <p>
-                                            <b><fmt:message key="tour.user_id"/>:</b>
+                                            <strong><fmt:message key="tour.user_id"/>:</strong>
                                         <input type="number" name="tourUserIdUpd"></td>
                                     </p>
                                 </tr>

@@ -2,10 +2,8 @@ package com.epam.project.db.dao;
 
 import com.epam.project.db.EntityMapper;
 import com.epam.project.db.Fields;
-import com.epam.project.db.entity.Tour;
 import com.epam.project.db.entity.User;
 import com.epam.project.exception.DBException;
-import com.epam.project.web.command.CommandContainer;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;
@@ -23,17 +21,17 @@ public class UserDAO extends DAO{
 
     }
 
-    private static final String SQL__FIND_USER_BY_LOGIN =
+    private static final String SQL_FIND_USER_BY_LOGIN =
             "SELECT * FROM users WHERE login = ?";
-    private static final String SQL__FIND_ALL_USERS =
+    private static final String SQL_FIND_ALL_USERS =
             "SELECT * FROM users";
-    private static final String SQL__INSERT_USER =
+    private static final String SQL_INSERT_USER =
             "INSERT INTO users(login,password,role_id,locale) VALUE (?,?,?,?)";
-    private static final String SQL__FIND_USER_IN_BLACKLIST =
+    private static final String SQL_FIND_USER_IN_BLACKLIST =
             "SELECT * FROM blacklist WHERE login = ?";
-    private static final String SQL__INSERT_USER_INTO_BLACKLIST =
+    private static final String SQL_INSERT_USER_INTO_BLACKLIST =
             "INSERT INTO blacklist(login) value(?)";
-    private static final String SQL__DELETE_USER_FROM_BLACKLIST =
+    private static final String SQL_DELETE_USER_FROM_BLACKLIST =
             "DELETE FROM blacklist WHERE login = ?";
 
 
@@ -41,7 +39,7 @@ public class UserDAO extends DAO{
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement(SQL__INSERT_USER);
+            stmt = con.prepareStatement(SQL_INSERT_USER);
             stmt.setString(1, user.getLogin());
             stmt.setString(2, user.getPassword());
             stmt.setInt(3, user.getRoleId());
@@ -50,7 +48,7 @@ public class UserDAO extends DAO{
             stmt.executeUpdate();
 
         } catch (SQLException e) {
-            throw new DBException();
+            throw new DBException(e.getMessage(), e);
         }
         finally {
             close(stmt);
@@ -63,7 +61,7 @@ public class UserDAO extends DAO{
         ResultSet rs = null;
         try {
             UserMapper mapper = new UserMapper();
-            stmt = con.prepareStatement(SQL__FIND_USER_BY_LOGIN);
+            stmt = con.prepareStatement(SQL_FIND_USER_BY_LOGIN);
             stmt.setString(1, login);
             rs = stmt.executeQuery();
             if (rs.next())
@@ -82,7 +80,7 @@ public class UserDAO extends DAO{
         ResultSet rs = null;
         try {
             UserMapper mapper = new UserMapper();
-            stmt = con.prepareStatement(SQL__FIND_ALL_USERS);
+            stmt = con.prepareStatement(SQL_FIND_ALL_USERS);
             rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -102,8 +100,7 @@ public class UserDAO extends DAO{
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
-            UserMapper mapper = new UserMapper();
-            stmt = con.prepareStatement(SQL__FIND_USER_IN_BLACKLIST);
+            stmt = con.prepareStatement(SQL_FIND_USER_IN_BLACKLIST);
             stmt.setString(1, login);
             rs = stmt.executeQuery();
             if (rs.next())
@@ -122,7 +119,7 @@ public class UserDAO extends DAO{
         }
         PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement(SQL__INSERT_USER_INTO_BLACKLIST);
+            stmt = con.prepareStatement(SQL_INSERT_USER_INTO_BLACKLIST);
             stmt.setString(1, login);
             stmt.executeUpdate();
 
@@ -141,7 +138,7 @@ public class UserDAO extends DAO{
         }
         PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement(SQL__DELETE_USER_FROM_BLACKLIST);
+            stmt = con.prepareStatement(SQL_DELETE_USER_FROM_BLACKLIST);
             stmt.setString(1, login);
             stmt.executeUpdate();
 

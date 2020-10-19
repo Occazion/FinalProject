@@ -19,20 +19,19 @@ public class TourDAO extends  DAO{
 
     }
 
-    private static final String SQL__FIND_TOUR_BY_ID =
+    private static final String SQL_FIND_TOUR_BY_ID =
             "SELECT * FROM tours WHERE id = ?";
-    private static final String SQL__FIND_TOUR_BY_USER_ID =
+    private static final String SQL_FIND_TOUR_BY_USER_ID =
             "SELECT * FROM tours WHERE user_id = ?";
-    private static final String SQL__FIND_ALL_TOURS =
+    private static final String SQL_FIND_ALL_TOURS =
             "SELECT * FROM tours";
-    private static final String SQL__FIND_ALL_OPENED_TOURS =
+    private static final String SQL_FIND_ALL_OPENED_TOURS =
             "SELECT * FROM tours WHERE status = 0";
-    private static final String SQL__INSERT_TOUR =
+    private static final String SQL_INSERT_TOUR =
             "INSERT INTO tours values (default,?,?,?,?,?,?,?,?)";
-            //"INSERT INTO tours(id,type,hotel,price,human_amount,isFire,status,discount,user_id) VALUE (?,?,?,?,?,?,?,?)";
-    private static final String SQL__ORDER_TOUR =
+    private static final String SQL_ORDER_TOUR =
             "UPDATE tours SET status = ?,user_id = ? WHERE id = ?";
-    private static final String SQL__UPDATE_TOUR =
+    private static final String SQL_UPDATE_TOUR =
             "UPDATE tours SET type = ? ," +
                     "hotel = ? ," +
                     "price = ? ," +
@@ -41,25 +40,25 @@ public class TourDAO extends  DAO{
                     "status = ?," +
                     "discount = ? ," +
                     "user_id = ?  WHERE id = ?";
-    private static final String SQL__UPDATE_TOUR_STATUS =
+    private static final String SQL_UPDATE_TOUR_STATUS =
             "UPDATE tours SET status = ? WHERE id = ?";
-    private static final String SQL__UPDATE_TOUR_DISCOUNT =
+    private static final String SQL_UPDATE_TOUR_DISCOUNT =
             "UPDATE tours SET discount = ? WHERE id = ?";
-    private static final String SQL__UPDATE_TOUR_IS_FIRE =
+    private static final String SQL_UPDATE_TOUR_IS_FIRE =
             "UPDATE tours SET isFire = ? WHERE id = ?";
-    private static final String SQL__DELETE_TOUR ="DELETE FROM tours WHERE id = ?";
-    private static final String SQL__PAGINATION ="SELECT * FROM tours WHERE status = 0 LIMIT ? OFFSET ?";
+    private static final String SQL_DELETE_TOUR ="DELETE FROM tours WHERE id = ?";
+    private static final String SQL_PAGINATION ="SELECT * FROM tours WHERE status = 0 LIMIT ? OFFSET ?";
 
     public static void insertTour(Connection con, Tour tour) throws DBException {
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement(SQL__INSERT_TOUR);
+            stmt = con.prepareStatement(SQL_INSERT_TOUR);
 
             stmt.setString(1,tour.getType());//Type
             stmt.setString(2,tour.getHotel());//Hotel
             stmt.setInt(3,tour.getPrice());//Price
-            stmt.setInt(4,tour.getHuman_amount());//Human amount
+            stmt.setInt(4,tour.getHumanAmount());//Human amount
             stmt.setBoolean(5,tour.getFire());//isFire
             stmt.setInt(6,tour.getStatusId());//status
             stmt.setInt(7,tour.getDiscount());//discount
@@ -81,7 +80,7 @@ public class TourDAO extends  DAO{
         ResultSet rs = null;
         try {
             TourMapper mapper = new TourMapper();
-            stmt = con.prepareStatement(SQL__FIND_TOUR_BY_ID);
+            stmt = con.prepareStatement(SQL_FIND_TOUR_BY_ID);
             stmt.setInt(1, id);
             rs = stmt.executeQuery();
             if (rs.next())
@@ -100,7 +99,7 @@ public class TourDAO extends  DAO{
         ResultSet rs = null;
         try {
             TourMapper mapper = new TourMapper();
-            stmt = con.prepareStatement(SQL__FIND_TOUR_BY_USER_ID);
+            stmt = con.prepareStatement(SQL_FIND_TOUR_BY_USER_ID);
             stmt.setLong(1,userId);
             rs = stmt.executeQuery();
 
@@ -123,7 +122,7 @@ public class TourDAO extends  DAO{
         ResultSet rs = null;
         try {
             TourMapper mapper = new TourMapper();
-            stmt = con.prepareStatement(SQL__FIND_ALL_TOURS);
+            stmt = con.prepareStatement(SQL_FIND_ALL_TOURS);
             rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -148,7 +147,7 @@ public class TourDAO extends  DAO{
 
         try {
             TourMapper mapper = new TourMapper();
-            stmt = con.prepareStatement(SQL__PAGINATION);
+            stmt = con.prepareStatement(SQL_PAGINATION);
             stmt.setInt(1,limit);
             stmt.setInt(2,offset);
             rs = stmt.executeQuery();
@@ -172,7 +171,7 @@ public class TourDAO extends  DAO{
         ResultSet rs = null;
         try {
             TourMapper mapper = new TourMapper();
-            stmt = con.prepareStatement(SQL__FIND_ALL_OPENED_TOURS);
+            stmt = con.prepareStatement(SQL_FIND_ALL_OPENED_TOURS);
             rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -192,7 +191,7 @@ public class TourDAO extends  DAO{
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement(SQL__ORDER_TOUR);
+            stmt = con.prepareStatement(SQL_ORDER_TOUR);
 
             stmt.setInt(1,status.ordinal());
             stmt.setLong(2,userId);
@@ -212,7 +211,7 @@ public class TourDAO extends  DAO{
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement(SQL__UPDATE_TOUR_STATUS);
+            stmt = con.prepareStatement(SQL_UPDATE_TOUR_STATUS);
 
             stmt.setInt(1,status.ordinal());
             stmt.setLong(2,tourId);
@@ -231,7 +230,7 @@ public class TourDAO extends  DAO{
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement(SQL__UPDATE_TOUR_DISCOUNT);
+            stmt = con.prepareStatement(SQL_UPDATE_TOUR_DISCOUNT);
 
             stmt.setInt(1,discount);
             stmt.setInt(2,tourId);
@@ -250,7 +249,7 @@ public class TourDAO extends  DAO{
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement(SQL__UPDATE_TOUR_IS_FIRE);
+            stmt = con.prepareStatement(SQL_UPDATE_TOUR_IS_FIRE);
 
             stmt.setBoolean(1,isFire);
             stmt.setInt(2,tourId);
@@ -269,16 +268,16 @@ public class TourDAO extends  DAO{
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement(SQL__UPDATE_TOUR);
+            stmt = con.prepareStatement(SQL_UPDATE_TOUR);
 
             stmt.setString(1,tour.getType());
             stmt.setString(2,tour.getHotel());
             stmt.setInt(3,tour.getPrice());
-            stmt.setInt(4,tour.getHuman_amount());
+            stmt.setInt(4,tour.getHumanAmount());
             stmt.setBoolean(5,tour.getFire());
             stmt.setInt(6,tour.getStatusId());
             stmt.setInt(7,tour.getDiscount());
-            stmt.setInt(8,tour.getUser_id());
+            stmt.setInt(8,tour.getUserId());
             stmt.setLong(9,tour.getId());
 
             stmt.executeUpdate();
@@ -295,7 +294,7 @@ public class TourDAO extends  DAO{
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement(SQL__DELETE_TOUR);
+            stmt = con.prepareStatement(SQL_DELETE_TOUR);
 
             stmt.setInt(1,tourId);
 
@@ -319,11 +318,11 @@ public class TourDAO extends  DAO{
                 tour.setType(rs.getString(Fields.TOUR__TYPE));
                 tour.setHotel(rs.getString(Fields.TOUR__HOTEL));
                 tour.setPrice(rs.getInt(Fields.TOUR__PRICE));
-                tour.setHuman_amount(rs.getInt(Fields.TOUR__HUMAN_AMOUNT));
+                tour.setHumanAmount(rs.getInt(Fields.TOUR__HUMAN_AMOUNT));
                 tour.setFire(rs.getBoolean(Fields.TOUR__IS_FIRE));
                 tour.setStatusId(rs.getInt(Fields.TOUR__STATUS_ID));
                 tour.setDiscount(rs.getInt(Fields.TOUR__DISCOUNT));
-                tour.setUser_id(rs.getInt(Fields.TOUR__USER_ID));
+                tour.setUserId(rs.getInt(Fields.TOUR__USER_ID));
                 return tour;
             } catch (SQLException e) {
                 throw new IllegalStateException(e);

@@ -30,7 +30,7 @@ public class SignupCommand extends Command{
 
         // error handler
         String errorMessage = null;
-        String forward = Path.PAGE_ERROR_PAGE;
+        String forward;
 
         String str = request.getParameter("login");
         log.trace("Request parameter: login --> " + str);

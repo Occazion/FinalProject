@@ -19,6 +19,7 @@ public class AccessFilter implements Filter {
     private static List<String> commons = new ArrayList<>();
     private static List<String> outOfControl = new ArrayList<>();
 
+    @Override
     public void destroy() {
         log.debug("Filter destruction starts");
         // do nothing
@@ -67,6 +68,7 @@ public class AccessFilter implements Filter {
                 || commons.contains(commandName);
     }
 
+    @Override
     public void init(FilterConfig fConfig) throws ServletException {
         log.debug("Filter initialization starts");
 

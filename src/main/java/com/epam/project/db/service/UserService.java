@@ -3,7 +3,6 @@ package com.epam.project.db.service;
 
 import com.epam.project.db.dao.ConnectionPool;
 import com.epam.project.db.dao.UserDAO;
-import com.epam.project.db.dao.UserInfoDAO;
 import com.epam.project.db.entity.User;
 import com.epam.project.exception.DBException;
 import org.apache.log4j.Logger;

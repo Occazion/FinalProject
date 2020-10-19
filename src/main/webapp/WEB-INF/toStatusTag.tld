@@ -6,7 +6,7 @@
     <uri>/WEB-INF/toStatusTag</uri>
     <tag>
         <name>toStatus</name>
-        <tag-class>com.epam.project.web.toStatusTag</tag-class>
+        <tag-class>com.epam.project.web.ToStatusTag</tag-class>
         <body-content>scriptless</body-content>
     </tag>
 </taglib>

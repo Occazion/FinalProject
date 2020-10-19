@@ -2,11 +2,7 @@ package com.epam.project.web.command;
 
 import com.epam.project.Path;
 import com.epam.project.db.bean.AccountBean;
-import com.epam.project.db.entity.Tour;
-import com.epam.project.db.entity.User;
 import com.epam.project.db.service.AccountService;
-import com.epam.project.db.service.TourService;
-import com.epam.project.db.service.UserService;
 import com.epam.project.exception.DBException;
 import com.epam.project.exception.Messages;
 import org.apache.log4j.Logger;

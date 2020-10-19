@@ -1,7 +1,7 @@
 
-a
-java:S1128"DRemove this unused import 'com.epam.project.db.service.TourService'.(Âü∞è8•œ‹ø–.
+\
+java:S1128"<Remove this unused import 'com.epam.project.db.entity.Tour'.(ñ–ô˘ˇˇˇˇ8íçŸø–.
 ^
-java:S1128"<Remove this unused import 'com.epam.project.db.entity.Tour'.(ñ–ô˘ˇˇˇˇ8íçŸø–.
-`
-java:S1128	"DRemove this unused import 'com.epam.project.db.service.UserService'.(ó™≈F8Ñ•çÍ–.
+java:S1128"DRemove this unused import 'com.epam.project.db.service.UserService'.(ó™≈F8Ñ•çÍ–.
+_
+java:S1128"DRemove this unused import 'com.epam.project.db.service.TourService'.(Âü∞è8•œ‹ø–.

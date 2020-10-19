@@ -4,11 +4,11 @@ public class Tour extends Entity {
     private String type;
     private String hotel;
     private int price;
-    private int human_amount;
+    private int humanAmount;
     private boolean fire;
     private int statusId;
     private int discount;
-    private int user_id;
+    private int userId;
 
     public String getType() {
         return type;
@@ -34,12 +34,12 @@ public class Tour extends Entity {
         this.price = price;
     }
 
-    public int getHuman_amount() {
-        return human_amount;
+    public int getHumanAmount() {
+        return humanAmount;
     }
 
-    public void setHuman_amount(int human_amount) {
-        this.human_amount = human_amount;
+    public void setHumanAmount(int humanAmount) {
+        this.humanAmount = humanAmount;
     }
 
     public boolean getFire() {
@@ -66,19 +66,19 @@ public class Tour extends Entity {
         this.discount = discount;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     @Override
     public String toString() {
         return "Tour{" +
                 "id='" + getId() + '\'' +
-                ", user_id=" + user_id +
+                ", user_id=" + userId +
                 '}';
     }
 }

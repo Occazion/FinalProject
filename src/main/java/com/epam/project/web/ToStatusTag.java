@@ -7,7 +7,7 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 import java.io.IOException;
 import java.io.StringWriter;
 
-public class toStatusTag extends SimpleTagSupport {
+public class ToStatusTag extends SimpleTagSupport {
     StringWriter sw = new StringWriter();
     public void doTag()
 
@@ -16,7 +16,7 @@ public class toStatusTag extends SimpleTagSupport {
 
         String content = sw.toString();
 
-            content.trim(); // sometimes user inputs white spaces without knowing it
+            content = content.trim(); // sometimes user inputs white spaces without knowing it
         int value;
         if (content.length() == 0) {
             value = 0; // obviously not a string

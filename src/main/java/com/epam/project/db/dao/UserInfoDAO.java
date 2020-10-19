@@ -20,13 +20,13 @@ public class UserInfoDAO extends DAO{
 
     }
 
-    private static final String SQL__FIND_USER_INFO_BY_ID =
+    private static final String SQL_FIND_USER_INFO_BY_ID =
             "SELECT * FROM users_info WHERE id = ?";
-    private static final String SQL__FIND_ALL_USERS =
+    private static final String SQL_FIND_ALL_USERS =
             "SELECT * FROM users";
-    private static final String SQL__INSERT_USER_INFO =
+    private static final String SQL_INSERT_USER_INFO =
             "INSERT INTO users_info(id,name,surname,gender,email,city) VALUE (?,?,?,?,?,?)";
-    private static final String SQL__UPDATE_USER_INFO =
+    private static final String SQL_UPDATE_USER_INFO =
             "UPDATE users_info SET name = ? ," +
                     "surname = ? ," +
                     "gender = ? ," +
@@ -37,7 +37,7 @@ public class UserInfoDAO extends DAO{
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement(SQL__INSERT_USER_INFO);
+            stmt = con.prepareStatement(SQL_INSERT_USER_INFO);
             stmt.setLong(1,  userInfo.getId());
             stmt.setString(2, userInfo.getName());
             stmt.setString(3, userInfo.getSurname());
@@ -61,7 +61,7 @@ public class UserInfoDAO extends DAO{
         ResultSet rs = null;
         try {
             UserInfoMapper mapper = new UserInfoMapper();
-            stmt = con.prepareStatement(SQL__FIND_USER_INFO_BY_ID);
+            stmt = con.prepareStatement(SQL_FIND_USER_INFO_BY_ID);
             stmt.setLong(1, id);
             rs = stmt.executeQuery();
             if (rs.next())
@@ -80,7 +80,7 @@ public class UserInfoDAO extends DAO{
         ResultSet rs = null;
         try {
             UserInfoMapper mapper = new UserInfoMapper();
-            stmt = con.prepareStatement(SQL__FIND_ALL_USERS);
+            stmt = con.prepareStatement(SQL_FIND_ALL_USERS);
             rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -100,7 +100,7 @@ public class UserInfoDAO extends DAO{
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement(SQL__UPDATE_USER_INFO);
+            stmt = con.prepareStatement(SQL_UPDATE_USER_INFO);
 
             stmt.setString(1,userInfo.getName());
             stmt.setString(2,userInfo.getSurname());

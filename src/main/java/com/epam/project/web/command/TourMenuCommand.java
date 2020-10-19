@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TourMenuCommand extends Command {
@@ -37,9 +38,8 @@ public class TourMenuCommand extends Command {
         }
 
         // get menu items list
-        List<Tour> tourList = null;
+        List<Tour> tourList = new ArrayList<>();
         try {
-            //tourList = TourService.findAllOpenedTours();
             tourList = TourService.findAllToursForPage(2,pageNum);
         } catch (DBException e) {
             log.error(Messages.ERR_CANNOT_OBTAIN_ALL_TOURS);
