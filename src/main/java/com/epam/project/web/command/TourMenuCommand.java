@@ -37,7 +37,6 @@ public class TourMenuCommand extends Command {
             pageNum = 1;
         }
 
-        // get menu items list
         List<Tour> tourList = new ArrayList<>();
         try {
             tourList = TourService.findAllToursForPage(2,pageNum);
@@ -52,10 +51,8 @@ public class TourMenuCommand extends Command {
             return Path.COMMAND_TOUR_MENU;
         }
 
-        // sort menu by category
         tourList.sort((o1, o2) -> Boolean.compare(o1.getFire(), o2.getFire()));
 
-        // put menu items list to the request
         request.setAttribute("tourList", tourList);
         log.trace("Set the request attribute: tourList --> " + tourList);
 

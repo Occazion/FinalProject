@@ -22,13 +22,4 @@ public class Hash {
         return strBld.toString();
     }
 
-    public static void main(String[] args) {
-        try {
-            System.out.println(toHash("root",HashAlgorithm.SHA_256).concat(" root"));
-            System.out.println(toHash("manager",HashAlgorithm.SHA_256).concat(" manager"));
-            System.out.println(toHash("client",HashAlgorithm.SHA_256).concat(" client"));
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-    }
 }

@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Arrays;
+import java.util.List;
 
 public class ManageUsersCommand extends Command{
     private static final Logger log = Logger.getLogger(ManageUsersCommand.class);
@@ -18,30 +19,36 @@ public class ManageUsersCommand extends Command{
         log.debug("Command starts");
         String action = request.getParameter("actionType");
         log.trace("Action --> " + action);
-        String[] logins = request.getParameterValues("login");
-        log.trace(Arrays.toString(logins));
+        List<String> logins = Arrays.asList(request.getParameterValues("login"));
+        log.trace(logins);
 
         try {
 
             if (action.equals("block")) {
                 log.debug("Blocking users");
-                for (String login : logins) {
-                    UserService.blockUser(login);
-                }
+                logins.forEach(login -> {
+                    try {
+                        UserService.blockUser(login);
+                    } catch (DBException e) {
+                        String errorMessage = "DBException : " + e.getMessage();
+                        log.error("errorMessage --> " + errorMessage);
+                    }
+                });
             } else if (action.equals("unblock")) {
                 log.debug("Unblocking users");
-                for (String login : logins) {
-                    UserService.unblockUser(login);
-                }
+                logins.forEach(login -> {
+                    try {
+                        UserService.unblockUser(login);
+                    } catch (DBException e) {
+                        String errorMessage = "DBException : " + e.getMessage();
+                        log.error("errorMessage --> " + errorMessage);
+                    }
+                });
             } else {
                 String errorMessage = "Unknown action type.";
                 log.error("errorMessage --> " + errorMessage);
                 throw new AppException(errorMessage);
             }
-        } catch (DBException e) {
-            String errorMessage = "DBException : " + e.getMessage();
-            log.error("errorMessage --> " + errorMessage);
-            throw new AppException(errorMessage, e);
         } catch (AppException e) {
             String errorMessage = "AppException : " + e.getMessage();
             log.error("errorMessage --> " + errorMessage);

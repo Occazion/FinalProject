@@ -59,6 +59,8 @@
                     <th><fmt:message key="user.gender"/></th>
                     <th><fmt:message key="user.email"/></th>
                     <th><fmt:message key="user.city"/></th>
+                    <th>Orders Count</th>
+                    <th>Orders Price</th>
                     <th><fmt:message key="user.blocked"/></th>
                 </tr>
                 </thead>
@@ -77,6 +79,8 @@
                         <td>${account.gender}</td>
                         <td>${account.email}</td>
                         <td>${account.city}</td>
+                        <td>${account.ordersCount}</td>
+                        <td>${account.ordersPrice}</td>
                         <td>${account.isBlocked}</td>
 
                         <c:if test="${not empty user}">

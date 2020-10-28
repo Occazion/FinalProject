@@ -16,13 +16,13 @@ public class ToStatusTag extends SimpleTagSupport {
 
         String content = sw.toString();
 
-            content = content.trim(); // sometimes user inputs white spaces without knowing it
+            content = content.trim();
         int value;
         if (content.length() == 0) {
-            value = 0; // obviously not a string
+            value = 0;
         } else {
             try{
-                value = Integer.valueOf(content);
+                value = Integer.parseInt(content);
             } catch(NumberFormatException e) {
                 value = 0;
             }

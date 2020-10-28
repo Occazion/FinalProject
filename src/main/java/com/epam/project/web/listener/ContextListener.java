@@ -17,7 +17,7 @@ public class ContextListener implements ServletContextListener {
     @Override
     public void contextDestroyed(ServletContextEvent event) {
         log("Servlet context destruction starts");
-        // do nothing
+
         log("Servlet context destruction finished");
     }
 
@@ -78,8 +78,6 @@ public class ContextListener implements ServletContextListener {
     private void initCommandContainer() {
         log.debug("Command container initialization started");
 
-        // initialize commands container
-        // just load class to JVM
         try {
             Class.forName("com.epam.project.web.command.CommandContainer");
         } catch (ClassNotFoundException ex) {

@@ -139,8 +139,6 @@ K
 src/main/webapp/js/table.js,e\7\e7d7c6d1bbe0fdffa11ccadc1bfbe8407ebd62f5
 W
 'src/main/resources/META-INF/context.xml,b\a\ba231d17a135f9606c2f6b7f0c7ecfc84838a5dc
-1
-Q,c\3\c3156e00d3c2588c639e0d3cf6821258b05761c7
 c
 3src/main/java/com/epam/project/web/toStatusTag.java,b\8\b8e25fbcb637f495ce8e0ef71becd890a1ddc77c
 W
@@ -157,8 +155,6 @@ U
 %src/main/webapp/stylesheets/modal.css,b\1\b1e4ee52dc1b66ccb1634d2d713a7a29e605564c
 r
 Bsrc/main/java/com/epam/project/web/command/PayForToursCommand.java,9\e\9ee245552392f6598aa65b365a1ac4876772cc8a
-W
-'src/main/resources/resources.properties,8\e\8e08a09b69df893cdc0f98783b3b6b063b3deefc
 Z
 *src/main/resources/resources_en.properties,5\d\5d29831975e82fd03400e84753eff5ad65339351
 Z
@@ -173,3 +169,15 @@ m
 =src/test/java/com/epam/project/db/dao/TestConnectionPool.java,3\1\31d3b9aecffaf9402f8ddd4a308af37e3c23be09
 f
 6src/test/java/com/epam/project/db/dao/UserDAOTest.java,e\2\e205672fed9b22fc3d178fa0fb08fa68064815aa
+s
+C.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_11_4.xml,9\4\943f0a69fdae55baa84614c564e27a9096d825f7
+l
+<.idea/libraries/Maven__mysql_mysql_connector_java_8_0_22.xml,7\b\7ba8a7cc5fb4b8cf241ad97a1fe820ce7dbad4c0
+c
+3src/main/java/com/epam/project/web/ToStatusTag.java,8\0\80e4ff3f9b6c3f480d1953501f827a86f4334e24
+i
+9src/test/java/com/epam/project/db/dao/AccountDAOTest.java,4\a\4a87277c4c8e97a0916b9230898d06b665a8ef3b
+f
+6src/test/java/com/epam/project/db/dao/TourDAOTest.java,1\f\1f3d553883b2afa94291441a114bde3bbc65bc9a
+j
+:src/test/java/com/epam/project/db/dao/UserInfoDAOTest.java,0\d\0d715d758cf99e2cda25e9cda317354fb3821fbf

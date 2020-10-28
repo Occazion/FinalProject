@@ -10,6 +10,8 @@ public class AccountBean {
     private String gender;
     private String email;
     private String city;
+    private int ordersCount;
+    private int ordersPrice;
 
     public String getLogin() {
         return login;
@@ -81,5 +83,21 @@ public class AccountBean {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public int getOrdersCount() {
+        return ordersCount;
+    }
+
+    public void setOrdersCount(int ordersCount) {
+        this.ordersCount = ordersCount;
+    }
+
+    public int getOrdersPrice() {
+        return ordersPrice;
+    }
+
+    public void setOrdersPrice(int ordersPrice) {
+        this.ordersPrice = ordersPrice;
     }
 }

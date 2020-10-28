@@ -44,7 +44,7 @@
                             <td>${tour.type}</td>
                             <td>${tour.hotel}</td>
                             <td>${tour.price}</td>
-                            <td>${tour.human_amount}</td>
+                            <td>${tour.humanAmount}</td>
                             <td><cust:toStatus>${tour.statusId}</cust:toStatus></td>
                             <td>${tour.discount}</td>
                             <c:if test="${not empty user}">

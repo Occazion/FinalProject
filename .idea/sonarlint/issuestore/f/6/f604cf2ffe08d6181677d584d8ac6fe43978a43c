@@ -1,14 +1,14 @@
 
+n Web:TableHeaderHasIdOrScopeCheck ";Add either an 'id' or a 'scope' attribute to this <th> tag.(¶Ë¿8İ¢½Ò.
+n Web:TableHeaderHasIdOrScopeCheck"";Add either an 'id' or a 'scope' attribute to this <th> tag.(á¹êû8İ¢½Ò.
+a	Web:S5254"@Add "lang" and/or "xml:lang" attributes to this "<html>" element(œ÷Ãûÿÿÿÿ8ÂÍ²ºÒ.
+s Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(Éà‰±şÿÿÿÿ8İ¢½Ò.
 s Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(ê¿™ûÿÿÿÿ8İ¢½Ò.
-SWeb:BoldAndItalicTagsCheck<"!Replace this <b> tag by <strong>.(•ó÷±üÿÿÿÿ8ÚïÍ·Ó.
+s Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(‹¾üÿÿÿÿ8İ¢½Ò.
+SWeb:BoldAndItalicTagsCheck="!Replace this <b> tag by <strong>.(™€øâıÿÿÿÿ8ó­Ì·Ó.
+s Web:TableHeaderHasIdOrScopeCheck!";Add either an 'id' or a 'scope' attribute to this <th> tag.(÷ÀÛşùÿÿÿÿ8İ¢½Ò.
+NWeb:BoldAndItalicTagsCheck>"!Replace this <b> tag by <strong>.(¢¶Á8ÚïÍ·Ó.
+s Web:TableHeaderHasIdOrScopeCheck#";Add either an 'id' or a 'scope' attribute to this <th> tag.(å‹è…øÿÿÿÿ8İ¢½Ò.
 jWeb:DoctypePresenceCheck":Insert a <!DOCTYPE> declaration to before this <html> tag.(œ÷Ãûÿÿÿÿ8ÂÍ²ºÒ.
 TWeb:TableWithoutCaptionCheck" Add a description to this table.(Ûâè‹úÿÿÿÿ8İ¢½Ò.
-s Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(Éà‰±şÿÿÿÿ8İ¢½Ò.
-SWeb:BoldAndItalicTagsCheck="!Replace this <b> tag by <strong>.(™€øâıÿÿÿÿ8ó­Ì·Ó.
-n Web:TableHeaderHasIdOrScopeCheck ";Add either an 'id' or a 'scope' attribute to this <th> tag.(¶Ë¿8İ¢½Ò.
-NWeb:BoldAndItalicTagsCheck>"!Replace this <b> tag by <strong>.(¢¶Á8ÚïÍ·Ó.
-s Web:TableHeaderHasIdOrScopeCheck!";Add either an 'id' or a 'scope' attribute to this <th> tag.(÷ÀÛşùÿÿÿÿ8İ¢½Ò.
-s Web:TableHeaderHasIdOrScopeCheck#";Add either an 'id' or a 'scope' attribute to this <th> tag.(å‹è…øÿÿÿÿ8İ¢½Ò.
-s Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(‹¾üÿÿÿÿ8İ¢½Ò.
-a	Web:S5254"@Add "lang" and/or "xml:lang" attributes to this "<html>" element(œ÷Ãûÿÿÿÿ8ÂÍ²ºÒ.
-n Web:TableHeaderHasIdOrScopeCheck"";Add either an 'id' or a 'scope' attribute to this <th> tag.(á¹êû8İ¢½Ò.
+SWeb:BoldAndItalicTagsCheck<"!Replace this <b> tag by <strong>.(•ó÷±üÿÿÿÿ8ÚïÍ·Ó.

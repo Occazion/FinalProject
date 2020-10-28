@@ -1,7 +1,3 @@
 
-D
-java:S1068"'Remove this unused "log" private field.(¯‚¢8—şÏ.
-v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(¥´ù¶8—şÏ.
-v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(‹ÓìÂ8—şÏ.
-v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ï¸‡ü8‰±¬êÒ.
-{	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(‹¤Şåúÿÿÿÿ8—şÏ.
+B
+java:S1068"'Remove this unused "log" private field.(¯‚¢8ƒè©’Ô.

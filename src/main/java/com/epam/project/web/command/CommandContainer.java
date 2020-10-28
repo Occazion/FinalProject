@@ -13,7 +13,7 @@ public class CommandContainer {
     private static Map<String, Command> commands = new TreeMap<>();
 
     static {
-        // common commands
+
         commands.put("login", new LoginCommand());
         commands.put("logout", new LogoutCommand());
         commands.put("signup", new SignupCommand());

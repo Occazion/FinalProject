@@ -1,6 +1,8 @@
 package com.epam.project.exception;
 
-public class DBException extends Exception {
+import java.sql.SQLException;
+
+public class DBException extends SQLException {
     public DBException() {
         super();
     }

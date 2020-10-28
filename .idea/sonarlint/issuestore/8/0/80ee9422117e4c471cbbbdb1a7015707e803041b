@@ -1,15 +1,3 @@
 
-^
-java:S1128"<Remove this unused import 'com.epam.project.db.entity.Tour'.(–ğĞ™ùÿÿÿÿ8ô’Æ‹Ô.
-l
-java:S1128"JRemove this unused import 'com.epam.project.web.command.CommandContainer'.(Ø÷Ó¤şÿÿÿÿ8ô’Æ‹Ô.
-v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(¼ùÅî8ô’Æ‹Ô.
-v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(‹ÓìÂ8ô’Æ‹Ô.
-v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ßçĞ²8ô’Æ‹Ô.
-v	java:S115 "ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(¸Á–É8ô’Æ‹Ô.
-u	java:S115""ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(°¾‘R8ô’Æ‹Ô.
-{	java:S115$"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Åèıñşÿÿÿÿ8ô’Æ‹Ô.
-H
-java:S1481i"+Remove this unused "mapper" local variable.(†è†¦8ô’Æ‹Ô.
 C
-java:S1068"'Remove this unused "log" private field.(ÜòÓS8ô’Æ‹Ô.
+java:S1068"'Remove this unused "log" private field.(ÜòÓS8ÂÌ¼ÿÔ.

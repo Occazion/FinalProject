@@ -1,7 +1,5 @@
 
 N
-java:S1610"3Convert the abstract class "DAO" into an interface.(ÒÊº¬8–×ÒÎ.
+java:S1610"3Convert the abstract class "DAO" into an interface.(ÒÊº¬8ÇÀ®Ô.
 U
-java:S1118":Add a private constructor to hide the implicit public one.(ÒÊº¬8Ã¸×ÒÎ.
-K
-java:S1128"0Remove this unused import 'java.sql.Connection'.(¥ËôÖ8€ùÑùÏ.
+java:S1118":Add a private constructor to hide the implicit public one.(ÒÊº¬8ÇÀ®Ô.

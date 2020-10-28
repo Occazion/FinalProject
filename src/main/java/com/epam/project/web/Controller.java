@@ -30,7 +30,7 @@ public class Controller extends HttpServlet {
         process(request, response);
     }
 
-    private static List<String> redirect = new ArrayList<>();
+    private static final List<String> redirect = new ArrayList<>();
 
     @Override
     public void init() throws ServletException {
@@ -49,15 +49,12 @@ public class Controller extends HttpServlet {
 
         log.debug("Controller starts");
 
-        // extract command name from the request
         String commandName = request.getParameter("command");
         log.trace("Request parameter: command --> " + commandName);
 
-        // obtain command object by its name
         Command command = CommandContainer.get(commandName);
         log.trace("Obtained command --> " + command);
 
-        // execute command and get forward address
         String forward = Path.PAGE_ERROR_PAGE;
         try {
             forward = command.execute(request, response);

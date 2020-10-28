@@ -23,13 +23,22 @@ public class AccountDAO extends DAO{
             "FROM users u\n" +
             "JOIN users_info ui on u.id = ui.id";
 
+    private static final String SQL_FIND_ALL_INFO_ABOUT_USERS_WITH_ORDERS_COUNT = "WITH ct as (\n" +
+            "Select user_id, count(1) c,sum(price) p from tours group by user_id\n" +
+            "\n" +
+            ")\n" +
+            "SELECT u.login,u.role_id,u.locale,ui.name,ui.surname,ui.gender,ui.email,ui.city, ct.c,ct.p\n" +
+            "FROM users u\n" +
+            "         JOIN users_info ui on u.id = ui.id\n" +
+            "          left Join ct on u.id = ct.user_id";
+
     public static List<AccountBean> findAllAccounts(Connection con) throws DBException {
         List<AccountBean> result = new ArrayList<>();
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
             AccountMapper mapper = new AccountMapper();
-            stmt = con.prepareStatement(SQL_FIND_ALL_INFO_ABOUT_USERS);
+            stmt = con.prepareStatement(SQL_FIND_ALL_INFO_ABOUT_USERS_WITH_ORDERS_COUNT);
             rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -60,6 +69,8 @@ public class AccountDAO extends DAO{
                 accBean.setGender(rs.getString("ui.gender"));
                 accBean.setEmail(rs.getString("ui.email"));
                 accBean.setCity(rs.getString("ui.city"));
+                accBean.setOrdersCount(rs.getInt("ct.c"));
+                accBean.setOrdersPrice(rs.getInt("ct.p"));
                 return accBean;
             } catch (SQLException e) {
                 throw new IllegalStateException(e);

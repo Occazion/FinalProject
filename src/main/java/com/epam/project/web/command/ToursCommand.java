@@ -26,7 +26,6 @@ public class ToursCommand extends Command {
 
         log.debug("Command starts");
 
-        // get menu items list
         List<Tour> tourList = null;
         try {
             tourList = TourService.findAllTours();
@@ -35,7 +34,6 @@ public class ToursCommand extends Command {
         }
         log.trace("Found in DB: tour list --> " + tourList);
 
-        // put menu items list to the request
         request.setAttribute("tourList", tourList);
         log.trace("Set the request attribute: tourList --> " + tourList);
 

@@ -32,11 +32,9 @@ public class LoginCommand extends Command {
 
         HttpSession session = request.getSession();
 
-        // error handler
         String errorMessage = null;
         String forward = Path.PAGE_ERROR_PAGE;
 
-        // obtain login and password from the request
         String login = request.getParameter("login");
         log.trace("Request parameter: login --> " + login);
 
@@ -108,7 +106,6 @@ public class LoginCommand extends Command {
 
             log.info("User " + user + " logged as " + userRole.toString().toLowerCase());
 
-            // work with i18n
             String userLocaleName = user.getLocale();
             log.trace("userLocalName --> " + userLocaleName);
 

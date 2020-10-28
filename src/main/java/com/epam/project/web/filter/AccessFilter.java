@@ -14,7 +14,6 @@ public class AccessFilter implements Filter {
 
     private static final Logger log = Logger.getLogger(AccessFilter.class);
 
-    // commands access
     private static Map<Role, List<String>> accessMap = new HashMap<>();
     private static List<String> commons = new ArrayList<>();
     private static List<String> outOfControl = new ArrayList<>();
@@ -22,7 +21,7 @@ public class AccessFilter implements Filter {
     @Override
     public void destroy() {
         log.debug("Filter destruction starts");
-        // do nothing
+
         log.debug("Filter destruction finished");
     }
 
@@ -72,17 +71,14 @@ public class AccessFilter implements Filter {
     public void init(FilterConfig fConfig) throws ServletException {
         log.debug("Filter initialization starts");
 
-        // roles
         accessMap.put(Role.ADMIN, asList(fConfig.getInitParameter("admin")));
         accessMap.put(Role.MANAGER, asList(fConfig.getInitParameter("manager")));
         accessMap.put(Role.CLIENT, asList(fConfig.getInitParameter("client")));
         log.trace("Access map --> " + accessMap);
 
-        // commons
         commons = asList(fConfig.getInitParameter("common"));
         log.trace("Common commands --> " + commons);
 
-        // out of control
         outOfControl = asList(fConfig.getInitParameter("out-of-control"));
         log.trace("Out of control commands --> " + outOfControl);
 

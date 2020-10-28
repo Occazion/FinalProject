@@ -15,7 +15,7 @@ public class EncodingFilter implements Filter {
     @Override
     public void destroy() {
         log.debug("Filter destruction starts");
-        // do nothing
+
         log.debug("Filter destruction finished");
     }
 

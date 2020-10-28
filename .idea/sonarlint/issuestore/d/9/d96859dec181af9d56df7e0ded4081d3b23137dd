@@ -1,15 +1,11 @@
 
-u
-java:S1192†"RDefine a constant instead of duplicating this literal "errorMessage --> " 3 times.(ÇŠëƒþÿÿÿÿ8ÌÇˆ°Ó.
-y
-java:S1192@"\Define a constant instead of duplicating this literal "New tour human amount  --> " 3 times.(‡ä®Õ8ÌÇˆ°Ó.
-R
-java:S1191"5Use classes from the Java API instead of Sun classes.(úß·8ÌÇˆ°Ó.
-J
-java:S1199R"-Extract this nested code block into a method.(ÿ„§Á8ÌÇˆ°Ó.
 t
-java:S3776"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(îÅ–¥ýÿÿÿÿ8ÌÇˆ°Ó.
-U
-java:S1128"8Remove this unused import 'sun.plugin.dom.core.Element'.(úß·8ÌÇˆ°Ó.
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(îÅ–¥ýÿÿÿÿ8ÌÇˆ°Ó.
+u
+java:S1192…"RDefine a constant instead of duplicating this literal "errorMessage --> " 3 times.(ÇŠëƒþÿÿÿÿ8ÌÇˆ°Ó.
 I
-java:S11994"-Extract this nested code block into a method.(éý"8ÌÇˆ°Ó.
+java:S11993"-Extract this nested code block into a method.(éý"8ÌÇˆ°Ó.
+J
+java:S1199Q"-Extract this nested code block into a method.(ÿ„§Á8ÌÇˆ°Ó.
+y
+java:S1192?"\Define a constant instead of duplicating this literal "New tour human amount  --> " 3 times.(‡ä®Õ8ÌÇˆ°Ó.

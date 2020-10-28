@@ -24,7 +24,7 @@ public class TourService extends Service {
      * @throws SQLException
      * @see Tour
      */
-    public static void insertTour(Tour tour) throws DBException, SQLException {
+    public static void insertTour(Tour tour) throws DBException{
         ConnectionPool conPool = ConnectionPool.getInstance();
         log.debug("Obtaining connection");
         Connection con = conPool.getConnection();
@@ -32,8 +32,12 @@ public class TourService extends Service {
             con.setAutoCommit(false);
             TourDAO.insertTour(con, tour);
             con.commit();
-        } catch (DBException | SQLException e) {
-            con.rollback();
+        } catch (SQLException e) {
+            try {
+                con.rollback();
+            } catch (SQLException e1) {
+                throw new DBException(e.getMessage(), e1);
+            }
             throw new DBException(e.getMessage(), e);
         }
         finally {

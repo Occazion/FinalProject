@@ -16,6 +16,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class MakeOrderCommand extends Command{
 
@@ -34,23 +36,21 @@ public class MakeOrderCommand extends Command{
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         log.info("User id --> " + user.getId());
-        ArrayList<Long> idList = new ArrayList<>();
-        for(String str : tourIds) {
-            idList.add(Long.parseLong(str));
-            log.debug("Added tour id -->" + str + " to order list");
-        }
+        List<Long> idList = new ArrayList<>();
+
+        Arrays.stream(tourIds).forEach(x -> idList.add(Long.parseLong(x)));
 
         log.debug("Ordering tours");
-        for(Long aLong : idList) {
+
+        idList.forEach(x -> {
             try {
-                TourService.orderTour(user.getId(),aLong, Status.CONFIRMED);
+                TourService.orderTour(user.getId(), x,Status.CONFIRMED);
             } catch (DBException e) {
                 String errorMessage = Messages.ERR_CANNOT_UPDATE_TOUR;
                 log.error("errorMessage --> " + errorMessage);
-                throw new AppException(errorMessage + ":" + e.getMessage(),e);
+                //throw new AppException(errorMessage + ":" + e.getMessage(),e);
             }
-
-        }
+        });
 
         log.debug("Command finished");
         return Path.COMMAND_TOUR_MENU;

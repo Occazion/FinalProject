@@ -25,8 +25,6 @@ public class UpdateSettingsCommand extends Command{
             throws IOException, ServletException, AppException {
         log.debug("Command starts");
 
-        // UPDATE USER ////////////////////////////////////////////////////////
-
         User user = (User)request.getSession().getAttribute("user");
         log.debug("Getting user from session -> " + user);
         UserInfo userInfo;
@@ -39,8 +37,6 @@ public class UpdateSettingsCommand extends Command{
             throw new AppException(e.getMessage(), e);
         }
 
-
-        // update first name
         String name = request.getParameter("name");
         log.debug("Getting request param NAME -> " + name);
         if (name != null && !name.isEmpty()) {
@@ -48,7 +44,6 @@ public class UpdateSettingsCommand extends Command{
             updateUser = true;
         }
 
-        // update last name
         String surname = request.getParameter("surname");
         log.debug("Getting request param SURNAME -> " + surname);
         if (surname != null && !surname.isEmpty()) {

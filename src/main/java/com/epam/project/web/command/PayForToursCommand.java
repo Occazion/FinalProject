@@ -37,14 +37,11 @@ public class PayForToursCommand extends Command {
         }
         log.trace("Found in DB: tour list --> " + tourList);
 
-        for (Tour tour : tourList) {
-            try {
-                TourService.updateTourStatus(tour.getId(), Status.PAID);
-            } catch (DBException e) {
-                log.error(Messages.ERR_CANNOT_UPDATE_TOUR + ":" + e);
-                throw new AppException(Messages.ERR_CANNOT_UPDATE_TOUR + ":" + e,e);
-            }
-        }
+        tourList.forEach(tour -> {try {
+            TourService.updateTourStatus(tour.getId(), Status.PAID);
+        } catch (DBException e) {
+            log.error(Messages.ERR_CANNOT_UPDATE_TOUR + ":" + e);
+        }});
 
         log.debug("Command finished");
         return Path.COMMAND_CABINET;

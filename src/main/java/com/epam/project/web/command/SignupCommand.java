@@ -1,6 +1,7 @@
 package com.epam.project.web.command;
 
 import com.epam.project.Path;
+import com.epam.project.db.Role;
 import com.epam.project.db.entity.User;
 import com.epam.project.db.entity.UserInfo;
 import com.epam.project.db.hashing.Hash;
@@ -28,7 +29,6 @@ public class SignupCommand extends Command{
         User user = new User();
         UserInfo userInfo = new UserInfo();
 
-        // error handler
         String errorMessage = null;
         String forward;
 
@@ -58,8 +58,7 @@ public class SignupCommand extends Command{
         log.trace("Request parameter: locale --> " + str);
         user.setLocale(str);
 
-        //Client
-        user.setRoleId(2);
+        user.setRoleId(Role.CLIENT.ordinal());
 
         str = request.getParameter("name");
         log.trace("Request parameter: name --> " + str);
@@ -83,7 +82,7 @@ public class SignupCommand extends Command{
 
         try {
             AccountService.insertAccount(user,userInfo);
-        } catch (DBException | SQLException e) {
+        } catch (SQLException e) {
             errorMessage = Messages.ERR_CANNOT_INSERT_ACCOUNT_INFO +":"+ e.getMessage();
             log.error("errorMessage --> " + errorMessage);
             throw new AppException(errorMessage);

@@ -137,11 +137,11 @@
                         <td>${tour.type}</td>
                         <td>${tour.hotel}</td>
                         <td>${tour.price}</td>
-                        <td>${tour.human_amount}</td>
+                        <td>${tour.humanAmount}</td>
                         <td><cust:toStatus>${tour.statusId}</cust:toStatus></td>
                         <td>${tour.discount}%</td>
                         <td>${tour.fire}</td>
-                        <td>${tour.user_id}</td>
+                        <td>${tour.userId}</td>
                         <c:if test="${not empty user}">
                             <td><input type="radio" name="tourId" value="${tour.id}"/></td>
                         </c:if>
