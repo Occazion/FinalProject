@@ -41,7 +41,7 @@ class TourDAOTest {
         tour.setPrice(0);
         tour.setHumanAmount(0);
         tour.setFire(true);
-        tour.setStatusId(0);
+        tour.setStatusId(1);
         tour.setDiscount(0);
         tour.setUserId(0);
 
@@ -70,7 +70,7 @@ class TourDAOTest {
         tour.setPrice(0);
         tour.setHumanAmount(0);
         tour.setFire(true);
-        tour.setStatusId(0);
+        tour.setStatusId(1);
         tour.setDiscount(0);
         tour.setUserId(100);
 
@@ -133,7 +133,7 @@ class TourDAOTest {
         tour.setPrice(0);
         tour.setHumanAmount(0);
         tour.setFire(true);
-        tour.setStatusId(0);
+        tour.setStatusId(1);
         tour.setDiscount(0);
         tour.setUserId(100);
 
@@ -156,7 +156,7 @@ class TourDAOTest {
         tour.setPrice(0);
         tour.setHumanAmount(0);
         tour.setFire(true);
-        tour.setStatusId(0);
+        tour.setStatusId(1);
         tour.setDiscount(0);
         tour.setUserId(100);
 
@@ -179,7 +179,7 @@ class TourDAOTest {
         tour.setPrice(0);
         tour.setHumanAmount(0);
         tour.setFire(true);
-        tour.setStatusId(0);
+        tour.setStatusId(1);
         tour.setDiscount(0);
         tour.setUserId(100);
 
@@ -202,7 +202,7 @@ class TourDAOTest {
         tour.setPrice(0);
         tour.setHumanAmount(0);
         tour.setFire(true);
-        tour.setStatusId(0);
+        tour.setStatusId(1);
         tour.setDiscount(0);
         tour.setUserId(100);
 
@@ -225,7 +225,7 @@ class TourDAOTest {
         tour.setPrice(0);
         tour.setHumanAmount(0);
         tour.setFire(true);
-        tour.setStatusId(0);
+        tour.setStatusId(1);
         tour.setDiscount(0);
         tour.setUserId(100);
 
@@ -252,7 +252,7 @@ class TourDAOTest {
         tour.setPrice(0);
         tour.setHumanAmount(0);
         tour.setFire(true);
-        tour.setStatusId(0);
+        tour.setStatusId(1);
         tour.setDiscount(0);
         tour.setUserId(100);
 

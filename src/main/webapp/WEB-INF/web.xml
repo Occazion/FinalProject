@@ -134,4 +134,17 @@
     </jsp-config>
 
 
+    <servlet>
+        <servlet-name>h2-console</servlet-name>
+        <servlet-class>org.h2.server.web.WebServlet</servlet-class>
+        <init-param>
+            <param-name>webAllowOthers</param-name>
+            <param-value></param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>h2-console</servlet-name>
+        <url-pattern>/h2/*</url-pattern>
+    </servlet-mapping>
+
 </web-app>

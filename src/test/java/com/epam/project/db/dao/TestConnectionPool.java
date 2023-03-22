@@ -7,6 +7,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import org.springframework.jdbc.datasource.SimpleDriverDataSource;
+
+import javax.sql.DataSource;
+
 class TestConnectionPool {
 
     private static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
@@ -16,16 +20,24 @@ class TestConnectionPool {
     private static final String PASS = "ro20mysqlpass20ot";
 
     private static TestConnectionPool instance = null;
+    static SimpleDriverDataSource dataSource;
 
+    static {
+
+        String url = "jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;MODE=MYSQL;"
+                    + "INIT=RUNSCRIPT FROM 'classpath:/sql/schema.sql'\\;RUNSCRIPT FROM 'classpath:/sql/data.sql'";
+
+            dataSource = new SimpleDriverDataSource();
+            dataSource.setDriver(new org.h2.Driver());
+            dataSource.setUrl(url);
+
+    }
     private TestConnectionPool() {
-        try {
-            Class.forName(JDBC_DRIVER);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+
     }
 
     public static TestConnectionPool getInstance() {
+
         if (instance==null)
             instance = new TestConnectionPool();
         return instance;
@@ -33,7 +45,7 @@ class TestConnectionPool {
 
     public Connection getConnection() throws DBException {
         try {
-            return DriverManager.getConnection(DB_URL, USER, PASS);
+            return dataSource.getConnection();
         } catch (SQLException e) {
             throw new DBException(Messages.ERR_CANNOT_OBTAIN_CONNECTION, e);
         }

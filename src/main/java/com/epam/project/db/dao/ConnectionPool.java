@@ -1,13 +1,17 @@
 package com.epam.project.db.dao;
 
+import com.epam.project.db.hashing.Hash;
+import com.epam.project.db.hashing.HashAlgorithm;
 import com.epam.project.exception.DBException;
 import com.epam.project.exception.Messages;
 import org.apache.log4j.Logger;
+import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -15,21 +19,21 @@ public class ConnectionPool {
 
     private final Logger log = Logger.getLogger(ConnectionPool.class);
 
-    private DataSource ds;
+    private SimpleDriverDataSource ds;
 
-    private ConnectionPool() throws DBException {
-        try {
-            Context initContext = new InitialContext();
-            Context envContext = (Context) initContext.lookup("java:/comp/env");
-            // ST4DB - the name of data source
-            ds = (DataSource) envContext.lookup("jdbc/pool");
-            log.trace("Data source ==> " + ds);
-        } catch (NamingException ex) {
-            log.error(Messages.ERR_CANNOT_OBTAIN_DATA_SOURCE, ex);
-            throw new DBException(Messages.ERR_CANNOT_OBTAIN_DATA_SOURCE, ex);
-        }
+    private ConnectionPool() {
+        String url = "jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;MODE=MYSQL;"
+                + "INIT=RUNSCRIPT FROM 'classpath:/sql/schema.sql'\\;RUNSCRIPT FROM 'classpath:/sql/data.sql'";
+
+        ds = new SimpleDriverDataSource();
+        ds.setDriver(new org.h2.Driver());
+        ds.setUrl(url);
+        log.trace("Data source ==> " + ds);
     }
 
+    public static void main(String[] args) throws NoSuchAlgorithmException {
+        System.out.println(Hash.toHash("admin", HashAlgorithm.SHA_256));
+    }
     private static ConnectionPool instance = null;
 
     public static ConnectionPool getInstance() throws DBException {

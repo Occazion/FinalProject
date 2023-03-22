@@ -19,17 +19,15 @@ public class AccountDAO extends DAO{
 
     }
 
-    private static final String SQL_FIND_ALL_INFO_ABOUT_USERS = "SELECT u.login,u.role_id,u.locale,ui.name,ui.surname,ui.gender,ui.email,ui.city\n" +
-            "FROM users u\n" +
+    private static final String SQL_FIND_ALL_INFO_ABOUT_USERS = "SELECT u.login,u.role_id,u.locale,ui.name,ui.surname,ui.gender,ui.email,ui.city" +
+            "FROM users u" +
             "JOIN users_info ui on u.id = ui.id";
 
-    private static final String SQL_FIND_ALL_INFO_ABOUT_USERS_WITH_ORDERS_COUNT = "WITH ct as (\n" +
-            "Select user_id, count(1) c,sum(price) p from tours group by user_id\n" +
-            "\n" +
-            ")\n" +
-            "SELECT u.login,u.role_id,u.locale,ui.name,ui.surname,ui.gender,ui.email,ui.city, ct.c,ct.p\n" +
-            "FROM users u\n" +
-            "         JOIN users_info ui on u.id = ui.id\n" +
+    private static final String SQL_FIND_ALL_INFO_ABOUT_USERS_WITH_ORDERS_COUNT = "WITH ct as (" +
+            "Select user_id, count(1) c,sum(price) p from tours group by user_id) " +
+            "SELECT u.login,u.role_id,u.locale,ui.name,ui.surname,ui.gender,ui.email,ui.city, ct.c,ct.p " +
+            "FROM users u " +
+            "         JOIN users_info ui on u.id = ui.id" +
             "          left Join ct on u.id = ct.user_id";
 
     public static List<AccountBean> findAllAccounts(Connection con) throws DBException {

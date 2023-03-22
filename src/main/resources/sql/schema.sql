@@ -1,31 +1,33 @@
-create table blacklist
+CREATE SCHEMA IF NOT EXISTS finalproject;
+
+use finalproject;
+
+create table IF NOT EXISTS blacklist
 (
-	id int auto_increment
-		primary key,
+	id int auto_increment primary key,
 	login varchar(20) null,
 	constraint blacklist_login_uindex
 		unique (login)
 );
 
-create table roles
+create table IF NOT EXISTS roles
+(
+	id int not null primary key,
+	name varchar(10) not null,
+	constraint name_roles
+		unique (name)
+);
+
+create table IF NOT EXISTS statuses
 (
 	id int not null
 		primary key,
 	name varchar(10) not null,
-	constraint name
+	constraint name_statuses
 		unique (name)
 );
 
-create table statuses
-(
-	id int not null
-		primary key,
-	name varchar(10) not null,
-	constraint name
-		unique (name)
-);
-
-create table tours
+create table IF NOT EXISTS tours
 (
 	id int auto_increment
 		primary key,
@@ -42,7 +44,7 @@ create table tours
 			on delete cascade
 );
 
-create table users
+create table IF NOT EXISTS users
 (
 	id int auto_increment
 		primary key,
@@ -57,7 +59,7 @@ create table users
 			on delete cascade
 );
 
-create table users_info
+create table IF NOT EXISTS users_info
 (
 	id int auto_increment
 		primary key,
