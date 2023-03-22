@@ -55,12 +55,13 @@
                 </table>
 
             </form>
-
-    <div class="pagination">
-        <a href="/controller?command=tourMenu&p=${p - 1}"><b>&laquo;</b></a>
-        <a class="active"><b>${p}</b></a>
-        <a href="/controller?command=tourMenu&p=${p + 1}"><b>&raquo;</b></a>
-    </div>
+    <c:if test="${not empty tourList}">
+        <div class="pagination">
+            <a href="/controller?command=tourMenu&p=${p - 1}"><b>&laquo;</b></a>
+            <a class="active"><b>${p}</b></a>
+            <a href="/controller?command=tourMenu&p=${p + 1}"><b>&raquo;</b></a>
+        </div>
+    </c:if>
 
 </div>
 <%@ include file="/jspf/footer.jspf" %>

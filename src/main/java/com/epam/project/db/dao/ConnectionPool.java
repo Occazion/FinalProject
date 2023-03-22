@@ -33,17 +33,33 @@ public class ConnectionPool {
         ds.setDriver(new org.h2.Driver());
         ds.setUrl(url);
         log.trace("Data source ==> " + ds);
-        URL scriptFile = ConnectionPool.class.getClassLoader().getResource("/sql/data.sql");
-        try {
-            RunScript.execute(ds.getConnection(), new FileReader(scriptFile.getFile()));
-        } catch (SQLException | FileNotFoundException e) {
+        try(Connection con = ds.getConnection();) {
 
+            con.prepareStatement("INSERT INTO FINALPROJECT.STATUSES (ID, NAME) VALUES (0, 'OPENED')").execute();
+            con.prepareStatement("INSERT INTO FINALPROJECT.STATUSES (ID, NAME) VALUES (1, 'CONFIRMED')").execute();
+            con.prepareStatement("INSERT INTO FINALPROJECT.STATUSES (ID, NAME) VALUES (3, 'PAID')").execute();
+            con.prepareStatement("INSERT INTO FINALPROJECT.STATUSES (ID, NAME) VALUES (4, 'CLOSED')").execute();
+
+            con.prepareStatement("INSERT INTO FINALPROJECT.ROLES (ID, NAME) VALUES (0, 'ADMIN')").execute();
+            con.prepareStatement("INSERT INTO FINALPROJECT.ROLES (ID, NAME) VALUES (1, 'MANAGER')").execute();
+            con.prepareStatement("INSERT INTO FINALPROJECT.ROLES (ID, NAME) VALUES (2, 'CLIENT')").execute();
+
+            con.prepareStatement("INSERT INTO FINALPROJECT.USERS (ID, LOGIN, PASSWORD, ROLE_ID, LOCALE) VALUES (1, 'admin', '8C6976E5B5410415BDE908BD4DEE15DFB167A9C873FC4BB8A81F6F2AB448A918', 0, 'en')").execute();
+            con.prepareStatement("INSERT INTO FINALPROJECT.USERS_INFO (ID, NAME, SURNAME, GENDER, EMAIL, CITY) VALUES (1, 'Yehor', 'Y', '0', 'admin@email.com', 'Kharkiv')").execute();
+
+            con.prepareStatement("INSERT INTO FINALPROJECT.USERS (ID, LOGIN, PASSWORD, ROLE_ID, LOCALE) VALUES (2, 'manager', '6EE4A469CD4E91053847F5D3FCB61DBCC91E8F0EF10BE7748DA4C4A1BA382D17', 1, 'en')").execute();
+            con.prepareStatement("INSERT INTO FINALPROJECT.USERS_INFO (ID, NAME, SURNAME, GENDER, EMAIL, CITY) VALUES (2, 'Yehor', 'Y', '0', 'manager@email.com', 'Kharkiv')").execute();
+
+            con.prepareStatement("INSERT INTO FINALPROJECT.USERS (ID, LOGIN, PASSWORD, ROLE_ID, LOCALE) VALUES (3, 'client', '948FE603F61DC036B5C596DC09FE3CE3F3D30DC90F024C85F3C82DB2CCAB679D', 2, 'en')").execute();
+            con.prepareStatement("INSERT INTO FINALPROJECT.USERS_INFO (ID, NAME, SURNAME, GENDER, EMAIL, CITY) VALUES (3, 'Yehor', 'Y', '0', 'client@email.com', 'Kharkiv')").execute();
+
+            con.prepareStatement("INSERT INTO FINALPROJECT.TOURS (ID, TYPE, HOTEL, PRICE, HUMAN_AMOUNT, ISFIRE, STATUS, DISCOUNT, USER_ID) VALUES (1, 'Test', 'Hotel test', 11500, 2, 1, 0, 10, null)").execute();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public static void main(String[] args) throws NoSuchAlgorithmException {
-        System.out.println(Hash.toHash("admin", HashAlgorithm.SHA_256));
-    }
     private static ConnectionPool instance = null;
 
     public static ConnectionPool getInstance() throws DBException {

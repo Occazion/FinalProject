@@ -16,7 +16,7 @@ class TourDAOTest {
 
     @AfterEach
     void clean() throws DBException {
-        TestConnectionPool conPool = TestConnectionPool.getInstance();
+        ConnectionPool conPool = ConnectionPool.getInstance();
         Connection con = conPool.getConnection();
         PreparedStatement stmt = null;
 
@@ -32,7 +32,7 @@ class TourDAOTest {
 
     @Test
     void insertTour() throws DBException {
-        TestConnectionPool conPool = TestConnectionPool.getInstance();
+        ConnectionPool conPool = ConnectionPool.getInstance();
         Connection con = conPool.getConnection();
 
         Tour tour = new Tour();
@@ -52,7 +52,7 @@ class TourDAOTest {
 
     @Test
     void findAllToursByUserId() throws DBException {
-        TestConnectionPool conPool = TestConnectionPool.getInstance();
+        ConnectionPool conPool = ConnectionPool.getInstance();
         Connection con = conPool.getConnection();
 
         assertNotNull(TourDAO.findAllToursByUserId(con, 1L));
@@ -60,7 +60,7 @@ class TourDAOTest {
 
     @Test
     void findAllTours() throws DBException {
-        TestConnectionPool conPool = TestConnectionPool.getInstance();
+        ConnectionPool conPool = ConnectionPool.getInstance();
         Connection con = conPool.getConnection();
 
         Tour tour = new Tour();
@@ -81,7 +81,7 @@ class TourDAOTest {
 
     @Test
     void findAllToursForPage() throws DBException {
-        TestConnectionPool conPool = TestConnectionPool.getInstance();
+        ConnectionPool conPool = ConnectionPool.getInstance();
         Connection con = conPool.getConnection();
 
         Tour tour = new Tour();
@@ -102,7 +102,7 @@ class TourDAOTest {
 
     @Test
     void findAllOpenedTours() throws DBException {
-        TestConnectionPool conPool = TestConnectionPool.getInstance();
+        ConnectionPool conPool = ConnectionPool.getInstance();
         Connection con = conPool.getConnection();
 
         Tour tour = new Tour();
@@ -123,7 +123,7 @@ class TourDAOTest {
 
     @Test
     void orderTour() throws DBException {
-        TestConnectionPool conPool = TestConnectionPool.getInstance();
+        ConnectionPool conPool = ConnectionPool.getInstance();
         Connection con = conPool.getConnection();
 
         Tour tour = new Tour();
@@ -146,7 +146,7 @@ class TourDAOTest {
 
     @Test
     void updateTourStatus() throws DBException {
-        TestConnectionPool conPool = TestConnectionPool.getInstance();
+        ConnectionPool conPool = ConnectionPool.getInstance();
         Connection con = conPool.getConnection();
 
         Tour tour = new Tour();
@@ -169,7 +169,7 @@ class TourDAOTest {
 
     @Test
     void updateTourDiscount() throws DBException {
-        TestConnectionPool conPool = TestConnectionPool.getInstance();
+        ConnectionPool conPool = ConnectionPool.getInstance();
         Connection con = conPool.getConnection();
 
         Tour tour = new Tour();
@@ -192,7 +192,7 @@ class TourDAOTest {
 
     @Test
     void updateTourFireStatus() throws DBException {
-        TestConnectionPool conPool = TestConnectionPool.getInstance();
+        ConnectionPool conPool = ConnectionPool.getInstance();
         Connection con = conPool.getConnection();
 
         Tour tour = new Tour();
@@ -215,7 +215,7 @@ class TourDAOTest {
 
     @Test
     void updateTour() throws DBException {
-        TestConnectionPool conPool = TestConnectionPool.getInstance();
+        ConnectionPool conPool = ConnectionPool.getInstance();
         Connection con = conPool.getConnection();
 
         Tour tour = new Tour();
@@ -242,7 +242,7 @@ class TourDAOTest {
 
     @Test
     void deleteTour() throws DBException {
-        TestConnectionPool conPool = TestConnectionPool.getInstance();
+        ConnectionPool conPool = ConnectionPool.getInstance();
         Connection con = conPool.getConnection();
 
         Tour tour = new Tour();

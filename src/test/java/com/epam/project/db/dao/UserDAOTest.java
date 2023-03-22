@@ -19,7 +19,7 @@ class UserDAOTest {
 
     @AfterEach
     void clean() throws DBException {
-        TestConnectionPool conPool = TestConnectionPool.getInstance();
+        ConnectionPool conPool = ConnectionPool.getInstance();
         Connection con = conPool.getConnection();
         PreparedStatement stmt = null;
 
@@ -38,7 +38,7 @@ class UserDAOTest {
 
     @Test
     void insertUser() throws DBException {
-        TestConnectionPool conPool = TestConnectionPool.getInstance();
+        ConnectionPool conPool = ConnectionPool.getInstance();
         Connection con = conPool.getConnection();
 
         User user1 = null;
@@ -69,7 +69,7 @@ class UserDAOTest {
 
     @Test
     void findAllUsers() throws DBException {
-        TestConnectionPool conPool = TestConnectionPool.getInstance();
+        ConnectionPool conPool = ConnectionPool.getInstance();
         Connection con = conPool.getConnection();
 
         User user1 = new User();
@@ -98,7 +98,7 @@ class UserDAOTest {
 
     @Test
     void checkForBlock() throws DBException {
-        TestConnectionPool conPool = TestConnectionPool.getInstance();
+        ConnectionPool conPool = ConnectionPool.getInstance();
         Connection con = conPool.getConnection();
 
         assertFalse(UserDAO.checkForBlock(con,"test"));
@@ -107,7 +107,7 @@ class UserDAOTest {
 
     @Test
     void blockUser() throws DBException {
-        TestConnectionPool conPool = TestConnectionPool.getInstance();
+        ConnectionPool conPool = ConnectionPool.getInstance();
         Connection con = conPool.getConnection();
 
         UserDAO.blockUser(con,"test");
@@ -117,7 +117,7 @@ class UserDAOTest {
 
     @Test
     void unblockUser() throws DBException {
-        TestConnectionPool conPool = TestConnectionPool.getInstance();
+        ConnectionPool conPool = ConnectionPool.getInstance();
         Connection con = conPool.getConnection();
 
         UserDAO.blockUser(con,"test");

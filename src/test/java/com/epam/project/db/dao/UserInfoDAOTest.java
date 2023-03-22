@@ -16,7 +16,7 @@ class UserInfoDAOTest {
 
     @AfterEach
     void clean() throws DBException {
-        TestConnectionPool conPool = TestConnectionPool.getInstance();
+        ConnectionPool conPool = ConnectionPool.getInstance();
         Connection con = conPool.getConnection();
         PreparedStatement stmt = null;
 
@@ -37,7 +37,7 @@ class UserInfoDAOTest {
 
     @Test
     void insertUserInfo() throws DBException {
-        TestConnectionPool conPool = TestConnectionPool.getInstance();
+        ConnectionPool conPool = ConnectionPool.getInstance();
         Connection con = conPool.getConnection();
 
         User user = new User();
@@ -63,7 +63,7 @@ class UserInfoDAOTest {
 
     @Test
     void findUserInfo() throws DBException {
-        TestConnectionPool conPool = TestConnectionPool.getInstance();
+        ConnectionPool conPool = ConnectionPool.getInstance();
         Connection con = conPool.getConnection();
 
         User user = new User();
@@ -90,7 +90,7 @@ class UserInfoDAOTest {
 
     @Test
     void findAllUsersInfo() throws DBException {
-        TestConnectionPool conPool = TestConnectionPool.getInstance();
+        ConnectionPool conPool = ConnectionPool.getInstance();
         Connection con = conPool.getConnection();
 
         assertTrue(UserInfoDAO.findAllUsersInfo(con).size() > 0);
@@ -98,7 +98,7 @@ class UserInfoDAOTest {
 
     @Test
     void updateUserInfo() throws DBException {
-        TestConnectionPool conPool = TestConnectionPool.getInstance();
+        ConnectionPool conPool = ConnectionPool.getInstance();
         Connection con = conPool.getConnection();
 
         User user = new User();

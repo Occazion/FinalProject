@@ -15,7 +15,7 @@ class AccountDAOTest {
 
     @Test
     void findAllAccounts() throws SQLException {
-        TestConnectionPool conPool = TestConnectionPool.getInstance();
+        ConnectionPool conPool = ConnectionPool.getInstance();
         Connection con = conPool.getConnection();
 
         assertTrue(AccountDAO.findAllAccounts(con).size() == 0);

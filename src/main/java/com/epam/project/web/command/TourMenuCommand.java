@@ -48,7 +48,7 @@ public class TourMenuCommand extends Command {
         log.debug("tour list size --> " + tourList.size());
 
         if (tourList.isEmpty()) {
-            return Path.COMMAND_TOUR_MENU;
+            return Path.PAGE_TOUR_MENU;
         }
 
         tourList.sort((o1, o2) -> Boolean.compare(o1.getFire(), o2.getFire()));
