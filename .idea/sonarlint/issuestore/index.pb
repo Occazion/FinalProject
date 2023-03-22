@@ -17,8 +17,6 @@ b
 2src/main/java/com/epam/project/db/entity/Tour.java,4\0\40bbb083c8909f440391eeab41c3dcbc01d9bbc9
 b
 2src/main/java/com/epam/project/db/entity/User.java,f\6\f60e8182bc970b88c9fb5eaf3eeebd92d2da13cd
-i
-9src/main/java/com/epam/project/db/dao/ConnectionPool.java,0\c\0ce1591695a5a02ef3de4fe23c21aaf3d7e92150
 j
 :src/main/java/com/epam/project/exception/AppException.java,a\e\ae9d841f242e97b094b4718132991ed69a211621
 g

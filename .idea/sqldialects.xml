@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/3bd50294-823f-4ab1-abc8-b5634adbc45e/console.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/epam/project/db/dao/AccountDAO.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/epam/project/db/dao/TourDAO.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/resources/sql/schema.sql" dialect="MySQL" />
